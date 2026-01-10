@@ -1,15 +1,19 @@
 # Taiga - Musician Website
 
-A modern, responsive website for a multi-disciplinary artist showcasing music, workshops, and creative projects. Built with React, TypeScript, and Vite.
+A modern, responsive website for a multi-disciplinary artist showcasing music, workshops, and creative projects. Built with React, TypeScript, and Vite with comprehensive internationalization support.
 
 ## Features
 
-- **Geometric Triangle Navigation** - Clean, minimalist design with interactive sections
-- **Mobile-First Responsive** - Optimized for all devices and screen sizes
-- **Audio Integration** - Seamless music player and audio preview capabilities
+- **Geometric Triangle Navigation** - Interactive SVG triangle with mathematical precision and visual feedback
+- **Multi-Language Support** - Full internationalization (i18n) with English, German, Spanish, and Japanese
+- **Smart Language Switcher** - Responsive dropdown with flag icons and mobile optimization
+- **React Router Integration** - Seamless SPA navigation between Music, Workshops, and Home pages
+- **Unified Component Architecture** - Consistent LogoHeader and shared components across all pages
+- **Mobile-First Responsive** - Optimized touch interfaces and responsive design patterns
+- **Professional Content** - Real workshop data, artist information, and comprehensive content structure
 - **Lightning Fast** - Built with Vite for instant hot reloading and optimal performance
-- **Modern Design** - Clean aesthetic with focus on content and user experience
 - **TypeScript** - Type-safe development for maintainable code
+- **Modern Design** - Clean aesthetic with focus on content and user experience
 
 ## Live Demo
 
@@ -17,32 +21,47 @@ A modern, responsive website for a multi-disciplinary artist showcasing music, w
 
 ## Screenshots
 
-*Coming soon*
+### Triangle Navigation (Homepage)
+<div align="center">
+  <img src="docs/images/triangle-navigation.png" alt="Interactive triangle navigation with mathematical precision" width="600">
+  <p><em>Interactive SVG triangle with perfect geometric positioning and visual feedback</em></p>
+</div>
+
 
 ## Built With
 
-- **[React 19](https://react.dev/)** - UI library
-- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
-- **[Vite](https://vitejs.dev/)** - Build tool and dev server
-- **[CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)** - Styling
-- **[SVG](https://developer.mozilla.org/en-US/docs/Web/SVG)** - Graphics and icons
+- **[React 19](https://react.dev/)** - UI library with latest features
+- **[TypeScript](https://www.typescriptlang.org/)** - Type safety and better developer experience
+- **[Vite](https://vitejs.dev/)** - Next-generation build tool and dev server
+- **[React Router](https://reactrouter.com/)** - Client-side routing for SPA navigation
+- **[React i18next](https://react.i18next.com/)** - Internationalization framework
+- **[i18next](https://www.i18next.com/)** - Internationalization library with browser language detection
+- **[CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)** - Modern styling with CSS variables and responsive design
+- **[SVG](https://developer.mozilla.org/en-US/docs/Web/SVG)** - Mathematical graphics and interactive elements
 
 ## Project Structure
 
 ```
 taiga_website/
 ├── public/                      # Static assets
-│   ├── images/                  # Photos and graphics
-│   │   ├── hero/               # Landing page images
-│   │   └── gallery/            # Photo galleries
-│   ├── audio/                  # Music files
-│   │   ├── tracks/             # Full songs
-│   │   └── samples/            # Audio previews
-│   └── index.html
+│   └── index.html              # Entry HTML file
 ├── src/                        # Source code
 │   ├── assets/                 # Bundled assets
-│   ├── components/             # React components
-│   ├── App.tsx                 # Main application
+│   ├── components/             # Reusable React components
+│   │   ├── LanguageSwitcher.tsx  # Multi-language selection
+│   │   └── LogoHeader.tsx      # Unified header component
+│   ├── pages/                  # Route-based page components
+│   │   ├── HomePage.tsx        # Triangle navigation page
+│   │   ├── MusicPage.tsx       # Artist/music content
+│   │   └── WorkshopsPage.tsx   # Workshop listings and info
+│   ├── i18n/                   # Internationalization
+│   │   ├── index.ts           # i18n configuration
+│   │   └── locales/           # Translation files
+│   │       ├── en.json        # English translations
+│   │       ├── de.json        # German translations
+│   │       ├── es.json        # Spanish translations
+│   │       └── ja.json        # Japanese translations
+│   ├── App.tsx                 # Main application with routing
 │   └── main.tsx                # Entry point
 ├── package.json
 └── README.md
@@ -51,15 +70,15 @@ taiga_website/
 ## Installation & Setup
 
 ### Prerequisites
-- Node.js (v18 or higher)
+- Node.js (v18 or higher, only needed for development, not hosting)
 - npm or yarn
 
 ### Quick Start
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/taiga-website.git
-   cd taiga-website
+   git clone https://github.com/tmthyDXTR/taiga_website.git
+   cd taiga_website
    ```
 
 2. **Install dependencies**
@@ -76,6 +95,7 @@ taiga_website/
    ```
    http://localhost:5173
    ```
+   *Note: If port 5173 is in use, Vite will automatically try the next available port*
 
 ### Available Scripts
 
@@ -84,64 +104,108 @@ taiga_website/
 - `npm run preview` - Preview production build locally
 - `npm run lint` - Run ESLint for code quality
 
+## Architecture & Navigation
+
+### Triangle Navigation System
+The homepage features a mathematically precise **equilateral triangle** built with SVG:
+- **Mathematical positioning**: Perfect center-based geometry using trigonometry
+- **Interactive feedback**: Visual hover effects and active states
+- **Touch-friendly**: Optimized for mobile interactions
+- **Route integration**: Direct navigation to Music, Workshops, and future sections
+
+### Multi-Language Support
+Comprehensive internationalization with **react-i18next**:
+- **4 Languages**: English, German, Spanish, Japanese
+- **Smart Detection**: Automatic browser language detection
+- **Responsive Switcher**: Dropdown interface with flag icons
+- **Complete Translation**: All content including navigation, pages, and workshop details
+- **Persistent Preferences**: Language selection remembered across sessions
+
+### Component Architecture
+- **LogoHeader**: Unified header with logo and language switcher
+- **LanguageSwitcher**: Responsive dropdown with flag icons and mobile optimization
+- **Page Components**: HomePage (triangle), MusicPage (artist focus), WorkshopsPage (comprehensive listings)
+- **CSS Variables**: Consistent theming and responsive breakpoints
+
+## Pages & Content
+
+### HomePage (Triangle Navigation)
+- **Interactive SVG Triangle**: Mathematical precision with center coordinates (250, 200)
+- **Visual Feedback**: Hover effects and active states for each section
+- **Responsive Design**: Touch-optimized for mobile devices
+- **Multilingual Instructions**: Swipe guidance and navigation hints
+
+### MusicPage (The Artist)
+- **Clean Foundation**: Recently restructured for optimal content presentation
+- **Artist Focus**: Professional layout ready for music content
+- **Unified Header**: Consistent branding with language switcher
+- **Translation Ready**: Full i18n integration for international audiences
+
+### WorkshopsPage (Comprehensive Offerings)
+Complete workshop and coaching information:
+- **6 Workshop Types**: Rap & Songwriting, Female Empowerment, German with Rap, Self-Awareness, Female Health, Rap-Yoga
+- **Professional Background**: Detailed artist bio and experience
+- **Partnership Information**: Work with Goethe-Institut, Amnesty International, PWC, and more
+- **Contact Integration**: Direct inquiry and booking capabilities
+- **Multilingual Content**: Full translations for international workshop offerings
+
+## Recent Updates & Changelog
+
+### Latest Release (October 2025)
+- ✅ **Internationalization System**: Complete i18n setup with react-i18next
+- ✅ **Multi-Language Support**: English, German, Spanish, Japanese with flag icons
+- ✅ **Responsive Language Switcher**: Dropdown interface with mobile optimization
+- ✅ **Unified Component Architecture**: LogoHeader component used across all pages
+- ✅ **Complete Workshop Translation**: All workshop content translated to 4 languages
+- ✅ **MusicPage Restructure**: Clean foundation ready for new content development
+- ✅ **Router Integration**: Seamless SPA navigation with React Router
+- ✅ **Mathematical Triangle**: Perfect geometric positioning with visual feedback
+- ✅ **Professional Content**: Real workshop data and artist information
+- ✅ **Mobile-First Design**: Touch-optimized interface with responsive breakpoints
+
+### Technical Improvements
+- **TypeScript Integration**: Full type safety across all components
+- **ESLint Configuration**: Strict code quality standards
+- **Vite Optimization**: Fast development server and optimized builds
+- **CSS Variables**: Consistent theming and maintainable styles
+- **Component Reusability**: Shared components reduce code duplication
+
 ## Design Philosophy
 
 This website embraces **minimalism** and **geometric design** principles:
 
-- **Clean Lines** - Sharp, geometric shapes and clear typography
-- **Purposeful Whitespace** - Strategic use of negative space
-- **Interactive Elements** - Subtle animations and hover effects
-- **Content-First** - Design serves the music and creative work
-- **Accessibility** - Inclusive design for all users
+- **Mathematical Precision** - SVG triangle with exact positioning and trigonometry
+- **Purposeful Internationalization** - Accessible content for global audiences
+- **Component Architecture** - Reusable, maintainable design system
+- **Interactive Elements** - Subtle animations and responsive feedback
+- **Content-First** - Design serves the music, workshops, and creative work
+- **Accessibility** - Inclusive design with multi-language support
 
-## Sections
+## Development Features
 
-### Music
-- Audio player with playlist functionality
-- Streaming platform integration
-- Album artwork and track information
-- Download and purchase links
+## Development Features
 
-### Workshops
-- Educational content and courses
-- Booking information
-- Workshop schedules and descriptions
-- Student testimonials
+### Code Quality & Architecture
+- **ESLint Configuration**: Strict linting rules for code quality
+- **TypeScript Integration**: Full type safety across components
+- **Modern ES6+ Syntax**: Latest JavaScript features and patterns
+- **Component-Based Architecture**: Reusable, maintainable components
+- **CSS Variables**: Consistent theming and responsive design
+- **Vite Plugin Ecosystem**: ESLint integration and optimized builds
 
-### Projects
-- Creative collaborations
-- Experimental work
-- Behind-the-scenes content
-- Future project previews
+### Internationalization (i18n)
+- **react-i18next**: Professional translation management
+- **Browser Language Detection**: Automatic language selection
+- **Namespace Organization**: Structured translation keys (navigation, music, workshops, common)
+- **Language Persistence**: User preferences saved locally
+- **Dynamic Content**: Real-time language switching without page reload
 
-## Responsive Design
-
-The website is built with a **mobile-first** approach:
-
-- **Mobile** (320px+) - Optimized touch interfaces
-- **Tablet** (768px+) - Enhanced layout and navigation
-- **Desktop** (1024px+) - Full-featured experience
-- **Large screens** (1440px+) - Immersive design
-
-## Development
-
-### Code Style
-- **ESLint** for code quality
-- **TypeScript** for type safety
-- **Modern ES6+** syntax
-- **Component-based** architecture
-
-### Asset Organization
-- **Public folder** for large media files
-- **Src/assets** for bundled resources
-- **Organized by function** (hero, gallery, audio)
-- **Optimized loading** for performance
-
-### Performance
-- **Lazy loading** for images and audio
-- **Code splitting** for optimal bundle size
-- **Optimized builds** with Vite
-- **Modern format support** (WebP, SVG)
+### Performance & Optimization
+- **Vite Build System**: Lightning-fast development and optimized production builds
+- **Code Splitting**: Automatic route-based chunking
+- **Modern Bundle Output**: ES modules and legacy fallbacks
+- **Development HMR**: Instant hot module replacement
+- **Production Optimization**: Minification and tree-shaking
 
 ## Deployment
 

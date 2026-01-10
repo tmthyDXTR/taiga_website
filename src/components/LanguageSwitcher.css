@@ -1,0 +1,162 @@
+/* Language Switcher Variables */
+:root {
+  /* Master Scale Factor - adjust this single value to resize everything */
+  --lang-scale: 0.8;
+  
+  /* Collapse Control Variables */
+  --lang-collapse-desktop: true; /* Set to true to use dropdown on desktop */
+  --lang-collapse-mobile: true;   /* Set to false to show all languages on mobile */
+  
+  /* Desktop Language Switcher */
+  --lang-desktop-gap: calc(0.5rem * var(--lang-scale));
+  --lang-desktop-padding: calc(0.5rem * var(--lang-scale)) calc(0.75rem * var(--lang-scale));
+  --lang-desktop-font-size: calc(0.875rem * var(--lang-scale));
+  --lang-desktop-flag-size: calc(1rem * var(--lang-scale));
+  --lang-desktop-border-width: calc(2px * var(--lang-scale));
+  
+  /* Mobile Language Switcher */
+  --lang-mobile-padding: calc(0.5rem * var(--lang-scale));
+  --lang-mobile-font-size: calc(0.875rem * var(--lang-scale));
+  --lang-mobile-flag-size: calc(1rem * var(--lang-scale));
+  --lang-mobile-arrow-size: calc(0.75rem * var(--lang-scale));
+  --lang-mobile-border-width: calc(2px * var(--lang-scale));
+  
+  /* Dropdown */
+  --lang-dropdown-padding: calc(0.5rem * var(--lang-scale));
+  --lang-dropdown-font-size: calc(0.875rem * var(--lang-scale));
+  --lang-dropdown-flag-size: calc(1rem * var(--lang-scale));
+}
+
+/* Language Switcher Styles */
+.language-switcher {
+  position: relative;
+}
+
+/* Desktop view - show all languages */
+.desktop-switcher {
+  display: flex;
+  gap: var(--lang-desktop-gap);
+  align-items: center;
+}
+
+.mobile-switcher {
+  display: none;
+}
+
+.language-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: var(--lang-desktop-padding);
+  background-color: transparent;
+  border: var(--lang-desktop-border-width) solid white;
+  color: white;
+  font-weight: 600;
+  font-size: var(--lang-desktop-font-size);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.language-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.language-button.active {
+  background-color: white;
+  color: black;
+}
+
+.flag {
+  font-size: var(--lang-desktop-flag-size);
+}
+
+.code {
+  font-family: inherit;
+  letter-spacing: 0.5px;
+}
+
+/* Mobile dropdown styles */
+.current-language-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: var(--lang-mobile-padding);
+  background-color: transparent;
+  border: var(--lang-mobile-border-width) solid white;
+  color: white;
+  font-weight: 600;
+  font-size: var(--lang-mobile-font-size);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.current-language-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.current-language-button:hover .dropdown-arrow {
+  color: black;
+}
+
+.dropdown-arrow {
+  font-size: var(--lang-mobile-arrow-size);
+  transition: transform 0.3s ease;
+}
+
+.language-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: black;
+  border: var(--lang-mobile-border-width) solid white;
+  border-top: none;
+  z-index: 1000;
+  min-width: 100%;
+}
+
+.dropdown-language-button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: var(--lang-dropdown-padding);
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: var(--lang-dropdown-font-size);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  border-bottom: 1px solid #333;
+}
+
+.dropdown-language-button:last-child {
+  border-bottom: none;
+}
+
+.dropdown-language-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.dropdown-language-button .flag {
+  font-size: var(--lang-dropdown-flag-size);
+}
+
+.current-language-button .flag {
+  font-size: var(--lang-mobile-flag-size);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .desktop-switcher {
+    display: none;
+  }
+  
+  .mobile-switcher {
+    display: block;
+  }
+}

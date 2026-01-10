@@ -1,0 +1,101 @@
+{
+  "navigation": {
+    "theArtist": "LA ARTISTA",
+    "workshops": "TALLERES",
+    "tbd": "POR DEFINIR",
+    "backToTriangle": "← VOLVER AL TRIÁNGULO"
+  },
+  "homepage": {
+    "mobileInstruction": "Desliza a izquierda o derecha para seleccionar"
+  },
+  "music": {
+    "title": "La Artista",
+    "heroTitle": "Taiga Trece",
+    "heroSubtitle": "Música • Artista • Coach",
+    "heroDescription": "Taiga Trece es una rapera y artista independiente que combina métodos artísticos con coaching y experiencia somática. A través de la música, talleres y desarrollo personal, crea espacios innovadores para la expresión creativa y el empoderamiento.",
+    "aboutTitle": "Acerca",
+    "aboutText": "Como miembro fundador del 5Elements Collective, Taiga desarrolla proyectos que fortalecen a los jóvenes en contextos artísticos. Su enfoque integra creatividad con crecimiento personal, utilizando el rap y la expresión artística como herramientas para el desarrollo de identidad y autoempoderamiento.",
+    "latestTitle": "Trabajo Reciente",
+    "latestDescription": "Explora el viaje musical de Taiga a través de sus últimos lanzamientos, colaboraciones y proyectos artísticos.",
+    "listenButton": "ESCUCHAR EN SPOTIFY",
+    "watchButton": "VER VIDEOS",
+    "contactTitle": "Conectar",
+    "contactDescription": "Sigue el viaje musical de Taiga y mantente actualizado con nuevos lanzamientos, actuaciones y colaboraciones artísticas.",
+    "instagramButton": "INSTAGRAM",
+    "websiteButton": "VISITAR SITIO WEB"
+  },
+  "workshops": {
+    "title": "Talleres y Coaching",
+    "heroTitle": "Talleres y Coaching",
+    "heroDescription": "Taiga Trece combina métodos artísticos con coaching y experiencia somática. Crea espacios de aprendizaje innovadores donde la expresión creativa, el empoderamiento y el desarrollo personal toman protagonismo a través de la autoexperiencia, la resiliencia y el crecimiento - individual o en equipos.",
+    "focusAreasTitle": "Áreas de Enfoque de Talleres",
+    "aboutTitle": "Acerca de Taiga Trece",
+    "contactTitle": "Ponerse en Contacto",
+    "contactDescription": "¿Interesado en reservar un taller o sesión de coaching? Taiga trabaja con instituciones culturales, proveedores educativos, empresas e individuos. Contacta para discutir tus necesidades específicas y crear un programa personalizado.",
+    "emailButton": "ENVIAR EMAIL A TAIGA",
+    "websiteButton": "VISITAR SITIO WEB",
+    "inquireButton": "CONSULTAR",
+    "workshops": {
+      "rapSongwriting": {
+        "title": "Rap y Composición",
+        "duration": "Medio/Día Completo",
+        "description": "Encuentra tu voz, escribe textos auténticos y desarrolla tus habilidades de actuación. Aprende a expresarte a través del rap como herramienta creativa para la identidad y autoexpresión.",
+        "level": "Todos los Niveles"
+      },
+      "femaleEmpowerment": {
+        "title": "Empoderamiento Femenino y FLINTA*",
+        "duration": "Serie de Talleres",
+        "description": "Desarrolla visibilidad, presencia, autoconfianza y resistencia. Espacios seguros para mujeres y personas FLINTA* para explorar potencial y fortalecer la autoexpresión auténtica.",
+        "level": "Empoderamiento"
+      },
+      "deutschRap": {
+        "title": "Aprender Alemán con Rap",
+        "duration": "Flexible",
+        "description": "Experimenta el aprendizaje de idiomas de manera viva, creativa y lúdica. Usa rap y ritmo para mejorar las habilidades del idioma alemán y la comprensión cultural a través de la música.",
+        "level": "Aprendizaje de Idiomas"
+      },
+      "selfAwareness": {
+        "title": "Autoconciencia y Presencia",
+        "duration": "1-2 Días",
+        "description": "Presencia auténtica, comunicación clara y comprensión del impacto. Desarrolla autoconciencia y aprende a presentarte con confianza en contextos personales y profesionales.",
+        "level": "Profesional"
+      },
+      "femaleHealth": {
+        "title": "Salud Femenina y Encarnación",
+        "duration": "Serie de Talleres",
+        "description": "Explora la feminidad, aprende a establecer límites y experimenta prácticas somáticas. Enfoque integrador que combina conciencia corporal con empoderamiento personal y sanación.",
+        "level": "Bienestar"
+      },
+      "rapYoga": {
+        "title": "Rap-Yoga",
+        "duration": "2-3 Horas",
+        "description": "Usa la identidad como recurso y el rap como herramienta. Explora ambivalencias y encuentra soluciones a través de la combinación única de movimiento, respiración y expresión creativa.",
+        "level": "Innovador"
+      }
+    },
+    "about": {
+      "professionalBackground": {
+        "title": "Antecedentes Profesionales",
+        "description": "Rapera y artista independiente, consultora educativa, coach sistémico y terapeuta corporal. Miembro fundador del 5Elements Collective, desarrolla proyectos que fortalecen a los jóvenes en contextos artísticos."
+      },
+      "experiencePartnerships": {
+        "title": "Experiencia y Asociaciones",
+        "description": "Años de trabajo nacional e internacional con instituciones culturales, ONGs, empresas y proveedores educativos incluyendo Goethe-Institut, Amnistía Internacional, PWC, Feierwerk München, y muchos más."
+      },
+      "approachMethod": {
+        "title": "Enfoque y Método",
+        "description": "Combina métodos artísticos con coaching y Experiencia Somática. Crea espacios de aprendizaje innovadores enfocados en expresión creativa, empoderamiento y desarrollo personal a través de autenticidad y profundidad."
+      },
+      "visionImpact": {
+        "title": "Visión e Impacto",
+        "description": "Representa empoderamiento, creatividad y transformación. Motiva a las personas a ser valientes y salir de sus zonas de confort mientras crea espacios seguros para el crecimiento y la autoexpresión auténtica."
+      }
+    },
+    "contact": "Contacto",
+    "price": "Contacto"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Ocurrió un error"
+  }
+}

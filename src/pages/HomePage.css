@@ -1,8 +1,5 @@
 /* Logo sizing variables */
 :root {
-  --logo-height: 120px;
-  --logo-padding-vertical: 1rem;
-  --logo-padding-horizontal: 3rem;
   --link-font-size: 16px;        /* Font size for navigation links */
 }
 
@@ -13,7 +10,7 @@
   box-sizing: border-box;
 }
 
-.app {
+.home-page {
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -22,36 +19,6 @@
   justify-content: center;
   background-color: white;
   gap: 2rem;
-}
-
-/* Logo styling - matching navigation black box style */
-.logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.logo-box {
-  background-color: black;
-  padding: var(--logo-padding-vertical) var(--logo-padding-horizontal);
-  border-radius: 0; /* Sharp corners like navigation boxes */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Desktop: match triangle width */
-  width: 50vw;
-  max-width: 600px;
-  min-width: 300px;
-}
-
-.logo {
-  height: var(--logo-height);
-  width: auto;
-  filter: brightness(0) invert(1); /* Ensures logo is white */
-  /* Make logo responsive */
-  max-width: 100%;
-  object-fit: contain;
 }
 
 .triangle-container {
@@ -131,15 +98,7 @@
 
 /* Tablet styles */
 @media (max-width: 1024px) {
-  :root {
-    --logo-height: 100px; /* Smaller logo on tablet */
-  }
-  
   .triangle {
-    width: 60vw;
-  }
-  
-  .logo-box {
     width: 60vw;
   }
   
@@ -150,21 +109,9 @@
 
 /* Mobile styles - as wide as possible while maintaining readability */
 @media (max-width: 768px) {
-  :root {
-    --logo-height: 100px; /* Taller logo on mobile */
-    --logo-padding-vertical: 1.25rem; /* More vertical padding */
-    --logo-padding-horizontal: 2rem;
-  }
-  
   .triangle {
     width: 95vw; /* Much larger triangle on mobile */
     max-width: none; /* Remove max-width constraint on mobile */
-  }
-  
-  .logo-box {
-    width: 100vw; /* Full width on mobile */
-    max-width: none;
-    border-radius: 0;
   }
   
   .corner-text {
@@ -175,18 +122,8 @@
 
 /* Small mobile styles */
 @media (max-width: 480px) {
-  :root {
-    --logo-height: 80px; /* Still substantial on small mobile */
-    --logo-padding-vertical: 1rem; /* Good vertical padding */
-    --logo-padding-horizontal: 1rem;
-  }
-  
   .triangle {
     width: 98vw; /* Almost full width on small mobile */
-  }
-  
-  .logo-box {
-    width: 100vw; /* Full width on small mobile */
   }
   
   .corner-text {

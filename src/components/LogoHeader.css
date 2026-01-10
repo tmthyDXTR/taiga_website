@@ -1,0 +1,87 @@
+/* Logo Header Component Styles */
+
+/* Logo styling - matching navigation black box style */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background-color: black;
+}
+
+.logo-box {
+  background-color: black;
+  padding: 1rem 3rem;
+  border-radius: 0; /* Sharp corners like navigation boxes */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the logo */
+  /* Desktop: match triangle width */
+  width: 50vw;
+  max-width: 600px;
+  min-width: 300px;
+}
+
+.header-controls {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 120px;
+  width: auto;
+  filter: brightness(0) invert(1); /* Ensures logo is white */
+  /* Make logo responsive */
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+  .logo {
+    height: 100px; /* Smaller logo on tablet */
+  }
+  
+  .logo-box {
+    width: 60vw;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .logo {
+    height: 100px; /* Taller logo on mobile */
+  }
+  
+  .logo-box {
+    width: 100vw; /* Full width on mobile */
+    max-width: none;
+    border-radius: 0;
+    padding: 1.25rem 2rem; /* More vertical padding */
+    justify-content: center; /* Keep logo centered */
+  }
+  
+  .header-controls {
+    right: 1rem; /* Closer to edge on mobile */
+  }
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+  .logo {
+    height: 80px; /* Still substantial on small mobile */
+  }
+  
+  .logo-box {
+    width: 100vw; /* Full width on small mobile */
+    padding: 1rem; /* Good vertical padding */
+    gap: 0.75rem;
+  }
+}
