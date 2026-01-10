@@ -298,14 +298,14 @@ function MusicPage() {
         </section>
 
         {/* Shop Section */}
-        <section id="shop" className="music-section shop-section">
+        {/* <section id="shop" className="music-section shop-section">
           <div className="section-container">
             <h2 className="section-title">{t('music.nav.shop')}</h2>
             <div className="coming-soon">
               <p>{t('music.shopComingSoon')}</p>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
 
       {/* Floating Spotify Player */}
