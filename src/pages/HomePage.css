@@ -4,8 +4,9 @@
   --muted: #fff;
   --accent: #1a1a1a;
 
-  --color-c1: #c1e328; /* bright lime */
-  --color-c2: #f855bc; /* magenta/pink */
+  /* Use centralized colors from index.css */
+  --color-c1: var(--lime-green);
+  --color-c2: var(--pink-magenta);
   --color-c3: #ffffff; /* white */
 
   --fade-speed: 250ms;
@@ -56,6 +57,13 @@ html, body {
 .site-title.is-hovered-c2 { color: var(--color-c2); }
 .site-title.is-hovered-c3 { color: var(--color-c3); }
 
+/* Mobile tilt gradient color */
+@media (max-width: 768px) {
+  .site-title.is-hovered-c1 {
+    color: var(--tilt-color, var(--color-c1));
+  }
+}
+
 /* Top navigation (under title): horizontal on desktop, vertical on phone */
 .top-nav {
   font-size: 2rem;
@@ -87,11 +95,6 @@ html, body {
   outline: none;
 }
 
-/* remove the previous music-link gradient-on-hover — keep only text color change */
-.language-menu .menu-link.music-link,
-.top-nav .menu-link.music-link {
-  /* no background here; only title + chameleon change */
-}
 
 /* make links transition color smoothly and match chameleon/title variants */
 .top-nav .menu-link,
@@ -113,6 +116,15 @@ html, body {
 .top-nav .menu-link.tbd-link:hover,
 .home-page.hover-c3 .top-nav .menu-link.tbd-link {
   color: var(--color-c3); /* TBD */
+}
+
+/* Mobile tilt gradient for all links - override desktop hover colors */
+@media (max-width: 768px) {
+  .home-page.hover-c1 .top-nav .menu-link.music-link,
+  .home-page.hover-c1 .top-nav .menu-link.workshops-link,
+  .home-page.hover-c1 .top-nav .menu-link.tbd-link {
+    color: var(--tilt-color, var(--muted)) !important;
+  }
 }
 
 /* vinyl & cham */
@@ -138,7 +150,7 @@ html, body {
   width: 60%;
   height: 60%;
   z-index: 0;
-  pointer-events: none;
+  pointer-events: auto;
   color: var(--muted);
   transition: color var(--fade-speed) ease-in-out, transform 160ms ease, opacity 160ms ease;
   opacity: 1;
@@ -159,6 +171,34 @@ html, body {
 .chameleon.is-hovered-c2 { color: var(--color-c2) !important; }
 .chameleon.is-hovered-c3 { color: var(--color-c3) !important; }
 
+/* Rainbow mode - overrides everything */
+.chameleon.rainbow-mode {
+  color: var(--rainbow-color, var(--color-c1)) !important;
+  pointer-events: auto;
+}
+
+/* Rainbow mode also affects title and links */
+.home-page:has(.chameleon.rainbow-mode) .site-title {
+  color: var(--rainbow-color, var(--muted)) !important;
+}
+
+.home-page:has(.chameleon.rainbow-mode) .top-nav .menu-link {
+  color: var(--rainbow-color, var(--muted)) !important;
+}
+
+/* Mobile tilt gradient color for chameleon */
+@media (max-width: 768px) {
+  /* Tilt color only applies when NOT in rainbow mode */
+  .chameleon.is-hovered-c1:not(.rainbow-mode) {
+    color: var(--tilt-color, var(--color-c1)) !important;
+  }
+  
+  /* Rainbow mode takes absolute priority on mobile */
+  .chameleon.rainbow-mode {
+    color: var(--rainbow-color, var(--color-c1)) !important;
+  }
+}
+
 /* keep language menu visually on top — top-right on desktop */
 .language-menu {
   position: fixed;
@@ -175,24 +215,28 @@ html, body {
 /* ensure the language switcher controls appear compact */
 .language-menu > * { display: inline-flex; align-items: center; }
 
-/* On small screens center language-menu above the nav and make it static in flow */
+/* On small screens position language-menu to the right beneath the header */
 @media (max-width: 768px) {
   .language-menu {
-    position: static;
-    margin: 0 auto 0.5rem auto;
-    right: auto;
-    top: auto;
+    position: fixed;
+    top: 6.5rem;
+    right: 1rem;
+    margin: 0;
+    z-index: 60;
   }
-  /* ensure language menu is visually above nav when static */
-  .language-menu { order: -1; width: 100%; display: flex; justify-content: center; }
 }
 
 /* responsive */
 @media (max-width: 768px) {
   .top-nav { flex-direction: column; gap: 0.5rem; }
   .home-vinyl-container { position: static; transform: none; height: auto; width: 100%; padding-top: 2rem; }
-  .language-menu { position: static; transform: none; align-items: center; right: auto; top: auto; }
   .language-menu .menu-link { text-align: center; }
+  
+  /* Make chameleon much smaller on mobile */
+  .chameleon {
+    width: 25%;
+    height: 25%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -204,4 +248,15 @@ html, body {
   }
   /* reduce top padding on very small screens */
   .home-page { padding-top: 3.25rem; }
+  
+  /* Make chameleon even smaller on very small screens */
+  .chameleon {
+    width: 20%;
+    height: 20%;
+  }
+  
+  /* Adjust language switcher position for very small screens */
+  .language-menu {
+    top: 11rem;
+  }
 }

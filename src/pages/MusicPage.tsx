@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { useRef, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import LogoHeader from '../components/LogoHeader'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 import Footer from '../components/Footer'
@@ -7,10 +8,13 @@ import './MusicPage.css'
 
 function MusicPage() {
   const { t } = useTranslation()
-  const menuLinkRef = useRef<HTMLAnchorElement>(null)
+  const navigate = useNavigate()
+  // const menuLinkRef = useRef<HTMLAnchorElement>(null)
+  const floatingNavRef = useRef<HTMLDivElement>(null)
   const [showBackToTop, setShowBackToTop] = useState(false)
   const [showFloatingNav, setShowFloatingNav] = useState(false)
   const [floatingNavOpen, setFloatingNavOpen] = useState(false)
+  const [showAllVideos, setShowAllVideos] = useState(false)
 
   // inject Stack Sans Text font and expose it globally
   useEffect(() => {
@@ -40,11 +44,26 @@ function MusicPage() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleVinylClick = () => {
-    menuLinkRef.current?.click()
-  }
+  // Close floating nav when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (floatingNavOpen && floatingNavRef.current && !floatingNavRef.current.contains(event.target as Node)) {
+        setFloatingNavOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [floatingNavOpen])
+
+  // const handleVinylClick = () => {
+  //   menuLinkRef.current?.click()
+  // }
 
   const scrollToSection = (sectionId: string) => {
+    if (sectionId === 'home') {
+      navigate('/')
+      return
+    }
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
@@ -56,12 +75,18 @@ function MusicPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const goHome = () => {
+    navigate('/')
+  }
+
   // Navigation links data
   const navLinks = [
+    { id: 'home', labelKey: 'navigation.backToTriangle', isBack: true },
     { id: 'about', labelKey: 'music.nav.about' },
     { id: 'videos', labelKey: 'music.nav.videos' },
     { id: 'gallery', labelKey: 'music.nav.gallery' },
     { id: 'book', labelKey: 'music.nav.book' },
+    { id: 'collab', labelKey: 'music.nav.collab' },
     { id: 'tickets', labelKey: 'music.nav.tickets' },
     { id: 'shop', labelKey: 'music.nav.shop' },
   ]
@@ -69,10 +94,10 @@ function MusicPage() {
   return (
     <div className="music-page">
       {/* TAIGA Logo - Unified component */}
-      <LogoHeader />
+      <LogoHeader clickable onClick={goHome} />
       
       {/* Floating collapsed nav - shows after scrolling past hero */}
-      <div className={`floating-nav ${showFloatingNav ? 'visible' : ''}`}>
+      <div ref={floatingNavRef} className={`floating-nav ${showFloatingNav ? 'visible' : ''}`}>
         <button 
           className="floating-nav-toggle"
           onClick={() => setFloatingNavOpen(!floatingNavOpen)}
@@ -84,7 +109,7 @@ function MusicPage() {
           {navLinks.map(link => (
             <button
               key={link.id}
-              className={`floating-nav-link ${link.id === 'book' ? 'book-link' : ''}`}
+              className={`floating-nav-link ${link.id === 'book' ? 'book-link' : ''} ${link.isBack ? 'back-link' : ''}`}
               onClick={() => scrollToSection(link.id)}
             >
               {t(link.labelKey)}
@@ -104,7 +129,7 @@ function MusicPage() {
           {navLinks.map(link => (
             <button
               key={link.id}
-              className={`nav-link ${link.id === 'book' ? 'book-link' : ''}`}
+              className={`nav-link ${link.id === 'book' ? 'book-link' : ''} ${link.isBack ? 'back-link' : ''}`}
               onClick={() => scrollToSection(link.id)}
             >
               {t(link.labelKey)}
@@ -134,14 +159,14 @@ function MusicPage() {
         {/* Vinyl record and album cover container */}
         <div className="vinyl-container">
           {/* Vinyl disc (slides out on hover) - triggers menu link click */}
-          <div 
+          {/* <div 
             className="vinyl-disc"
             onClick={handleVinylClick}
-          ></div>
+          ></div> */}
           
           {/* Album cover (stays in place) */}
           <img 
-            src="./images/taiga-gradient.png" 
+            src="./taiga-transp.png" 
             alt="Taiga" 
             className="album-cover"
           />
@@ -156,13 +181,8 @@ function MusicPage() {
           <div className="section-container">
             <h2 className="section-title">{t('music.aboutTitle')}</h2>
             <div className="about-content">
-              <p className="about-text">
-                Taiga Trece has been performing as a rapper on stages at home and abroad for years. 
-                Born in Munich, she spent her teenage years in Mexico. With her lyrics in German and Spanish, 
-                she brings street culture, poetry and attitude – raw, honest and independent of the mainstream. 
-                As one of the first women in the Munich hip-hop scene, she has earned herself a permanent place. 
-                Her albums, releases and live performances reflect an artist who builds bridges between ambivalences 
-                and constantly creates something new – culturally, linguistically and musically.
+              <p className="about-text" style={{ whiteSpace: 'pre-line' }}>
+                {t('music.aboutText')}
               </p>
             </div>
           </div>
@@ -181,7 +201,9 @@ function MusicPage() {
                 { id: 'Lt7W_Mu1EXE', title: 'The Voice of Germany 2021' },
                 { id: 'fKfno6LTPZM', title: 'Gangstarap Reportage (Prod.)' },
                 { id: 'A09m4Y_bJKc', title: 'Welcome to Mexico City (Doku)' }
-              ].map(video => (
+              ]
+              .slice(0, showAllVideos ? undefined : 3)
+              .map(video => (
                 <div className="video-item" key={video.id}>
                   <div className="video-wrapper">
                     <iframe
@@ -203,6 +225,14 @@ function MusicPage() {
                 </div>
               ))}
             </div>
+            {!showAllVideos && (
+              <button 
+                className="watch-more-btn"
+                onClick={() => setShowAllVideos(true)}
+              >
+                Watch More
+              </button>
+            )}
           </div>
         </section>
 
@@ -211,19 +241,19 @@ function MusicPage() {
           <div className="section-container">
             <h2 className="section-title">{t('music.nav.gallery')}</h2>
             <div className="gallery-grid">
-              <img src="/images/gallery/Taiga_Trece_Presse©Nils_Schwarz.jpg" alt="Taiga Trece Press Photo" className="gallery-img" />
-              <img src="/images/gallery/PREVIEW_Taiga-Trece__A2A9948.jpg" alt="Taiga Trece" className="gallery-img" />
-              <img src="/images/gallery/Taiga-Trece_Nils-Schwarz_MG_6445.jpg" alt="Taiga Trece" className="gallery-img" />
-              <img src="/images/gallery/Taiga-Trece_Nils-Schwarz_MG_6775.jpg" alt="Taiga Trece" className="gallery-img" />
-              <img src="/images/gallery/_MG_9330_1.jpg" alt="Taiga Trece" className="gallery-img" />
-              <img src="/images/gallery/_MG_9353.jpg" alt="Taiga Trece" className="gallery-img" />
-              <img src="/images/gallery/_MG_9429_1.jpg" alt="Taiga Trece" className="gallery-img" />
-              <img src="/images/gallery/final-final.jpg" alt="Taiga Trece" className="gallery-img" />
-              <img src="/images/gallery/image00018.jpeg" alt="Taiga Trece" className="gallery-img" />
-              <img src="/images/gallery/10420129_666770730098559_7303726557063938859_n.jpg" alt="Taiga Trece" className="gallery-img" />
-              <img src="/images/gallery/25626765_1819050951501950_8608751094007917596_o.jpg" alt="Taiga Trece" className="gallery-img" />
-              <img src="/images/gallery/36440799_2072379706168542_3790810668857294848_o.jpg" alt="Taiga Trece" className="gallery-img" />
-              <img src="/images/gallery/37943277_2154280364645672_79177215295619072_n.jpg" alt="Taiga Trece" className="gallery-img" />
+              <div className="gallery-img-wrapper"><img src="/images/gallery/Taiga_Trece_Presse©Nils_Schwarz.jpg" alt="Taiga Trece Press Photo" className="gallery-img" /></div>
+              <div className="gallery-img-wrapper"><img src="/images/gallery/PREVIEW_Taiga-Trece__A2A9948.jpg" alt="Taiga Trece" className="gallery-img" /></div>
+              <div className="gallery-img-wrapper"><img src="/images/gallery/Taiga-Trece_Nils-Schwarz_MG_6445.jpg" alt="Taiga Trece" className="gallery-img" /></div>
+              <div className="gallery-img-wrapper"><img src="/images/gallery/Taiga-Trece_Nils-Schwarz_MG_6775.jpg" alt="Taiga Trece" className="gallery-img" /></div>
+              <div className="gallery-img-wrapper"><img src="/images/gallery/_MG_9330_1.jpg" alt="Taiga Trece" className="gallery-img" /></div>
+              <div className="gallery-img-wrapper"><img src="/images/gallery/_MG_9353.jpg" alt="Taiga Trece" className="gallery-img" /></div>
+              <div className="gallery-img-wrapper"><img src="/images/gallery/_MG_9429_1.jpg" alt="Taiga Trece" className="gallery-img" /></div>
+              <div className="gallery-img-wrapper"><img src="/images/gallery/final-final.jpg" alt="Taiga Trece" className="gallery-img" /></div>
+              <div className="gallery-img-wrapper"><img src="/images/gallery/image00018.jpeg" alt="Taiga Trece" className="gallery-img" /></div>
+              <div className="gallery-img-wrapper"><img src="/images/gallery/10420129_666770730098559_7303726557063938859_n.jpg" alt="Taiga Trece" className="gallery-img" /></div>
+              <div className="gallery-img-wrapper"><img src="/images/gallery/25626765_1819050951501950_8608751094007917596_o.jpg" alt="Taiga Trece" className="gallery-img" /></div>
+              <div className="gallery-img-wrapper"><img src="/images/gallery/36440799_2072379706168542_3790810668857294848_o.jpg" alt="Taiga Trece" className="gallery-img" /></div>
+              <div className="gallery-img-wrapper"><img src="/images/gallery/37943277_2154280364645672_79177215295619072_n.jpg" alt="Taiga Trece" className="gallery-img" /></div>
             </div>
           </div>
         </section>
@@ -239,6 +269,22 @@ function MusicPage() {
                 className="book-button"
               >
                 {t('music.bookButton')}
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Creator Collab Section */}
+        <section id="collab" className="music-section collab-section">
+          <div className="section-container">
+            <h2 className="section-title">{t('music.nav.collab')}</h2>
+            <div className="collab-content">
+              <p className="collab-text">{t('music.collabDescription')}</p>
+              <a 
+                href="mailto:andre.lang@bavarian-caps.de?subject=Creator%20Collaboration%20-%20Taiga%20Trece"
+                className="collab-button"
+              >
+                {t('music.collabButton')}
               </a>
             </div>
           </div>

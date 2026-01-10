@@ -1,4 +1,10 @@
 :root {
+  /* Global color scheme */
+  --lime-green: #d0ff00;
+  --pink-magenta: #ff00dd;
+  --dark-bg: #2a2a2a;
+  
+  /* Typography */
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;

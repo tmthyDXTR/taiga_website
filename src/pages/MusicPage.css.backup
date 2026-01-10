@@ -1,14 +1,11 @@
-/* ===================================
-   MusicPage.css - Refactored & Organized
-   Colors are centralized in index.css
-   =================================== */
+/* MusicPage.css - Clean foundation */
+/* Colors are centralized in index.css */
 
-/* === CSS VARIABLES === */
 :root {
+  /* Vinyl slide-out distance on hover */
   --vinyl-slide-distance: 22vw;
 }
 
-/* === BASE LAYOUT === */
 .music-page {
   min-height: 100vh;
   background: #000;
@@ -19,16 +16,7 @@
   flex-direction: column;
 }
 
-.music-page .logo-container,
-.music-page .logo-box {
-  background-color: transparent;
-}
-
-.music-page .logo {
-  filter: brightness(0) saturate(100%) invert(93%) sepia(94%) saturate(3071%) hue-rotate(21deg) brightness(106%) contrast(106%);
-}
-
-/* === HERO SECTION === */
+/* Hero section that contains vinyl */
 .music-hero {
   position: relative;
   min-height: 100vh;
@@ -37,10 +25,10 @@
   flex-direction: column;
   align-items: center;
   flex-shrink: 0;
-  padding-top: 20px;
+  padding-top: 20px; /* space for logo header */
 }
 
-/* === SECTION NAVIGATION === */
+/* Section Navigation - above vinyl */
 .section-nav {
   position: relative;
   z-index: 30;
@@ -80,17 +68,7 @@
   color: var(--lime-green);
 }
 
-.section-nav .back-link {
-  color: var(--lime-green);
-  opacity: 0.8;
-}
-
-.section-nav .back-link:hover {
-  color: var(--pink-magenta);
-  opacity: 1;
-}
-
-/* === SOCIAL ICONS === */
+/* Social Icons - beneath section nav */
 .social-icons {
   display: flex;
   justify-content: center;
@@ -121,7 +99,25 @@
   transform: scale(1.2);
 }
 
-/* === FLOATING NAVIGATION === */
+/* Floating nav social icons */
+.floating-nav-socials {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+}
+
+.floating-nav-socials a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.floating-nav-socials a:hover {
+  transform: scale(1.3);
+}
+
+/* Floating Collapsed Navigation */
 .floating-nav {
   position: fixed;
   top: 20px;
@@ -213,17 +209,6 @@
   color: white;
 }
 
-.floating-nav-link.back-link {
-  color: var(--lime-green);
-  opacity: 0.9;
-}
-
-.floating-nav-link.back-link:hover {
-  background: var(--lime-green);
-  color: var(--dark-bg);
-  opacity: 1;
-}
-
 .floating-nav-divider {
   height: 1px;
   background: var(--lime-green);
@@ -235,6 +220,7 @@
   padding: 0.5rem 0.5rem;
 }
 
+/* Adjust language switcher for floating nav */
 .floating-nav-language .language-switcher {
   width: 100%;
 }
@@ -269,24 +255,7 @@
   color: var(--dark-bg);
 }
 
-.floating-nav-socials {
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 0.5rem;
-}
-
-.floating-nav-socials a {
-  font-size: 1.2rem;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-}
-
-.floating-nav-socials a:hover {
-  transform: scale(1.3);
-}
-
-/* === BACK TO TOP BUTTON === */
+/* Back to Top Button */
 .back-to-top {
   position: fixed;
   bottom: 180px;
@@ -319,7 +288,26 @@
   transform: translateY(-3px);
 }
 
-/* === VINYL CONTAINER === */
+/* Make logo header transparent on music page */
+.music-page .logo-container {
+  background-color: transparent;
+}
+
+.music-page .logo-box {
+  background-color: transparent;
+  /* Uncomment to restore black background2 */
+  /* background-color: black; */
+}
+
+/* Tint the logo with lime-green color */
+.music-page .logo {
+  filter: brightness(0) saturate(100%) invert(1);
+  /* Apply lime-green color using CSS variable */
+  /* Note: filter approximation for #d0ff00 */
+  filter: brightness(0) saturate(100%) invert(93%) sepia(94%) saturate(3071%) hue-rotate(21deg) brightness(106%) contrast(106%);
+}
+
+/* Vinyl container - holds both disc and cover */
 .vinyl-container {
   position: relative;
   width: 80vh;
@@ -330,6 +318,7 @@
   z-index: 1;
 }
 
+/* Vinyl disc - slides out on hover */
 .vinyl-disc {
   position: absolute;
   top: 2%;
@@ -340,29 +329,14 @@
   background-size: cover;
   background-position: center;
   border-radius: 50%;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+  box-shadow: 
+    0 3px 6px rgba(0, 0, 0, 0.5);
   z-index: 1;
   transition: transform 0.6s ease-out;
   cursor: pointer;
 }
 
-.album-cover {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 2;
-  box-shadow: 
-    0 2px 5px rgba(0, 0, 0, 0.3),
-    0 1px 2px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-/* === INSERT CARD (BOOKLET) === */
+/* Insert card - starts centered behind vinyl, slides right, then back to center in front */
 .insert-card {
   position: fixed;
   top: 55%;
@@ -384,6 +358,7 @@
   overflow-y: auto;
 }
 
+/* Grain overlay for insert card */
 .insert-card::before {
   content: '';
   position: absolute;
@@ -397,6 +372,7 @@
   border-radius: 4px;
 }
 
+/* Close button for insert card */
 .close-booklet {
   position: absolute;
   top: 1rem;
@@ -440,7 +416,24 @@
   letter-spacing: 0.02em;
 }
 
-/* === VINYL MENU (Desktop vertical menu) === */
+/* Album cover - stays in place */
+.album-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  box-shadow: 
+    0 2px 5px rgba(0, 0, 0, 0.3),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Desktop menu inside vinyl box */
 .vinyl-menu {
   position: absolute;
   right: 2rem;
@@ -460,8 +453,10 @@
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.1em;
+  /* writing-mode: vertical-rl; */
   text-orientation: mixed;
   transition: all 0.3s ease;
+  /* padding: 0.5rem; */
   text-align: right;
   background: transparent;
   border: none;
@@ -474,12 +469,14 @@
   transform: scale(1.05);
 }
 
+/* Section link button styles */
 .vinyl-menu .section-link {
   padding: 0;
   margin: 0;
   font-size: 4rem;
 }
 
+/* Track names beneath the link */
 .track-names {
   margin-top: 0rem;
   display: flex;
@@ -493,12 +490,17 @@
   font-size: 0.6rem;
   font-weight: 400;
   margin: 0;
+  /* writing-mode: vertical-rl; */
   text-orientation: mixed;
   text-align: right;
   line-height: 1;
   user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
+/* Hover trigger area - rightmost 20% of box */
 .vinyl-hover-trigger {
   position: absolute;
   top: 0;
@@ -509,27 +511,32 @@
   cursor: pointer;
 }
 
-/* === DESKTOP HOVER EFFECTS === */
+/* Desktop hover effect */
 @media (min-width: 769px) {
+  /* Vinyl disc slides out only when hovering tracklist link or vinyl disc */
   .vinyl-container:has(.tracklist-link:hover) .vinyl-disc,
   .vinyl-disc:hover {
     transform: translateX(var(--vinyl-slide-distance));
   }
   
+  /* When vinyl disc or tracklist is hovered, activate track list link hover state */
   .vinyl-container:has(.vinyl-disc:hover) .tracklist-link,
   .tracklist-link:hover {
     color: #ffae4a;
     transform: scale(1.05);
   }
   
+  /* Insert card slides out and stays when active */
   .insert-card.active {
     animation: slideOutAndBack 0.8s ease-in-out forwards;
   }
   
+  /* Insert card slides back when closing */
   .insert-card.closing {
     animation: slideBackAndOut 0.8s ease-in-out forwards;
   }
   
+  /* Booklet link hover state */
   .booklet-link:hover {
     color: #ffae4a;
     transform: scale(1.05);
@@ -567,7 +574,6 @@
   }
 }
 
-/* === CONTENT SECTIONS === */
 .music-content {
   position: relative;
   z-index: 2;
@@ -576,6 +582,19 @@
   margin: 0;
 }
 
+.music-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.music-content p {
+  font-size: 1.1rem;
+  text-align: left;
+  opacity: 0.95;
+}
+
+/* Content Sections */
 .music-section {
   min-height: 100vh;
   padding: 4rem 2rem;
@@ -600,7 +619,7 @@
   color: var(--pink-magenta);
 }
 
-/* === ABOUT SECTION === */
+/* About Section */
 .about-section {
   background: #000;
 }
@@ -619,7 +638,7 @@
   color: var(--lime-green);
 }
 
-/* === VIDEOS SECTION === */
+/* Videos Section */
 .videos-section {
   background: #000;
 }
@@ -638,7 +657,7 @@
 
 .video-wrapper {
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
   height: 0;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.5);
@@ -674,6 +693,7 @@
   text-decoration: underline;
 }
 
+/* Watch More Button */
 .watch-more-btn {
   display: block;
   margin: 3rem auto 0;
@@ -696,7 +716,7 @@
   transform: scale(1.05);
 }
 
-/* === GALLERY SECTION === */
+/* Gallery Section */
 .gallery-section {
   background: #000;
 }
@@ -730,6 +750,7 @@
   filter: grayscale(0%);
 }
 
+/* Alternating lime-green borders */
 .gallery-img-wrapper:nth-child(odd):hover::before {
   content: '';
   position: absolute;
@@ -754,6 +775,7 @@
   z-index: 1;
 }
 
+/* Alternating pink-magenta borders */
 .gallery-img-wrapper:nth-child(even):hover::before {
   content: '';
   position: absolute;
@@ -778,7 +800,7 @@
   z-index: 1;
 }
 
-/* === BOOK SECTION === */
+/* Book Section */
 .book-section {
   background: #000;
 }
@@ -821,7 +843,7 @@
   transform: scale(1.05);
 }
 
-/* === CREATOR COLLAB SECTION === */
+/* Creator Collab Section */
 .collab-section {
   background: #000;
 }
@@ -864,16 +886,17 @@
   transform: scale(1.05);
 }
 
-/* === TICKETS SECTION === */
+/* Tickets Section */
 .tickets-section {
   background: #000;
 }
 
-/* === SHOP SECTION === */
+/* Shop Section */
 .shop-section {
   background: #000;
 }
 
+/* Coming Soon placeholder */
 .coming-soon {
   text-align: center;
   padding: 4rem 2rem;
@@ -891,7 +914,7 @@
   color: var(--pink-magenta);
 }
 
-/* === SPOTIFY PLAYER === */
+/* Floating Spotify Player */
 .spotify-player-floating {
   position: fixed;
   bottom: 0;
@@ -908,20 +931,29 @@
   border-radius: 0;
 }
 
-/* ===================================
-   RESPONSIVE: MOBILE (≤768px)
-   =================================== */
+/* Add bottom padding to content so it doesn't get hidden behind player */
+.music-content {
+  padding-bottom: 0;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
-  /* Hero adjustments */
-  .music-hero {
-    padding-top: 5px;
+  /* Keep transparent header on mobile */
+  .music-page .logo-container {
+    background-color: transparent;
   }
   
-  /* Navigation - larger, dark background */
+  /* Hide vinyl disc on mobile */
+  .vinyl-disc {
+    display: none;
+  }
+
+  /* Section nav - mobile adjustments */
   .section-nav {
     gap: 0.8rem 1.2rem;
     padding: 1rem 0.5rem;
-    margin: 0;
+    margin-bottom: 0;
+    margin-top: 0;
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(8px);
   }
@@ -932,25 +964,28 @@
     font-weight: 700;
   }
 
-  /* Social icons spacing */
+  
+  /* Mobile: vinyl positioned differently - below navigation */
+  .music-hero {
+    padding-top: 5px;
+  }
+  
   .social-icons {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }
   
-  /* Hide vinyl disc, show only cover */
-  .vinyl-disc {
-    display: none;
-  }
-  
-  /* Vinyl container - relative positioning below nav */
   .vinyl-container {
-    position: relative;
+    position: relative; /* Change from absolute to relative */
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
     width: 100vw;
     max-width: none;
-    height: calc(100vh - 300px);
+    height: calc(100vh - 300px); /* Account for header and nav space */
     max-height: none;
-    margin-top: 2rem;
+    margin-top: 2rem; /* Push below menu */
   }
   
   .album-cover {
@@ -959,13 +994,12 @@
     border-radius: 0;
   }
   
-  /* Content starts after image */
   .music-content {
-    padding: 0 0 90px 0;
-    margin-top: 0;
+    padding: 0;
+    padding-bottom: 90px;
+    margin-top: 100vh;
   }
   
-  /* Sections */
   .music-section {
     padding: 3rem 1.5rem;
     min-height: auto;
@@ -978,8 +1012,12 @@
   .about-text {
     font-size: 1.1rem;
   }
+  
+  .coming-soon p {
+    font-size: 1.2rem;
+  }
 
-  /* Videos - single column */
+  /* Videos grid - single column on mobile */
   .videos-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -989,7 +1027,7 @@
     font-size: 0.9rem;
   }
 
-  /* Gallery - 2 columns */
+  /* Gallery grid - 2 columns on mobile */
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem;
@@ -999,7 +1037,11 @@
     height: 150px;
   }
 
-  /* Spotify player - compact */
+  /* Floating Spotify player - compact on mobile */
+  .spotify-player-floating {
+    padding: 0;
+  }
+
   .spotify-player-floating iframe {
     height: 80px;
   }
@@ -1012,29 +1054,15 @@
     height: 40px;
     font-size: 1.2rem;
   }
-  
-  /* Book and Collab buttons - responsive sizing */
-  .book-button,
-  .collab-button {
-    font-size: 0.9rem;
-    padding: 0.8rem 1.5rem;
-    letter-spacing: 0.08em;
-  }
-  
-  .book-text,
-  .collab-text {
-    font-size: 1rem;
-  }
-  
-  .coming-soon p {
-    font-size: 1.2rem;
-  }
 }
 
-/* ===================================
-   RESPONSIVE: EXTRA SMALL (≤480px)
-   =================================== */
+/* Extra small screens */
 @media (max-width: 480px) {
+  .section-nav {
+    top: 70px;
+    gap: 0.3rem 0.5rem;
+  }
+
   .section-nav .nav-link {
     font-size: 1rem;
     padding: 0.3rem 0.5rem;
@@ -1051,12 +1079,19 @@
     line-height: 1.6;
   }
 
-  /* Gallery - single column */
   .gallery-grid {
     grid-template-columns: 1fr;
   }
 
   .gallery-img {
     height: 200px;
+  }
+
+  .coming-soon {
+    padding: 2rem 1rem;
+  }
+
+  .coming-soon p {
+    font-size: 1rem;
   }
 }

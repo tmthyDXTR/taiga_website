@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useState, useRef } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 import Footer from '../components/Footer'
@@ -7,6 +7,11 @@ import './WorkshopsPage.css'
 
 function WorkshopsPage() {
   const { t } = useTranslation()
+  const navigate = useNavigate()
+  const floatingNavRef = useRef<HTMLDivElement>(null)
+  const [showBackToTop, setShowBackToTop] = useState(false)
+  const [showFloatingNav, setShowFloatingNav] = useState(false)
+  const [floatingNavOpen, setFloatingNavOpen] = useState(false)
   
   // inject Stack Sans Text font and expose it globally
   useEffect(() => {
@@ -23,6 +28,53 @@ function WorkshopsPage() {
     document.documentElement.style.fontFamily = font
   }, [])
 
+  // Show/hide back to top button and floating nav based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY
+      setShowBackToTop(scrolled > 400)
+      setShowFloatingNav(scrolled > 400)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Close floating nav when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (floatingNavOpen && floatingNavRef.current && !floatingNavRef.current.contains(event.target as Node)) {
+        setFloatingNavOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [floatingNavOpen])
+
+  const scrollToSection = (sectionId: string) => {
+    if (sectionId === 'home') {
+      navigate('/')
+      return
+    }
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+      setFloatingNavOpen(false)
+    }
+  }
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  // Navigation links for workshops page
+  const navLinks = [
+    { id: 'home', labelKey: 'navigation.backToTriangle', isBack: true },
+    { id: 'partners', labelKey: 'workshops.nav.partners' },
+    { id: 'workshops', labelKey: 'workshops.nav.workshops' },
+    { id: 'about', labelKey: 'workshops.nav.about' },
+    { id: 'contact', labelKey: 'workshops.nav.contact' },
+  ]
+
   return (
     <div className="workshops-page">
       {/* TAIGA TRECE text header - cleaner homepage style */}
@@ -32,6 +84,41 @@ function WorkshopsPage() {
       <div className="language-menu" aria-label="Select language">
         <LanguageSwitcher />
       </div>
+
+      {/* Floating collapsed nav - shows after scrolling */}
+      <div ref={floatingNavRef} className={`floating-nav ${showFloatingNav ? 'visible' : ''}`}>
+        <button 
+          className="floating-nav-toggle"
+          onClick={() => setFloatingNavOpen(!floatingNavOpen)}
+          aria-label="Toggle navigation"
+        >
+          {floatingNavOpen ? '✕' : '☰'}
+        </button>
+        <nav className={`floating-nav-menu ${floatingNavOpen ? 'open' : ''}`}>
+          {navLinks.map(link => (
+            <button
+              key={link.id}
+              className={`floating-nav-link ${link.isBack ? 'back-link' : ''}`}
+              onClick={() => scrollToSection(link.id)}
+            >
+              {t(link.labelKey)}
+            </button>
+          ))}
+          <div className="floating-nav-divider"></div>
+          <div className="floating-nav-language">
+            <LanguageSwitcher />
+          </div>
+        </nav>
+      </div>
+
+      {/* Back to top button */}
+      <button 
+        className={`back-to-top ${showBackToTop ? 'visible' : ''}`}
+        onClick={scrollToTop}
+        aria-label="Back to top"
+      >
+        ↑
+      </button>
 
       {/* Header with back navigation */}
       <header className="workshops-header">
@@ -62,29 +149,50 @@ function WorkshopsPage() {
         </section>
 
         {/* Partners/Collaborators Section */}
-        <section className="partners-section">
+        <section id="partners" className="partners-section">
           <h3>{t('workshops.partnersTitle')}</h3>
           <div className="partners-grid">
-            <div className="partner-logo">Amnesty International</div>
-            <div className="partner-logo">Goethe Institut</div>
-            <div className="partner-logo">Viva con agua</div>
-            <div className="partner-logo">Microsoft</div>
+            <div className="partner-logo">
+              <img src="/images/company-logos/amnesty.png" alt="Amnesty International" />
+            </div>
+            <div className="partner-logo">
+              <img src="/images/company-logos/goethe-institut.png" alt="Goethe Institut" />
+            </div>
+            <div className="partner-logo">
+              <img src="/images/company-logos/vivaconagua.png" alt="Viva con agua" />
+            </div>
+            <div className="partner-logo">
+              <img src="/images/company-logos/Microsoft-Logo.png" alt="Microsoft" />
+            </div>
             <div className="partner-logo">IMMA</div>
             <div className="partner-logo">Refugio</div>
             <div className="partner-logo">Bellevue di Monaco</div>
             <div className="partner-logo">Ya Basta</div>
-            <div className="partner-logo">AusArten</div>
-            <div className="partner-logo">Bavarian Caps</div>
-            <div className="partner-logo">PWC</div>
+            <div className="partner-logo">
+              <img src="/images/company-logos/ausArten-logo.svg" alt="AusArten" />
+            </div>
+            <div className="partner-logo">
+              <img src="/images/company-logos/bavariancaps-logo.png" alt="Bavarian Caps" />
+            </div>
+
+            <div className="partner-logo">
+              <img src="/images/company-logos/pwc.png" alt="PWC" />
+            </div>
             <div className="partner-logo">PASCH Schulen</div>
-            <div className="partner-logo">EU Delegation</div>
-            <div className="partner-logo">356 Female Mcs</div>
-            <div className="partner-logo">The Voice of Germany</div>
+            <div className="partner-logo">
+              <img src="/images/company-logos/eu.png" alt="EU Delegation" />
+            </div>
+            <div className="partner-logo">
+              <img src="/images/company-logos/356femalemcs.png" alt="356 Female Mcs" />
+            </div>
+            <div className="partner-logo">
+              <img src="/images/company-logos/voice-of-germany.jpg" alt="The Voice of Germany" />
+            </div>
           </div>
         </section>
 
         {/* Available workshops */}
-        <section className="workshops-listing">
+        <section id="workshops" className="workshops-listing">
           <h3>{t('workshops.focusAreasTitle')}</h3>
           <div className="workshops-grid">
             <div className="workshop-item">
@@ -204,7 +312,7 @@ function WorkshopsPage() {
         </section>
 
         {/* Workshop info */}
-        <section className="workshop-info">
+        <section id="about" className="workshop-info">
           <h3>{t('workshops.aboutTitle')}</h3>
           <div className="info-grid">
             <div className="info-item">
@@ -235,7 +343,7 @@ function WorkshopsPage() {
         </section>
 
         {/* Contact */}
-        <section className="workshop-contact">
+        <section id="contact" className="workshop-contact">
           <h3>{t('workshops.contactTitle')}</h3>
           <p>
             {t('workshops.contactDescription')}
@@ -243,9 +351,6 @@ function WorkshopsPage() {
           <div className="contact-actions">
             <a href="mailto:info@taigatrece.com" className="contact-button">
               {t('workshops.emailButton')}
-            </a>
-            <a href="https://www.taigatrece.com" className="contact-button" target="_blank" rel="noopener noreferrer">
-              {t('workshops.websiteButton')}
             </a>
           </div>
         </section>
