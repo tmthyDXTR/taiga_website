@@ -163,6 +163,16 @@ Complete workshop and coaching information:
 - ✅ **Professional Content**: Real workshop data and artist information
 - ✅ **Mobile-First Design**: Touch-optimized interface with responsive breakpoints
 
+### Artist Page
+- Enhanced the hover effect for the vinyl disc and tracklist links.
+- Added animations for the insert card to slide out and back when active or closing.
+- Improved the responsive design for mobile devices:
+  - Vinyl disc and desktop menu are hidden on smaller screens.
+  - Adjusted the vinyl container and album cover styles for mobile.
+- Updated the close button for the insert card to include hover effects and transitions.
+- Applied a grain overlay to the insert card for a textured appearance.
+- Refined the desktop hover effects for better interactivity.
+
 ### Technical Improvements
 - **TypeScript Integration**: Full type safety across all components
 - **ESLint Configuration**: Strict code quality standards
@@ -180,8 +190,6 @@ This website embraces **minimalism** and **geometric design** principles:
 - **Interactive Elements** - Subtle animations and responsive feedback
 - **Content-First** - Design serves the music, workshops, and creative work
 - **Accessibility** - Inclusive design with multi-language support
-
-## Development Features
 
 ## Development Features
 
@@ -236,19 +244,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Author
 
-**Taiga** - *Musician & Workshops*
-
 - Website: [tba.com](https://tba.de)
 - Email: info@supacoda.de
-- Spotify: [Taiga Trece](https://open.spotify.com/artist/tba)
 
 
----
 
 <div align="center">
 
 **[Back to Top](#taiga---musician-website)**
-
-Made with care and attention to detail.
 
 </div>
