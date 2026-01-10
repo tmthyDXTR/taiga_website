@@ -3,13 +3,14 @@
     "theArtist": "THE ARTIST",
     "workshops": "WORKSHOPS",
     "tbd": "TBD",
-    "backToTriangle": "← BACK TO TRIANGLE"
+    "backToTriangle": "← BACK"
   },
   "homepage": {
     "mobileInstruction": "Swipe left or right to select"
   },
   "music": {
     "title": "The Artist",
+    "trackList": "TRACK LIST",
     "heroTitle": "Taiga Trece",
     "heroSubtitle": "Musician • Artist • Coach",
     "heroDescription": "Taiga Trece is a freelance rapper and artist who combines artistic methods with coaching and somatic experience. Through music, workshops, and personal development, she creates innovative spaces for creative expression and empowerment.",

@@ -1,18 +1,19 @@
 {
   "navigation": {
     "theArtist": "LA ARTISTA",
-    "workshops": "TALLERES",
+    "workshops": "SEMINARIOS",
     "tbd": "POR DEFINIR",
-    "backToTriangle": "← VOLVER AL TRIÁNGULO"
+    "backToTriangle": "← VOLVER"
   },
   "homepage": {
     "mobileInstruction": "Desliza a izquierda o derecha para seleccionar"
   },
   "music": {
     "title": "La Artista",
+    "trackList": "CANCIONES",
     "heroTitle": "Taiga Trece",
     "heroSubtitle": "Música • Artista • Coach",
-    "heroDescription": "Taiga Trece es una rapera y artista independiente que combina métodos artísticos con coaching y experiencia somática. A través de la música, talleres y desarrollo personal, crea espacios innovadores para la expresión creativa y el empoderamiento.",
+    "heroDescription": "Taiga Trece es una rapera y artista independiente que combina métodos artísticos con coaching y experiencia somática. A través de la música, seminarios y desarrollo personal, crea espacios innovadores para la expresión creativa y el empoderamiento.",
     "aboutTitle": "Acerca",
     "aboutText": "Como miembro fundador del 5Elements Collective, Taiga desarrolla proyectos que fortalecen a los jóvenes en contextos artísticos. Su enfoque integra creatividad con crecimiento personal, utilizando el rap y la expresión artística como herramientas para el desarrollo de identidad y autoempoderamiento.",
     "latestTitle": "Trabajo Reciente",
@@ -25,10 +26,10 @@
     "websiteButton": "VISITAR SITIO WEB"
   },
   "workshops": {
-    "title": "Talleres y Coaching",
-    "heroTitle": "Talleres y Coaching",
+    "title": "Seminarios y Coaching",
+    "heroTitle": "Seminarios y Coaching",
     "heroDescription": "Taiga Trece combina métodos artísticos con coaching y experiencia somática. Crea espacios de aprendizaje innovadores donde la expresión creativa, el empoderamiento y el desarrollo personal toman protagonismo a través de la autoexperiencia, la resiliencia y el crecimiento - individual o en equipos.",
-    "focusAreasTitle": "Áreas de Enfoque de Talleres",
+    "focusAreasTitle": "Áreas de Enfoque de Seminarios",
     "aboutTitle": "Acerca de Taiga Trece",
     "contactTitle": "Ponerse en Contacto",
     "contactDescription": "¿Interesado en reservar un taller o sesión de coaching? Taiga trabaja con instituciones culturales, proveedores educativos, empresas e individuos. Contacta para discutir tus necesidades específicas y crear un programa personalizado.",
@@ -44,7 +45,7 @@
       },
       "femaleEmpowerment": {
         "title": "Empoderamiento Femenino y FLINTA*",
-        "duration": "Serie de Talleres",
+        "duration": "Serie de seminarios",
         "description": "Desarrolla visibilidad, presencia, autoconfianza y resistencia. Espacios seguros para mujeres y personas FLINTA* para explorar potencial y fortalecer la autoexpresión auténtica.",
         "level": "Empoderamiento"
       },
@@ -62,7 +63,7 @@
       },
       "femaleHealth": {
         "title": "Salud Femenina y Encarnación",
-        "duration": "Serie de Talleres",
+        "duration": "Serie de Seminarios",
         "description": "Explora la feminidad, aprende a establecer límites y experimenta prácticas somáticas. Enfoque integrador que combina conciencia corporal con empoderamiento personal y sanación.",
         "level": "Bienestar"
       },

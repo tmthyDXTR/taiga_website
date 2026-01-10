@@ -124,7 +124,7 @@
     opacity: var(--pulse-start-opacity, 0.3);
   }
   100% {
-    transform: scale(var(--pulse-end-scale, 1.8));
+    transform: scale(var(--pulse-end-scale, 1.1));
     opacity: 0;
   }
 }

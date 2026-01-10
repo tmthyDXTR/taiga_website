@@ -1,12 +1,296 @@
 /* MusicPage.css - Clean foundation */
 
+:root {
+  /* Vinyl slide-out distance on hover */
+  --vinyl-slide-distance: 22vw;
+}
+
 .music-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  background: linear-gradient(135deg, #ffae4a 0%, #f24e8d 100%);
   color: white;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make logo header transparent on music page */
+.music-page .logo-container {
+  background-color: transparent;
+}
+
+.music-page .logo-box {
+  background-color: transparent;
+  /* Uncomment to restore black background2 */
+  /* background-color: black; */
+}
+
+/* Tint the logo with purple color */
+.music-page .logo {
+  filter: brightness(0) saturate(100%) invert(22%) sepia(30%) saturate(1742%) hue-rotate(222deg) brightness(92%) contrast(91%);
+}
+
+/* Vinyl container - holds both disc and cover */
+.vinyl-container {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  max-height: 600px;
+  aspect-ratio: 1;
+  z-index: 1;
+}
+
+/* Vinyl disc - slides out on hover */
+.vinyl-disc {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: 95%;
+  height: 95%;
+  background-image: url('/src/assets/images/vinyl-record.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  box-shadow: 
+    0 3px 6px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  transition: transform 0.6s ease-out;
+  cursor: pointer;
+}
+
+/* Insert card - starts centered behind vinyl, slides right, then back to center in front */
+.insert-card {
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: 50vw;
+  max-width: 600px;
+  max-height: 600px;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #3d0557 0%, #550778 50%, #2d0440 100%);
+  border-radius: 4px;
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 0;
+  transition: all 0.6s ease-out 0.3s;
+  padding: 2.5rem;
+  overflow-y: auto;
+}
+
+/* Grain overlay for insert card */
+.insert-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.2;
+  pointer-events: none;
+  border-radius: 4px;
+}
+
+/* Close button for insert card */
+.close-booklet {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 10;
+  transition: transform 0.2s ease, color 0.2s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.insert-card.active .close-booklet {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.close-booklet:hover {
+  transform: scale(1.2);
+  color: #ffae4a;
+}
+
+.insert-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.insert-card-content p {
+  color: #ffffff;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 0;
+  text-align: left;
+  font-weight: 600;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Album cover - stays in place */
+.album-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  box-shadow: 
+    0 2px 5px rgba(0, 0, 0, 0.3),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Desktop menu inside vinyl box */
+.vinyl-menu {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  pointer-events: all;
+  align-items: flex-end;
+}
+
+.vinyl-menu .menu-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  /* writing-mode: vertical-rl; */
+  text-orientation: mixed;
+  transition: all 0.3s ease;
+  /* padding: 0.5rem; */
+  text-align: right;
+}
+
+.vinyl-menu .menu-link:hover {
+  color: #ffae4a;
+  transform: scale(1.05);
+}
+
+/* Track names beneath the link */
+.track-names {
+  margin-top: 0rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.0rem;
+  align-items: flex-end;  
+}
+
+.track-names p {
+  color: #ffffff;
+  font-size: 0.6rem;
+  font-weight: 400;
+  margin: 0;
+  /* writing-mode: vertical-rl; */
+  text-orientation: mixed;
+  text-align: right;
+  line-height: 1;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Hover trigger area - rightmost 20% of box */
+.vinyl-hover-trigger {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  z-index: 5;
+  cursor: pointer;
+}
+
+/* Desktop hover effect */
+@media (min-width: 769px) {
+  /* Vinyl disc slides out only when hovering tracklist link or vinyl disc */
+  .vinyl-container:has(.tracklist-link:hover) .vinyl-disc,
+  .vinyl-disc:hover {
+    transform: translateX(var(--vinyl-slide-distance));
+  }
+  
+  /* When vinyl disc or tracklist is hovered, activate track list link hover state */
+  .vinyl-container:has(.vinyl-disc:hover) .tracklist-link,
+  .tracklist-link:hover {
+    color: #ffae4a;
+    transform: scale(1.05);
+  }
+  
+  /* Insert card slides out and stays when active */
+  .insert-card.active {
+    animation: slideOutAndBack 0.8s ease-in-out forwards;
+  }
+  
+  /* Insert card slides back when closing */
+  .insert-card.closing {
+    animation: slideBackAndOut 0.8s ease-in-out forwards;
+  }
+  
+  /* Booklet link hover state */
+  .booklet-link:hover {
+    color: #ffae4a;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes slideOutAndBack {
+  0% {
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  }
+  50% {
+    transform: translate(70%, -50%);
+    z-index: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%);
+    z-index: 4;
+  }
+}
+
+@keyframes slideBackAndOut {
+  0% {
+    transform: translate(-50%, -50%);
+    z-index: 4;
+  }
+  50% {
+    transform: translate(70%, -50%);
+    z-index: 4;
+  }
+  100% {
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    opacity: 0;
+  }
 }
 
 .music-content {
+  position: relative;
+  z-index: 2;
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -26,6 +310,34 @@
 
 /* Responsive design */
 @media (max-width: 768px) {
+  /* Keep transparent header on mobile */
+  .music-page .logo-container {
+    background-color: transparent;
+  }
+  
+  /* Hide vinyl disc and desktop menu on mobile */
+  .vinyl-disc,
+  .vinyl-menu.desktop-only {
+    display: none;
+  }
+  
+  /* Mobile: 2/3 of image visible on right side, no shadow/border */
+  .vinyl-container {
+    top: auto;
+    bottom: 0;
+    left: auto;
+    right: -90vw;
+    transform: none;
+    height: 100vh;
+    max-height: none;
+  }
+  
+  .album-cover {
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+  }
+  
   .music-content {
     padding: 1rem;
   }

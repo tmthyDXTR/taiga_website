@@ -1,4 +1,4 @@
-    import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import LogoHeader from '../components/LogoHeader'
@@ -30,8 +30,8 @@ function HomePage() {
   const workshopImageHeight = 500                    // Height for workshop image
   
   // Visual Feedback Animation
-  const feedbackScaleFactor = 1.2                    // Scale multiplier for triangle feedback (1.2 = 20% larger)
-  const feedbackDuration = 400                       // Duration of feedback animation in milliseconds
+  const feedbackScaleFactor = 1.1                    // Scale multiplier for triangle feedback (1.2 = 20% larger)
+  const feedbackDuration = 300                       // Duration of feedback animation in milliseconds
   const feedbackScaleUpSpeed = 0.4                   // Speed for scaling up (seconds)
   const feedbackScaleDownSpeed = 0.2                 // Speed for scaling down (seconds)
   const feedbackEasingUp = 'cubic-bezier(0.68, -0.55, 0.265, 1.55)'  // Bouncy easing for scale up
