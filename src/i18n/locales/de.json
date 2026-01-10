@@ -10,12 +10,24 @@
   },
   "music": {
     "title": "Die Künstlerin",
-    "trackList": "TRACKLIST",
+    "trackList": "LINKTREE",
     "heroTitle": "Taiga Trece",
     "heroSubtitle": "Musikerin • Künstlerin • Coach",
     "heroDescription": "Taiga Trece ist eine freiberufliche Rapperin und Künstlerin, die künstlerische Methoden mit Coaching und somatischer Erfahrung verbindet. Durch Musik, Workshops und Persönlichkeitsentwicklung schafft sie innovative Räume für kreativen Ausdruck und Empowerment.",
-    "aboutTitle": "Über",
+    "nav": {
+      "about": "BACKGROUND",
+      "videos": "VIDEOS",
+      "gallery": "GALERIE",
+      "book": "BUCHEN",
+      "tickets": "TICKETS",
+      "shop": "SHOP"
+    },
+    "aboutTitle": "BACKGROUND",
     "aboutText": "Als Gründungsmitglied des 5Elements Collective entwickelt Taiga Projekte, die junge Menschen in künstlerischen Kontexten stärken. Ihr Ansatz integriert Kreativität mit persönlichem Wachstum und nutzt Rap und künstlerischen Ausdruck als Werkzeuge für Identitätsentwicklung und Selbstermächtigung.",
+    "bookDescription": "Interesse an einer Buchung von Taiga Trece für eine Performance, einen Workshop oder eine Zusammenarbeit? Melden Sie sich!",
+    "bookButton": "BUCHUNGSANFRAGE SENDEN",
+    "ticketsComingSoon": "Kommende Shows und Ticketinformationen folgen bald...",
+    "shopComingSoon": "Merch und exklusive Releases folgen bald...",
     "latestTitle": "Aktuelle Arbeiten",
     "latestDescription": "Entdecke Taigas musikalische Reise durch ihre neuesten Veröffentlichungen, Kollaborationen und künstlerischen Projekte.",
     "listenButton": "AUF SPOTIFY HÖREN",
@@ -29,6 +41,7 @@
     "title": "Workshops & Coaching",
     "heroTitle": "Workshops & Coaching",
     "heroDescription": "Taiga Trece verbindet künstlerische Methoden mit Coaching und somatischer Erfahrung. Sie schafft innovative Lernräume, in denen kreativer Ausdruck, Empowerment und Persönlichkeitsentwicklung durch Selbsterfahrung, Resilienz und Wachstum im Mittelpunkt stehen – individuell oder im Team.",
+    "partnersTitle": "Vertrauensvolle Partner & Zusammenarbeit",
     "focusAreasTitle": "Workshop-Schwerpunkte",
     "aboutTitle": "Über Taiga Trece",
     "contactTitle": "Kontakt aufnehmen",
@@ -98,5 +111,15 @@
   "common": {
     "loading": "Lädt...",
     "error": "Ein Fehler ist aufgetreten"
+  },
+  "footer": {
+    "impressum": "Impressum"
+  },
+  "impressum": {
+    "title": "Impressum",
+    "responsibleTitle": "Verantwortlich für den Inhalt",
+    "contactTitle": "Kontakt",
+    "disclaimerTitle": "Haftungsausschluss",
+    "disclaimerText": "Diese Website ist ein persönliches Portfolio. Alle Inhalte dienen zu Informationszwecken. Bei Anfragen wenden Sie sich bitte an die oben angegebene E-Mail-Adresse."
   }
 }

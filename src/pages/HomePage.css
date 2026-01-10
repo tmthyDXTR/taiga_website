@@ -1,133 +1,207 @@
-/* Logo sizing variables */
+/* Color and timing variables */
 :root {
-  --link-font-size: 16px;        /* Font size for navigation links */
+  --bg: #000;
+  --muted: #fff;
+  --accent: #1a1a1a;
+
+  --color-c1: #c1e328; /* bright lime */
+  --color-c2: #f855bc; /* magenta/pink */
+  --color-c3: #ffffff; /* white */
+
+  --fade-speed: 250ms;
 }
 
-/* Reset and base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* apply Stack Sans Text site-wide */
+html, body {
+  font-family: var(--stack-font, 'Stack Sans Text', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif);
 }
 
+/* clean home-page base */
 .home-page {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: white;
+  justify-content: flex-start; /* place content from the top, not centered vertically */
   gap: 2rem;
+  background: var(--bg);
+  color: var(--muted);
+  padding-top: clamp(3.5rem, 10vh, 7.5rem); /* create space under the fixed title; responsive */
+  transition: background-color var(--fade-speed) ease-in-out, color var(--fade-speed) ease-in-out;
 }
 
-.triangle-container {
+/* Site title */
+.site-title {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  font-size: clamp(8rem, 6vw, 5rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: inherit;
+  margin: 0;
+  text-align: center;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  transition: color var(--fade-speed) ease-in-out;
+}
+
+/* title hover variants */
+.site-title.is-hovered-c1 { color: var(--color-c1); }
+.site-title.is-hovered-c2 { color: var(--color-c2); }
+.site-title.is-hovered-c3 { color: var(--color-c3); }
+
+/* Top navigation (under title): horizontal on desktop, vertical on phone */
+.top-nav {
+  font-size: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12rem; /* nudge nav a bit lower relative to the title */
+  margin-bottom: 1rem;
+}
+
+/* make links clean: no underline, inherit color, no background by default */
+.top-nav .menu-link,
+.language-menu .menu-link {
+  text-decoration: none;
+  background: transparent;
+  color: inherit;
+  transition: color var(--fade-speed) ease-in-out, transform 160ms ease;
+}
+
+/* hover: only change text color and a small transform (no background) */
+.top-nav .menu-link:hover,
+.top-nav .menu-link:focus,
+.language-menu .menu-link:hover,
+.language-menu .menu-link:focus {
+  /* subtle lift and color change; color remains readable against backgrounds */
+  /* transform: translateY(-2px); */
+  color: rgba(255,255,255,0.95);
+  outline: none;
+}
+
+/* remove the previous music-link gradient-on-hover — keep only text color change */
+.language-menu .menu-link.music-link,
+.top-nav .menu-link.music-link {
+  /* no background here; only title + chameleon change */
+}
+
+/* make links transition color smoothly and match chameleon/title variants */
+.top-nav .menu-link,
+.language-menu .menu-link {
+  transition: color var(--fade-speed) ease-in-out, transform 160ms ease;
+}
+
+/* Per-link color on hover (immediate) */
+.top-nav .menu-link.music-link:hover,
+.home-page.hover-c1 .top-nav .menu-link.music-link {
+  color: var(--color-c1); /* THE ARTIST */
+}
+
+.top-nav .menu-link.workshops-link:hover,
+.home-page.hover-c2 .top-nav .menu-link.workshops-link {
+  color: var(--color-c2); /* WORKSHOPS */
+}
+
+.top-nav .menu-link.tbd-link:hover,
+.home-page.hover-c3 .top-nav .menu-link.tbd-link {
+  color: var(--color-c3); /* TBD */
+}
+
+/* vinyl & cham */
+.home-vinyl-container {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 20vh;
+  width: 20vw;
+  max-width: 600px;
+  z-index: 1;
+}
+
+.cham-wrapper { position: relative; width: 100%; height: 100%; }
+
+/* center the inline SVG inside the vinyl container */
+.chameleon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  z-index: 0;
+  pointer-events: none;
+  color: var(--muted);
+  transition: color var(--fade-speed) ease-in-out, transform 160ms ease, opacity 160ms ease;
+  opacity: 1;
+  display: block;
+}
+
+/* ensure SVG internal shapes use currentColor for fill and inherit transitions */
+.chameleon svg,
+.chameleon svg * {
+  fill: currentColor !important;
+  stroke: none !important;
+  transition: fill var(--fade-speed) ease-in-out, stroke var(--fade-speed) ease-in-out, opacity calc(var(--fade-speed) * 0.75) ease-in-out;
+  will-change: fill, stroke, opacity;
+}
+
+/* chameleon color variants driven by the element color (so transitions animate) */
+.chameleon.is-hovered-c1 { color: var(--color-c1) !important; }
+.chameleon.is-hovered-c2 { color: var(--color-c2) !important; }
+.chameleon.is-hovered-c3 { color: var(--color-c3) !important; }
+
+/* keep language menu visually on top — top-right on desktop */
+.language-menu {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 60;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
-  position: relative; /* For absolute positioning of mobile instruction */
+  background: transparent;
+  padding: 0.25rem;
 }
 
-.triangle {
-  /* Default: 50% viewport width on desktop */
-  width: 50vw;
-  height: auto;
-  max-width: 600px; /* Prevent it from getting too large */
-  min-width: 300px; /* Ensure minimum size for readability */
-}
+/* ensure the language switcher controls appear compact */
+.language-menu > * { display: inline-flex; align-items: center; }
 
-/* Mobile touch optimization */
+/* On small screens center language-menu above the nav and make it static in flow */
 @media (max-width: 768px) {
-  .triangle {
-    touch-action: pan-x; /* Allow horizontal swiping */
-    user-select: none; /* Prevent text selection during swipe */
+  .language-menu {
+    position: static;
+    margin: 0 auto 0.5rem auto;
+    right: auto;
+    top: auto;
   }
-  
-  .mobile-instruction {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #666;
-    font-size: 0.875rem;
-    text-align: center;
-    z-index: 10;
-  }
+  /* ensure language menu is visually above nav when static */
+  .language-menu { order: -1; width: 100%; display: flex; justify-content: center; }
 }
 
-/* Smooth transition for image changes */
-.triangle image {
-  transition: opacity 0.3s ease-in-out;
-}
-
-.corner-text {
-  font-size: var(--link-font-size); /* Controlled by CSS variable */
-  font-weight: 900; /* Extra bold/heavy weight */
-  letter-spacing: 1.5px; /* Slightly increased letter spacing */
-  fill: black;
-  font-family: Arial, sans-serif;
-  user-select: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.corner-text:hover {
-  fill: #666;
-}
-
-/* Option 1: Inverted Text Colors - Solid Black Background */
-.corner-text.active-inverted {
-  fill: white;
-}
-
-/* Remove the neon effect - keeping it simple */
-
-/* Pulse animation for triangle feedback */
-@keyframes pulseExpand {
-  0% {
-    transform: scale(var(--pulse-start-scale, 1));
-    opacity: var(--pulse-start-opacity, 0.3);
-  }
-  100% {
-    transform: scale(var(--pulse-end-scale, 1.8));
-    opacity: 0;
-  }
-}
-
-/* Tablet styles */
-@media (max-width: 1024px) {
-  .triangle {
-    width: 60vw;
-  }
-  
-  .corner-text {
-    font-size: clamp(0.875rem, 2.8vw, 1.25rem);
-  }
-}
-
-/* Mobile styles - as wide as possible while maintaining readability */
+/* responsive */
 @media (max-width: 768px) {
-  .triangle {
-    width: 95vw; /* Much larger triangle on mobile */
-    max-width: none; /* Remove max-width constraint on mobile */
-  }
-  
-  .corner-text {
-    font-size: clamp(1rem, 4.5vw, 1.5rem); /* Larger text on mobile */
-    letter-spacing: 1px;
-  }
+  .top-nav { flex-direction: column; gap: 0.5rem; }
+  .home-vinyl-container { position: static; transform: none; height: auto; width: 100%; padding-top: 2rem; }
+  .language-menu { position: static; transform: none; align-items: center; right: auto; top: auto; }
+  .language-menu .menu-link { text-align: center; }
 }
 
-/* Small mobile styles */
 @media (max-width: 480px) {
-  .triangle {
-    width: 98vw; /* Almost full width on small mobile */
+  .site-title {
+    top: 0.75rem;
+    font-size: 5rem;
+    /* max-width: 90vw; */
+    white-space: normal;        /* allow wrapping if necessary */
   }
-  
-  .corner-text {
-    font-size: clamp(1.125rem, 5vw, 1.75rem); /* Even larger text on small mobile */
-    letter-spacing: 0.8px;
-  }
+  /* reduce top padding on very small screens */
+  .home-page { padding-top: 3.25rem; }
 }

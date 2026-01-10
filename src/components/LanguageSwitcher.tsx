@@ -9,7 +9,11 @@ const languages = [
   { code: 'ja', name: 'JP', flag: '🇯🇵' }
 ]
 
-function LanguageSwitcher() {
+type LanguageSwitcherProps = {
+  onChange?: (lang: string) => void
+}
+
+function LanguageSwitcher({ onChange }: LanguageSwitcherProps) {
   const { i18n } = useTranslation()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
@@ -25,6 +29,7 @@ function LanguageSwitcher() {
   const changeLanguage = (languageCode: string) => {
     i18n.changeLanguage(languageCode)
     setIsDropdownOpen(false) // Close dropdown after selection
+    if (onChange) onChange(languageCode)
   }
 
   const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0]

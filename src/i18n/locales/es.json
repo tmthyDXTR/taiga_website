@@ -14,8 +14,20 @@
     "heroTitle": "Taiga Trece",
     "heroSubtitle": "Música • Artista • Coach",
     "heroDescription": "Taiga Trece es una rapera y artista independiente que combina métodos artísticos con coaching y experiencia somática. A través de la música, seminarios y desarrollo personal, crea espacios innovadores para la expresión creativa y el empoderamiento.",
+    "nav": {
+      "about": "SOBRE MÍ",
+      "videos": "VIDEOS",
+      "gallery": "GALERÍA",
+      "book": "RESERVAR",
+      "tickets": "BOLETOS",
+      "shop": "TIENDA"
+    },
     "aboutTitle": "Acerca",
     "aboutText": "Como miembro fundador del 5Elements Collective, Taiga desarrolla proyectos que fortalecen a los jóvenes en contextos artísticos. Su enfoque integra creatividad con crecimiento personal, utilizando el rap y la expresión artística como herramientas para el desarrollo de identidad y autoempoderamiento.",
+    "bookDescription": "¿Interesado en contratar a Taiga Trece para una actuación, taller o colaboración? ¡Contáctanos!",
+    "bookButton": "ENVIAR SOLICITUD DE RESERVA",
+    "ticketsComingSoon": "Próximos shows e información de boletos muy pronto...",
+    "shopComingSoon": "Merch y lanzamientos exclusivos muy pronto...",
     "latestTitle": "Trabajo Reciente",
     "latestDescription": "Explora el viaje musical de Taiga a través de sus últimos lanzamientos, colaboraciones y proyectos artísticos.",
     "listenButton": "ESCUCHAR EN SPOTIFY",
@@ -29,6 +41,7 @@
     "title": "Seminarios y Coaching",
     "heroTitle": "Seminarios y Coaching",
     "heroDescription": "Taiga Trece combina métodos artísticos con coaching y experiencia somática. Crea espacios de aprendizaje innovadores donde la expresión creativa, el empoderamiento y el desarrollo personal toman protagonismo a través de la autoexperiencia, la resiliencia y el crecimiento - individual o en equipos.",
+    "partnersTitle": "Socios de Confianza & Colaboraciones",
     "focusAreasTitle": "Áreas de Enfoque de Seminarios",
     "aboutTitle": "Acerca de Taiga Trece",
     "contactTitle": "Ponerse en Contacto",
@@ -98,5 +111,15 @@
   "common": {
     "loading": "Cargando...",
     "error": "Ocurrió un error"
+  },
+  "footer": {
+    "impressum": "Aviso Legal"
+  },
+  "impressum": {
+    "title": "Aviso Legal",
+    "responsibleTitle": "Responsable del contenido",
+    "contactTitle": "Contacto",
+    "disclaimerTitle": "Descargo de responsabilidad",
+    "disclaimerText": "Este sitio web es un portafolio personal. Todo el contenido se proporciona con fines informativos. Para consultas, por favor contacte a través del correo electrónico proporcionado arriba."
   }
 }

@@ -1,0 +1,36 @@
+.site-footer {
+  padding: 2rem;
+  text-align: center;
+  background: transparent;
+  margin-top: auto;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.site-footer .footer-link {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.site-footer .footer-link:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Make footer visible on light backgrounds (workshops page) */
+.workshops-page .site-footer .footer-link {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.workshops-page .site-footer .footer-link:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* On music page, add padding to account for fixed Spotify player */
+.music-page .site-footer {
+  padding-bottom: 170px;
+}

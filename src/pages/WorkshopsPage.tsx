@@ -1,15 +1,37 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import LogoHeader from '../components/LogoHeader'
+import LanguageSwitcher from '../components/LanguageSwitcher'
+import Footer from '../components/Footer'
 import './WorkshopsPage.css'
 
 function WorkshopsPage() {
   const { t } = useTranslation()
   
+  // inject Stack Sans Text font and expose it globally
+  useEffect(() => {
+    const id = 'stack-sans-text-font'
+    if (!document.getElementById(id)) {
+      const link = document.createElement('link')
+      link.id = id
+      link.rel = 'stylesheet'
+      link.href = 'https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@300;400;600;700&display=swap'
+      document.head.appendChild(link)
+    }
+    const font = "'Stack Sans Text', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+    document.documentElement.style.setProperty('--stack-font', font)
+    document.documentElement.style.fontFamily = font
+  }, [])
+
   return (
     <div className="workshops-page">
-      {/* TAIGA Logo - Unified component */}
-      <LogoHeader />
+      {/* TAIGA TRECE text header - cleaner homepage style */}
+      <h1 className="site-title">TAIGA TRECE</h1>
+      
+      {/* language switcher */}
+      <div className="language-menu" aria-label="Select language">
+        <LanguageSwitcher />
+      </div>
 
       {/* Header with back navigation */}
       <header className="workshops-header">
@@ -39,6 +61,28 @@ function WorkshopsPage() {
           </div>
         </section>
 
+        {/* Partners/Collaborators Section */}
+        <section className="partners-section">
+          <h3>{t('workshops.partnersTitle')}</h3>
+          <div className="partners-grid">
+            <div className="partner-logo">Amnesty International</div>
+            <div className="partner-logo">Goethe Institut</div>
+            <div className="partner-logo">Viva con agua</div>
+            <div className="partner-logo">Microsoft</div>
+            <div className="partner-logo">IMMA</div>
+            <div className="partner-logo">Refugio</div>
+            <div className="partner-logo">Bellevue di Monaco</div>
+            <div className="partner-logo">Ya Basta</div>
+            <div className="partner-logo">AusArten</div>
+            <div className="partner-logo">Bavarian Caps</div>
+            <div className="partner-logo">PWC</div>
+            <div className="partner-logo">PASCH Schulen</div>
+            <div className="partner-logo">EU Delegation</div>
+            <div className="partner-logo">356 Female Mcs</div>
+            <div className="partner-logo">The Voice of Germany</div>
+          </div>
+        </section>
+
         {/* Available workshops */}
         <section className="workshops-listing">
           <h3>{t('workshops.focusAreasTitle')}</h3>
@@ -58,7 +102,7 @@ function WorkshopsPage() {
                 <div className="workshop-price">{t('workshops.contact')}</div>
               </div>
               <div className="workshop-action">
-                <button className="register-button">{t('workshops.inquireButton')}</button>
+                <a href="mailto:workshops@taigatrece.com" className="register-button">{t('workshops.inquireButton')}</a>
               </div>
             </div>
 
@@ -77,7 +121,7 @@ function WorkshopsPage() {
                 <div className="workshop-price">{t('workshops.contact')}</div>
               </div>
               <div className="workshop-action">
-                <button className="register-button">{t('workshops.inquireButton')}</button>
+                <a href="mailto:workshops@taigatrece.com" className="register-button">{t('workshops.inquireButton')}</a>
               </div>
             </div>
 
@@ -96,7 +140,7 @@ function WorkshopsPage() {
                 <div className="workshop-price">{t('workshops.contact')}</div>
               </div>
               <div className="workshop-action">
-                <button className="register-button">{t('workshops.inquireButton')}</button>
+                <a href="mailto:workshops@taigatrece.com" className="register-button">{t('workshops.inquireButton')}</a>
               </div>
             </div>
 
@@ -115,7 +159,7 @@ function WorkshopsPage() {
                 <div className="workshop-price">{t('workshops.contact')}</div>
               </div>
               <div className="workshop-action">
-                <button className="register-button">{t('workshops.inquireButton')}</button>
+                <a href="mailto:workshops@taigatrece.com" className="register-button">{t('workshops.inquireButton')}</a>
               </div>
             </div>
 
@@ -134,7 +178,7 @@ function WorkshopsPage() {
                 <div className="workshop-price">{t('workshops.contact')}</div>
               </div>
               <div className="workshop-action">
-                <button className="register-button">{t('workshops.inquireButton')}</button>
+                <a href="mailto:workshops@taigatrece.com" className="register-button">{t('workshops.inquireButton')}</a>
               </div>
             </div>
 
@@ -153,7 +197,7 @@ function WorkshopsPage() {
                 <div className="workshop-price">{t('workshops.contact')}</div>
               </div>
               <div className="workshop-action">
-                <button className="register-button">{t('workshops.inquireButton')}</button>
+                <a href="mailto:workshops@taigatrece.com" className="register-button">{t('workshops.inquireButton')}</a>
               </div>
             </div>
           </div>
@@ -206,6 +250,8 @@ function WorkshopsPage() {
           </div>
         </section>
       </main>
+
+      <Footer />
     </div>
   )
 }
