@@ -1,0 +1,36 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.triangle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .triangle {
+    width: 280px;
+    height: 242px;
+  }
+}
+
+@media (max-width: 480px) {
+  .triangle {
+    width: 240px;
+    height: 208px;
+  }
+}
