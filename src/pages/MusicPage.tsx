@@ -10,7 +10,7 @@ function MusicPage() {
       {/* TAIGA Logo - Unified component */}
       <LogoHeader />
       
-      {/* Main content - ready for your design */}
+      {/* Main content - clean slate */}
       <main className="music-content">
         <h1>{t('music.title')}</h1>
         <p>Music page content will go here...</p>
