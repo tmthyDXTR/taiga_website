@@ -1,3 +1,11 @@
+/* Logo sizing variables */
+:root {
+  --logo-height: 120px;
+  --logo-padding-vertical: 1rem;
+  --logo-padding-horizontal: 3rem;
+  --link-font-size: 16px;        /* Font size for navigation links */
+}
+
 /* Reset and base styles */
 * {
   margin: 0;
@@ -9,28 +17,168 @@
   height: 100vh;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: white;
+  gap: 2rem;
+}
+
+/* Logo styling - matching navigation black box style */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.logo-box {
+  background-color: black;
+  padding: var(--logo-padding-vertical) var(--logo-padding-horizontal);
+  border-radius: 0; /* Sharp corners like navigation boxes */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Desktop: match triangle width */
+  width: 50vw;
+  max-width: 600px;
+  min-width: 300px;
+}
+
+.logo {
+  height: var(--logo-height);
+  width: auto;
+  filter: brightness(0) invert(1); /* Ensures logo is white */
+  /* Make logo responsive */
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .triangle-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative; /* For absolute positioning of mobile instruction */
 }
 
-/* Responsive design */
+.triangle {
+  /* Default: 50% viewport width on desktop */
+  width: 50vw;
+  height: auto;
+  max-width: 600px; /* Prevent it from getting too large */
+  min-width: 300px; /* Ensure minimum size for readability */
+}
+
+/* Mobile touch optimization */
 @media (max-width: 768px) {
   .triangle {
-    width: 280px;
-    height: 242px;
+    touch-action: pan-x; /* Allow horizontal swiping */
+    user-select: none; /* Prevent text selection during swipe */
+  }
+  
+  .mobile-instruction {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #666;
+    font-size: 0.875rem;
+    text-align: center;
+    z-index: 10;
   }
 }
 
-@media (max-width: 480px) {
+/* Smooth transition for image changes */
+.triangle image {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.corner-text {
+  font-size: var(--link-font-size); /* Controlled by CSS variable */
+  font-weight: 900; /* Extra bold/heavy weight */
+  letter-spacing: 1.5px; /* Slightly increased letter spacing */
+  fill: black;
+  font-family: Arial, sans-serif;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.corner-text:hover {
+  fill: #666;
+}
+
+/* Option 1: Inverted Text Colors - Solid Black Background */
+.corner-text.active-inverted {
+  fill: white;
+}
+
+/* Remove the neon effect - keeping it simple */
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+  :root {
+    --logo-height: 100px; /* Smaller logo on tablet */
+  }
+  
   .triangle {
-    width: 240px;
-    height: 208px;
+    width: 60vw;
+  }
+  
+  .logo-box {
+    width: 60vw;
+  }
+  
+  .corner-text {
+    font-size: clamp(0.875rem, 2.8vw, 1.25rem);
+  }
+}
+
+/* Mobile styles - as wide as possible while maintaining readability */
+@media (max-width: 768px) {
+  :root {
+    --logo-height: 100px; /* Taller logo on mobile */
+    --logo-padding-vertical: 1.25rem; /* More vertical padding */
+    --logo-padding-horizontal: 2rem;
+  }
+  
+  .triangle {
+    width: 95vw; /* Much larger triangle on mobile */
+    max-width: none; /* Remove max-width constraint on mobile */
+  }
+  
+  .logo-box {
+    width: 100vw; /* Full width on mobile */
+    max-width: none;
+    border-radius: 0;
+  }
+  
+  .corner-text {
+    font-size: clamp(1rem, 4.5vw, 1.5rem); /* Larger text on mobile */
+    letter-spacing: 1px;
+  }
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+  :root {
+    --logo-height: 80px; /* Still substantial on small mobile */
+    --logo-padding-vertical: 1rem; /* Good vertical padding */
+    --logo-padding-horizontal: 1rem;
+  }
+  
+  .triangle {
+    width: 98vw; /* Almost full width on small mobile */
+  }
+  
+  .logo-box {
+    width: 100vw; /* Full width on small mobile */
+  }
+  
+  .corner-text {
+    font-size: clamp(1.125rem, 5vw, 1.75rem); /* Even larger text on small mobile */
+    letter-spacing: 0.8px;
   }
 }
