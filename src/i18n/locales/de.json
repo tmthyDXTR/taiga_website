@@ -1,8 +1,8 @@
 {
   "navigation": {
-    "theArtist": "DIE KÜNSTLERIN",
+    "theArtist": "RAP ARTIST",
     "workshops": "WORKSHOPS",
-    "tbd": "TBD",
+    "tbd": "PROJECTS",
     "backToTriangle": "← ZURÜCK"
   },
   "homepage": {
@@ -13,26 +13,26 @@
     "trackList": "LINKTREE",
     "heroTitle": "Taiga Trece",
     "heroSubtitle": "Musikerin • Künstlerin • Coach",
-    "heroDescription": "Taiga Trece ist eine freiberufliche Rapperin und Künstlerin, die künstlerische Methoden mit Coaching und somatischer Erfahrung verbindet. Durch Musik, Workshops und Persönlichkeitsentwicklung schafft sie innovative Räume für kreativen Ausdruck und Empowerment.",
+    "heroDescription": "Neu schreiben! Taiga Trece ist eine freiberufliche Rapperin und Künstlerin, die künstlerische Methoden mit Coaching und somatischer Erfahrung verbindet. Durch Musik, Workshops und Persönlichkeitsentwicklung schafft sie innovative Räume für kreativen Ausdruck und Empowerment.",
     "nav": {
       "about": "BIO",
       "videos": "VIDEO",
       "gallery": "FOTO",
       "book": "BOOKING",
-      "collab": "CREATOR COLLAB",
-      "tickets": "TICKETS",
-      "shop": "SHOP"
+      "collab": "COLLAB",
+      "tickets": "SHOWS",
+      "shop": "SHOP (aktuell erst mal noch raus)"
     },
     "aboutTitle": "BIO",
     "aboutText": "Taiga Trece steht seit Jahren als Rapperin auf Bühnen im In- und Ausland. Geboren in München, verbringt sie ihre Jugendjahre in Mexiko.\n\nMit ihren Texten auf Deutsch und Spanisch bringt sie Straße, Poesie und Haltung – roh, ehrlich und unabhängig vom Mainstream.\n\nAls eine der ersten Frauen der Münchner Hip-Hop-Szene hat sie sich einen festen Platz erarbeitet. Ihre Alben, Releases und Live-Auftritte spiegeln eine Künstlerin wider, die Brücken zwischen Ambivalenzen baut und sich immer wieder neues schafft– kulturell, sprachlich und musikalisch.",
-    "bookDescription": "Interesse an einer Buchung von Taiga Trece für eine Performance, einen Workshop oder eine Zusammenarbeit? Melden Sie sich!",
-    "bookButton": "BUCHUNGSANFRAGE SENDEN",
-    "collabDescription": "Lust auf eine Zusammenarbeit bei kreativen Projekten, Content-Erstellung oder künstlerischen Vorhaben? Lass uns gemeinsam etwas Einzigartiges schaffen!",
+    "bookDescription": "Für Bookinganfragen hier melden.",
+    "bookButton": "BUCHUNGSANFRAGE STARTEN",
+    "collabDescription": "Egal ob künstlerische Projekte oder Content Erstellung in Social Media. Meldet euch gerne bei Kollaborationsanfragen.",
     "collabButton": "KOLLABORATION STARTEN",
-    "ticketsComingSoon": "Kommende Shows und Ticketinformationen folgen bald...",
-    "shopComingSoon": "Merch und exklusive Releases folgen bald...",
+    "ticketsComingSoon": "Hier gibt es bald neue Termine.",
+    "shopComingSoon": "Merch und Releases folgen bald...",
     "latestTitle": "Aktuelle Arbeiten",
-    "latestDescription": "Entdecke Taigas musikalische Reise durch ihre neuesten Veröffentlichungen, Kollaborationen und künstlerischen Projekte.",
+    "latestDescription": "Entdecke Taigas musikalische Reise durch ihre Veröffentlichungen, Kollaborationen und künstlerischen Projekte.",
     "listenButton": "AUF SPOTIFY HÖREN",
     "watchButton": "VIDEOS ANSEHEN",
     "contactTitle": "Verbinden",

@@ -78,7 +78,7 @@ function WorkshopsPage() {
   return (
     <div className="workshops-page">
       {/* TAIGA TRECE text header - cleaner homepage style */}
-      <h1 className="site-title">TAIGA TRECE</h1>
+      <h1 className="site-title">TAIGA</h1>
       
       {/* language switcher */}
       <div className="language-menu" aria-label="Select language">

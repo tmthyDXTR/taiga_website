@@ -88,7 +88,7 @@ function MusicPage() {
     { id: 'book', labelKey: 'music.nav.book' },
     { id: 'collab', labelKey: 'music.nav.collab' },
     { id: 'tickets', labelKey: 'music.nav.tickets' },
-    { id: 'shop', labelKey: 'music.nav.shop' },
+    // { id: 'shop', labelKey: 'music.nav.shop' },
   ]
 
   return (
@@ -195,12 +195,12 @@ function MusicPage() {
             <div className="videos-grid">
               {[
                 { id: 'RSzLTIsTkkM', title: 'Lass die Hexe brennen' },
-                { id: 'sGi7dlfZp-I', title: 'Mein Weg (2013)' },
-                { id: 'NO0oa8WHxMA', title: 'Im Barrio (Mexico 2016)' },
+                { id: 'sGi7dlfZp-I', title: 'Mein Weg' },
+                { id: 'NO0oa8WHxMA', title: 'Im Barrio' },
                 { id: 'xrYtZUFB4QE', title: 'Image (Official Video)' },
-                { id: 'Lt7W_Mu1EXE', title: 'The Voice of Germany 2021' },
-                { id: 'fKfno6LTPZM', title: 'Gangstarap Reportage (Prod.)' },
-                { id: 'A09m4Y_bJKc', title: 'Welcome to Mexico City (Doku)' }
+                { id: 'Lt7W_Mu1EXE', title: 'The Voice of Germany' },
+                { id: 'fKfno6LTPZM', title: 'Gangstarap Reportage' },
+                { id: 'A09m4Y_bJKc', title: 'Welcome to Mexico City' }
               ]
               .slice(0, showAllVideos ? undefined : 3)
               .map(video => (
@@ -244,13 +244,10 @@ function MusicPage() {
               <div className="gallery-img-wrapper"><img src="/images/gallery/Taiga_Trece_Presse©Nils_Schwarz.jpg" alt="Taiga Trece Press Photo" className="gallery-img" /></div>
               <div className="gallery-img-wrapper"><img src="/images/gallery/PREVIEW_Taiga-Trece__A2A9948.jpg" alt="Taiga Trece" className="gallery-img" /></div>
               <div className="gallery-img-wrapper"><img src="/images/gallery/Taiga-Trece_Nils-Schwarz_MG_6445.jpg" alt="Taiga Trece" className="gallery-img" /></div>
-              <div className="gallery-img-wrapper"><img src="/images/gallery/Taiga-Trece_Nils-Schwarz_MG_6775.jpg" alt="Taiga Trece" className="gallery-img" /></div>
               <div className="gallery-img-wrapper"><img src="/images/gallery/_MG_9330_1.jpg" alt="Taiga Trece" className="gallery-img" /></div>
               <div className="gallery-img-wrapper"><img src="/images/gallery/_MG_9353.jpg" alt="Taiga Trece" className="gallery-img" /></div>
               <div className="gallery-img-wrapper"><img src="/images/gallery/_MG_9429_1.jpg" alt="Taiga Trece" className="gallery-img" /></div>
-              <div className="gallery-img-wrapper"><img src="/images/gallery/final-final.jpg" alt="Taiga Trece" className="gallery-img" /></div>
               <div className="gallery-img-wrapper"><img src="/images/gallery/image00018.jpeg" alt="Taiga Trece" className="gallery-img" /></div>
-              <div className="gallery-img-wrapper"><img src="/images/gallery/10420129_666770730098559_7303726557063938859_n.jpg" alt="Taiga Trece" className="gallery-img" /></div>
               <div className="gallery-img-wrapper"><img src="/images/gallery/25626765_1819050951501950_8608751094007917596_o.jpg" alt="Taiga Trece" className="gallery-img" /></div>
               <div className="gallery-img-wrapper"><img src="/images/gallery/36440799_2072379706168542_3790810668857294848_o.jpg" alt="Taiga Trece" className="gallery-img" /></div>
               <div className="gallery-img-wrapper"><img src="/images/gallery/37943277_2154280364645672_79177215295619072_n.jpg" alt="Taiga Trece" className="gallery-img" /></div>

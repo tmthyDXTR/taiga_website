@@ -160,7 +160,7 @@ function HomePage() {
         >
           {t('navigation.theArtist')}
         </a>
-
+        <p>·</p>
         <a
           className="menu-link workshops-link"
           href="/w"
@@ -169,7 +169,7 @@ function HomePage() {
         >
           {t('navigation.workshops')}
         </a>
-
+        <p>·</p>
         <a
           className="menu-link tbd-link"
           href="/"
