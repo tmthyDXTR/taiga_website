@@ -6,17 +6,21 @@
 /* === CSS VARIABLES === */
 :root {
   --vinyl-slide-distance: 22vw;
+  --music-header-offset: 120px; /* used on desktop to offset sticky header */
 }
 
 /* === BASE LAYOUT === */
 .music-page {
-  min-height: 100vh;
+  height: 100vh;
   background: #000;
   color: var(--lime-green);
   position: relative;
   overflow-x: hidden;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
+  /* scroll-snap is enabled only on desktop via a media query below */
+  scroll-padding-top: 0;
 }
 
 .music-page .logo-container,
@@ -354,10 +358,10 @@
   height: 100%;
   object-fit: cover;
   z-index: 2;
-  box-shadow: 
+  /* box-shadow:
     0 2px 5px rgba(0, 0, 0, 0.3),
     0 1px 2px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1); */
   border-radius: 6px;
   cursor: pointer;
 }
@@ -375,7 +379,7 @@
   aspect-ratio: 1;
   background: linear-gradient(135deg, #3d0557 0%, #550778 50%, #2d0440 100%);
   border-radius: 4px;
-  box-shadow: 
+  box-shadow:
     0 4px 10px rgba(0, 0, 0, 0.3),
     0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 0;
@@ -485,7 +489,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.0rem;
-  align-items: flex-end;  
+  align-items: flex-end;
 }
 
 .track-names p {
@@ -515,21 +519,21 @@
   .vinyl-disc:hover {
     transform: translateX(var(--vinyl-slide-distance));
   }
-  
+
   .vinyl-container:has(.vinyl-disc:hover) .tracklist-link,
   .tracklist-link:hover {
     color: #ffae4a;
     transform: scale(1.05);
   }
-  
+
   .insert-card.active {
     animation: slideOutAndBack 0.8s ease-in-out forwards;
   }
-  
+
   .insert-card.closing {
     animation: slideBackAndOut 0.8s ease-in-out forwards;
   }
-  
+
   .booklet-link:hover {
     color: #ffae4a;
     transform: scale(1.05);
@@ -582,12 +586,52 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
+  /* per-section offset (desktop-only). Set on individual sections via --section-offset or use helper classes */
+  --section-offset: 0px;
+} 
 
 .section-container {
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
+}
+
+/* === DESKTOP-ONLY SCROLL-SNAP & HEADER OFFSET === */
+@media (min-width: 769px) {
+  .music-page {
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Offset applied per-section via --section-offset. Hero defaults to header offset. */
+  .music-hero {
+    /* ensure it snaps into view and leaves space for the sticky logo */
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    /* Default hero offset (can be overridden by setting --section-offset on the element) */
+    --section-offset: calc(var(--music-header-offset) + 8px);
+    scroll-margin-top: var(--section-offset);
+    /* restore original top padding so the hero content is reachable */
+    padding-top: 20px;
+  }
+
+  /* Other content sections snap normally; they use --section-offset (default 0). */
+  .music-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    scroll-margin-top: var(--section-offset);
+  }
+
+  /* Helpful utility classes to set offsets per-section */
+  .offset-small { --section-offset: 80px; }
+  .offset-medium { --section-offset: 120px; }
+  .offset-large { --section-offset: 160px; }
+}
+
+@media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
+  .music-page {
+    scroll-behavior: smooth;
+  }
 }
 
 .section-title {
@@ -887,7 +931,7 @@
   .music-hero {
     padding-top: 5px;
   }
-  
+
   /* Navigation - larger, dark background */
   .section-nav {
     gap: 0.8rem 1.2rem;
@@ -908,12 +952,12 @@
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }
-  
+
   /* Hide vinyl disc, show only cover */
   .vinyl-disc {
     display: none;
   }
-  
+
   /* Vinyl container - relative positioning below nav */
   .vinyl-container {
     position: relative;
@@ -923,29 +967,29 @@
     max-height: none;
     margin-top: 2rem;
   }
-  
+
   .album-cover {
     box-shadow: none;
     border: none;
     border-radius: 0;
   }
-  
+
   /* Content starts after image */
   .music-content {
     padding: 0 0 90px 0;
     margin-top: 0;
   }
-  
+
   /* Sections */
   .music-section {
     padding: 3rem 1.5rem;
     min-height: auto;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .about-text {
     font-size: 1.1rem;
   }
@@ -983,7 +1027,7 @@
     height: 40px;
     font-size: 1.2rem;
   }
-  
+
   /* Book and Collab buttons - responsive sizing */
   .book-button,
   .collab-button {
@@ -991,12 +1035,12 @@
     padding: 0.8rem 1.5rem;
     letter-spacing: 0.08em;
   }
-  
+
   .book-text,
   .collab-text {
     font-size: 1rem;
   }
-  
+
   .coming-soon p {
     font-size: 1.2rem;
   }

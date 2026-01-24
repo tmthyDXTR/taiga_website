@@ -10,6 +10,7 @@ function MusicPage() {
   const { t } = useTranslation()
   const navigate = useNavigate()
   // const menuLinkRef = useRef<HTMLAnchorElement>(null)
+  const pageRef = useRef<HTMLDivElement>(null)
   const floatingNavRef = useRef<HTMLDivElement>(null)
   const [showBackToTop, setShowBackToTop] = useState(false)
   const [showFloatingNav, setShowFloatingNav] = useState(false)
@@ -32,16 +33,21 @@ function MusicPage() {
     document.documentElement.style.fontFamily = font
   }, [])
 
-  // Show/hide back to top button and floating nav based on scroll position
+  // Show/hide back to top button and floating nav based on the scroll container (desktop uses .music-page)
   useEffect(() => {
+    const el = pageRef.current
     const handleScroll = () => {
-      const scrolled = window.scrollY
+      const scrolled = el ? el.scrollTop : window.scrollY
       setShowBackToTop(scrolled > 400)
       // Show floating nav at the same time as back to top
       setShowFloatingNav(scrolled > 400)
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+
+    const target: (Window | HTMLElement) = el ?? window
+    target.addEventListener('scroll', handleScroll)
+    // Run once to set initial visible state
+    handleScroll()
+    return () => target.removeEventListener('scroll', handleScroll)
   }, [])
 
   // Close floating nav when clicking outside
@@ -54,6 +60,55 @@ function MusicPage() {
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [floatingNavOpen])
+
+  // Position floating nav so it sits exactly where the header language switcher is
+  useEffect(() => {
+    const updatePosition = () => {
+      const headerControls = document.querySelector('.logo-container .header-controls') as HTMLElement | null
+      const btn = floatingNavRef.current
+      if (!btn) return
+
+      if (headerControls) {
+        const rect = headerControls.getBoundingClientRect()
+        // center the toggle vertically on the header control
+        const top = Math.max(8, rect.top + rect.height / 2 - btn.offsetHeight / 2)
+        // compute right offset so the right edges align
+        const right = Math.max(8, Math.round(window.innerWidth - rect.right))
+        // clamp to viewport
+        const maxTop = Math.max(8, window.innerHeight - btn.offsetHeight - 8)
+        const clampedTop = Math.min(top, maxTop)
+        btn.style.top = `${clampedTop}px`
+        btn.style.right = `${right}px`
+        btn.style.left = 'auto'
+      } else {
+        // fallback to default small offset
+        btn.style.top = ''
+        btn.style.right = ''
+        btn.style.left = ''
+      }
+    }
+
+    // update on resize or scroll of the page container
+    const onResize = () => updatePosition()
+    const onScroll = () => updatePosition()
+
+    updatePosition()
+    window.addEventListener('resize', onResize)
+
+    const scroller = pageRef.current
+    if (scroller) scroller.addEventListener('scroll', onScroll)
+    else window.addEventListener('scroll', onScroll)
+
+    // also reposition shortly after state changes that might affect layout
+    const timeout = setTimeout(updatePosition, 300)
+
+    return () => {
+      window.removeEventListener('resize', onResize)
+      if (scroller) scroller.removeEventListener('scroll', onScroll)
+      else window.removeEventListener('scroll', onScroll)
+      clearTimeout(timeout)
+    }
+  }, [floatingNavRef, pageRef])
 
   // const handleVinylClick = () => {
   //   menuLinkRef.current?.click()
@@ -72,7 +127,11 @@ function MusicPage() {
   }
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    if (pageRef.current) {
+      pageRef.current.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
 
   const goHome = () => {
@@ -92,7 +151,7 @@ function MusicPage() {
   ]
 
   return (
-    <div className="music-page">
+    <div className={`music-page ${showFloatingNav ? 'floating-visible' : ''}`} ref={pageRef}>
       {/* TAIGA Logo - Unified component */}
       <LogoHeader clickable onClick={goHome} />
       
@@ -237,7 +296,7 @@ function MusicPage() {
         </section>
 
         {/* Gallery Section */}
-        <section id="gallery" className="music-section gallery-section">
+        <section id="gallery" className="music-section gallery-section offset-small">
           <div className="section-container">
             <h2 className="section-title">{t('music.nav.gallery')}</h2>
             <div className="gallery-grid">

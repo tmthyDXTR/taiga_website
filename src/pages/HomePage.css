@@ -9,6 +9,9 @@
   --color-c2: var(--pink-magenta);
   --color-c3: #ffffff; /* white */
 
+  /* A stronger green used specifically for 'Projects' (not the lime variant) */
+  --green: #00c000;
+
   --fade-speed: 250ms;
 }
 
@@ -116,6 +119,25 @@ html, body {
 .top-nav .menu-link.tbd-link:hover,
 .home-page.hover-c3 .top-nav .menu-link.tbd-link {
   color: var(--color-c3); /* TBD */
+}
+
+/* Projects-specific hover: color only the Projects link, the site title, and the chameleon with the stronger green (--green) */
+.top-nav .menu-link.tbd-link:hover,
+.top-nav .menu-link.tbd-link:focus,
+.top-nav .menu-link.tbd-link:focus-visible {
+  color: var(--green) !important;
+}
+
+.home-page:has(.top-nav .menu-link.tbd-link:hover) .site-title,
+.home-page:has(.top-nav .menu-link.tbd-link:focus) .site-title,
+.home-page:has(.top-nav .menu-link.tbd-link:focus-visible) .site-title {
+  color: var(--green) !important;
+}
+
+.home-page:has(.top-nav .menu-link.tbd-link:hover) .chameleon,
+.home-page:has(.top-nav .menu-link.tbd-link:focus) .chameleon,
+.home-page:has(.top-nav .menu-link.tbd-link:focus-visible) .chameleon {
+  color: var(--green) !important;
 }
 
 /* Mobile tilt gradient for all links - override desktop hover colors */

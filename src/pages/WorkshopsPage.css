@@ -1,10 +1,12 @@
 /* Workshops Page Styles */
 .workshops-page {
   min-height: 100vh;
-  background-color: white;
-  color: black;
+  background-color: var(--pink-magenta);
+  color: white;
   position: relative;
+  /* For quick test: use pink background */
 }
+
 
 /* Site title - cleaner homepage style */
 .workshops-page .site-title {
@@ -37,13 +39,106 @@
 /* Header */
 .workshops-header {
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 1rem 2rem;
-  border-bottom: 2px solid black;
-  background-color: white;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0.6rem 2rem; /* tighten vertical padding so nav can center visually */
+  border-bottom: 2px solid rgba(255,255,255,0.06);
+  background-color: black;
   position: relative;
   z-index: 10;
+}
+
+/* Desktop: place nav and title/back button in a horizontal row and vertically center */
+@media (min-width: 769px) {
+  .workshops-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 3rem;
+  }
+
+  .workshops-header .section-nav {
+    order: 1;
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center; /* center horizontally inside header */
+    align-items: center; /* vertical centering */
+  }
+
+  .workshops-header .header-row {
+    order: 2;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0;
+  }
+}
+
+.workshops-header .header-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.6rem;
+}
+
+.workshops-header .page-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: white;
+  margin: 0;
+}
+/* Section nav inside the header (simplified) */
+.workshops-header .section-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* ensure vertical centering */
+  gap: 0.6rem 1.2rem;
+  margin: 0;
+  padding: 0; /* avoid extra vertical space */
+  height: 100%;
+  white-space: nowrap; /* keep links on single line */
+}
+
+.workshops-header .section-nav .nav-link {
+  background: transparent;
+  border: none;
+  color: var(--pink-magenta);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.18s ease, transform 0.18s ease;
+  padding: 0; /* remove vertical padding so line-height controls centering */
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.workshops-header .section-nav .nav-link:hover {
+  color: var(--lime-green);
+}
+
+
+.workshops-header .section-nav .nav-link.back-link {
+  color: var(--pink-magenta);
+  opacity: 1;
+}
+
+/* Ensure back-link also responds to hover like other nav links */
+.workshops-header .section-nav .nav-link.back-link:hover {
+  color: var(--lime-green);
+}
+
+/* Mobile: match Music page size for nav links (touch-friendly) */
+@media (max-width: 768px) {
+  .workshops-header .section-nav .nav-link {
+    font-size: 1rem; /* smaller, mobile-friendly size for workshops header */
+    padding: 0.3rem 0.6rem;
+    font-weight: 700;
+  }
 }
 
 .back-button {
@@ -56,15 +151,38 @@
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
+  border: 1px solid rgba(0,0,0,0.08);
 }
 
 .back-button:hover {
-  background-color: #333;
+  background-color: #eaeaea;
   transform: translateY(-2px);
-}
+} 
 
 .back-link {
   text-decoration: none;
+}
+
+/* h tiles colors — background only around words via .word-bg */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--pink-magenta);
+  background-color: transparent;
+  text-transform: uppercase;
+}
+
+.word-bg {
+  display: inline-block;
+  background-color: black;
+  color: var(--pink-magenta);
+  padding: 0.08em 0.35em;
+  /* border-radius: 4px; */
+  line-height: 1;
+}
+
+.word-bg--subtle {
+  background-color: rgba(0,0,0,0.7);
+  padding: 0.06em 0.3em;
+  border-radius: 3px;
 }
 
 .page-title h1 {
@@ -105,24 +223,96 @@
 
 .hero-image-container {
   width: 100%;
-  aspect-ratio: 4/3;
   overflow: hidden;
   border: 2px solid black;
 }
 
-.hero-image {
+/* Simple responsive gallery in hero area */
+.hero-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  max-width: 960px; /* center and limit width */
+  margin: 0 auto;
+  justify-self: center;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(.22,.9,.3,1);
+  will-change: transform;
+}
+
+.slide {
+  min-width: 100%;
+  height: 420px;
+  overflow: hidden;
+}
+
+.slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
+
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: 2px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-prev { left: 12px }
+.carousel-next { right: 12px }
+
+.carousel-dots {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 14px;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: black;
+  border: 1px solid rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+
+/* make active indicator black */
+.dot.active { background: var(--pink-magenta); }
+
+@media (max-width: 768px) {
+  .slide { height: 240px }
+  .carousel-prev, .carousel-next { width: 44px; height: 44px }
+}
+
 
 /* Partners Section */
 .partners-section {
   padding: 4rem 2rem;
-  background-color: #f8f8f8;
-  border-top: 2px solid #e0e0e0;
-  border-bottom: 2px solid #e0e0e0;
-}
+  background-color: black;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+} 
 
 .partners-section h3 {
   text-align: center;
@@ -148,8 +338,8 @@
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  background: white;
-  border: 2px solid #e0e0e0;
+  background: black;
+  border: 2px solid rgba(255,255,255,0.06);
   min-height: 120px;
   max-height: 120px;
   height: 120px;
@@ -158,22 +348,27 @@
   font-weight: 600;
   text-align: center;
   transition: all 0.3s ease;
-  color: #333;
+  color: white;
   position: relative;
   overflow: visible;
-}
+} 
 
 .partner-logo img {
   max-width: 100%;
-  min-height: 50px;
-  max-height: 70px;
+  min-height: 40px;
+  max-height: 80px;
   width: auto;
   height: auto;
   object-fit: contain;
   position: relative;
   z-index: 2;
   transition: transform 0.3s ease;
-}
+  /* ensure logos designed for bright backgrounds are readable on dark sections */
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+} 
 
 .partner-logo:hover {
   transform: translate(6px, -6px);
@@ -247,13 +442,18 @@
 }
 
 .workshop-item {
-  border: 2px solid black;
+  border: 2px solid rgba(255,255,255,0.06);
   padding: 2rem;
   transition: all 0.3s ease;
   position: relative;
   overflow: visible;
-  background: white;
-}
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  /* give cards a minimum height so actions can sit at the bottom */
+  min-height: 360px;
+}  
 
 .workshop-item:hover {
   transform: translate(6px, -6px);
@@ -334,9 +534,9 @@
 }
 
 .workshop-description p {
-  color: #333;
+  color: #fff;
   line-height: 1.6;
-}
+} 
 
 .workshop-details {
   display: flex;
@@ -345,8 +545,38 @@
   margin-bottom: 1.5rem;
 }
 
+.workshop-action {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: auto; /* push actions to the bottom */
+}
+
+@media (max-width: 600px) {
+  .workshop-action {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .register-button, .more-info-button {
+    width: 100%;
+  }
+} 
+
 .workshop-level {
-  background-color: #f0f0f0;
+  background-color: rgba(255,255,255,0.06);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #fff;
+  border: 1px solid white;;
+}
+
+.workshop-duration {
+  background-color: var(--pink-magenta);
+  color: #000;
   padding: 0.25rem 0.75rem;
   font-size: 0.875rem;
   font-weight: 600;
@@ -359,11 +589,24 @@
   letter-spacing: 1px;
 }
 
+.workshop-location {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 0.4rem;
+}
+
+.workshop-note {
+  font-size: 0.9rem;
+  color: #555;
+  font-style: italic;
+  margin-top: 0.75rem;
+}
+
 .register-button {
   background-color: black;
   color: white;
   padding: 0.75rem 2rem;
-  border: none;
+  border: 4px solid var(--pink-magenta);
   font-weight: 900;
   letter-spacing: 1px;
   cursor: pointer;
@@ -377,7 +620,68 @@
 }
 
 .register-button:hover {
-  background-color: #333;
+  color: var(--pink-magenta);
+  background-color: white;
+}
+
+.more-info-button {
+  background: transparent;
+  border: 2px solid #333;
+  color: var(--pink-magenta);
+  padding: 0.75rem 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  margin-right: 0.75rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.more-info-button:hover {
+  background: #f0f0f0;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 2rem;
+}
+
+.modal {
+  background: white;
+  max-width: 720px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+}
+
+.modal h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.modal p {
+  white-space: pre-line;
+  line-height: 1.6;
+  color: #222;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
 }
 
 /* Workshop info */

@@ -32,8 +32,15 @@
   transform: translateY(-50%);
   display: flex;
   align-items: center;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
+/* Hide header controls (language switcher) when the floating nav toggle appears */
+.music-page.floating-visible .logo-container .header-controls {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
 .logo {
   height: 120px;
   width: auto;

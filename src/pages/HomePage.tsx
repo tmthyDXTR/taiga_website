@@ -172,7 +172,7 @@ function HomePage() {
         <p>·</p>
         <a
           className="menu-link tbd-link"
-          href="/"
+          href="/p"
           onMouseEnter={() => setLinkHover('c3')}
           onMouseLeave={() => setLinkHover(null)}
         >

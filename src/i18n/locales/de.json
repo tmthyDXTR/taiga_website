@@ -1,134 +1,174 @@
 {
-  "navigation": {
-    "theArtist": "RAP ARTIST",
-    "workshops": "WORKSHOPS",
-    "tbd": "PROJECTS",
-    "backToTriangle": "← ZURÜCK"
-  },
-  "homepage": {
-    "mobileInstruction": "Nach links oder rechts wischen zum Auswählen"
-  },
-  "music": {
-    "title": "Die Künstlerin",
-    "trackList": "LINKTREE",
-    "heroTitle": "Taiga Trece",
-    "heroSubtitle": "Musikerin • Künstlerin • Coach",
-    "heroDescription": "Neu schreiben! Taiga Trece ist eine freiberufliche Rapperin und Künstlerin, die künstlerische Methoden mit Coaching und somatischer Erfahrung verbindet. Durch Musik, Workshops und Persönlichkeitsentwicklung schafft sie innovative Räume für kreativen Ausdruck und Empowerment.",
-    "nav": {
-      "about": "BIO",
-      "videos": "VIDEO",
-      "gallery": "FOTO",
-      "book": "BOOKING",
-      "collab": "COLLAB",
-      "tickets": "SHOWS",
-      "shop": "SHOP (aktuell erst mal noch raus)"
+    "navigation": {
+        "theArtist": "RAP ARTIST",
+        "workshops": "WORKSHOPS",
+        "tbd": "PROJECTS",
+        "backToTriangle": "← ZURÜCK"
     },
-    "aboutTitle": "BIO",
-    "aboutText": "Taiga Trece steht seit Jahren als Rapperin auf Bühnen im In- und Ausland. Geboren in München, verbringt sie ihre Jugendjahre in Mexiko.\n\nMit ihren Texten auf Deutsch und Spanisch bringt sie Straße, Poesie und Haltung – roh, ehrlich und unabhängig vom Mainstream.\n\nAls eine der ersten Frauen der Münchner Hip-Hop-Szene hat sie sich einen festen Platz erarbeitet. Ihre Alben, Releases und Live-Auftritte spiegeln eine Künstlerin wider, die Brücken zwischen Ambivalenzen baut und sich immer wieder neues schafft– kulturell, sprachlich und musikalisch.",
-    "bookDescription": "Für Bookinganfragen hier melden.",
-    "bookButton": "BUCHUNGSANFRAGE STARTEN",
-    "collabDescription": "Egal ob künstlerische Projekte oder Content Erstellung in Social Media. Meldet euch gerne bei Kollaborationsanfragen.",
-    "collabButton": "KOLLABORATION STARTEN",
-    "ticketsComingSoon": "Hier gibt es bald neue Termine.",
-    "shopComingSoon": "Merch und Releases folgen bald...",
-    "latestTitle": "Aktuelle Arbeiten",
-    "latestDescription": "Entdecke Taigas musikalische Reise durch ihre Veröffentlichungen, Kollaborationen und künstlerischen Projekte.",
-    "listenButton": "AUF SPOTIFY HÖREN",
-    "watchButton": "VIDEOS ANSEHEN",
-    "contactTitle": "Verbinden",
-    "contactDescription": "Folge Taigas musikalischer Reise und bleibe über neue Veröffentlichungen, Auftritte und künstlerische Kollaborationen auf dem Laufenden.",
-    "instagramButton": "INSTAGRAM",
-    "websiteButton": "WEBSITE BESUCHEN"
-  },
-  "workshops": {
-    "title": "Workshops & Coaching",
-    "heroTitle": "Workshops & Coaching",
-    "heroDescription": "Taiga Trece verbindet künstlerische Methoden mit Coaching und somatischer Erfahrung. Sie schafft innovative Lernräume, in denen kreativer Ausdruck, Empowerment und Persönlichkeitsentwicklung durch Selbsterfahrung, Resilienz und Wachstum im Mittelpunkt stehen – individuell oder im Team.",
-    "nav": {
-      "partners": "PARTNER",
-      "workshops": "WORKSHOPS",
-      "about": "ÜBER",
-      "contact": "KONTAKT"
+    "homepage": {
+        "mobileInstruction": "Nach links oder rechts wischen zum Auswählen"
     },
-    "partnersTitle": "Vertrauensvolle Partner & Zusammenarbeit",
-    "focusAreasTitle": "Workshop-Schwerpunkte",
-    "aboutTitle": "Über Taiga Trece",
-    "contactTitle": "Kontakt aufnehmen",
-    "contactDescription": "Interesse an einem Workshop oder Coaching? Taiga arbeitet mit Kulturinstitutionen, Bildungsanbietern, Unternehmen und Einzelpersonen zusammen. Kontaktiere sie, um deine spezifischen Bedürfnisse zu besprechen und ein maßgeschneidertes Programm zu erstellen.",
-    "emailButton": "CONTACT",
-    "websiteButton": "WEBSITE BESUCHEN",
-    "inquireButton": "ANFRAGEN",
+    "music": {
+        "title": "Die Künstlerin",
+        "trackList": "LINKTREE",
+        "heroTitle": "Taiga Trece",
+        "heroSubtitle": "Musikerin • Künstlerin • Coach",
+        "heroDescription": "Neu schreiben! Taiga Trece ist eine freiberufliche Rapperin und Künstlerin, die künstlerische Methoden mit Coaching und somatischer Erfahrung verbindet. Durch Musik, Workshops und Persönlichkeitsentwicklung schafft sie innovative Räume für kreativen Ausdruck und Empowerment.",
+        "nav": {
+            "about": "BIO",
+            "videos": "VIDEO",
+            "gallery": "FOTO",
+            "book": "BOOKING",
+            "collab": "COLLAB",
+            "tickets": "SHOWS",
+            "shop": "SHOP (aktuell erst mal noch raus)"
+        },
+        "aboutTitle": "BIO",
+        "aboutText": "Taiga Trece steht seit Jahren als Rapperin auf Bühnen im In- und Ausland. Geboren in München, verbringt sie ihre Jugendjahre in Mexiko.\n\nMit ihren Texten auf Deutsch und Spanisch bringt sie Straße, Poesie und Haltung – roh, ehrlich und unabhängig vom Mainstream.\n\nAls eine der ersten Frauen der Münchner Hip-Hop-Szene hat sie sich einen festen Platz erarbeitet. Ihre Alben, Releases und Live-Auftritte spiegeln eine Künstlerin wider, die Brücken zwischen Ambivalenzen baut und sich immer wieder neues schafft– kulturell, sprachlich und musikalisch.",
+        "bookDescription": "Für Bookinganfragen hier melden.",
+        "bookButton": "BUCHUNGSANFRAGE STARTEN",
+        "collabDescription": "Egal ob künstlerische Projekte oder Content Erstellung in Social Media. Meldet euch gerne bei Kollaborationsanfragen.",
+        "collabButton": "KOLLABORATION STARTEN",
+        "ticketsComingSoon": "Hier gibt es bald neue Termine.",
+        "shopComingSoon": "Merch und Releases folgen bald...",
+        "latestTitle": "Aktuelle Arbeiten",
+        "latestDescription": "Entdecke Taigas musikalische Reise durch ihre Veröffentlichungen, Kollaborationen und künstlerischen Projekte.",
+        "listenButton": "AUF SPOTIFY HÖREN",
+        "watchButton": "VIDEOS ANSEHEN",
+        "contactTitle": "Verbinden",
+        "contactDescription": "Folge Taigas musikalischer Reise und bleibe über neue Veröffentlichungen, Auftritte und künstlerische Kollaborationen auf dem Laufenden.",
+        "instagramButton": "INSTAGRAM",
+        "websiteButton": "WEBSITE BESUCHEN"
+    },
     "workshops": {
-      "rapSongwriting": {
-        "title": "Rap & Songwriting",
-        "duration": "Halb-/Ganztägig",
-        "description": "Finde deine Stimme, schreibe authentische Texte und entwickle deine Performance-Fähigkeiten. Lerne, dich durch Rap als kreatives Werkzeug für Identität und Selbstausdruck auszudrücken.",
-        "level": "Alle Level"
-      },
-      "femaleEmpowerment": {
-        "title": "Female Empowerment & FLINTA*",
-        "duration": "Workshop-Serie",
-        "description": "Entwickle Sichtbarkeit, Präsenz, Selbstvertrauen und Resilienz. Sichere Räume für Frauen und FLINTA*-Personen, um Potentiale zu erkunden und authentischen Selbstausdruck zu stärken.",
-        "level": "Empowerment"
-      },
-      "deutschRap": {
-        "title": "Deutsch lernen mit Rap",
-        "duration": "Flexibel",
-        "description": "Erlebe Sprachenlernen auf lebendige, kreative und spielerische Weise. Nutze Rap und Rhythmus, um deutsche Sprachkenntnisse und kulturelles Verständnis durch Musik zu verbessern.",
-        "level": "Sprachenlernen"
-      },
-      "selfAwareness": {
-        "title": "Selbstwahrnehmung & Präsenz",
-        "duration": "1-2 Tage",
-        "description": "Authentische Präsenz, klare Kommunikation und Wirkungsverständnis. Entwickle Selbstwahrnehmung und lerne, dich selbstbewusst in persönlichen und beruflichen Kontexten zu präsentieren.",
-        "level": "Professionell"
-      },
-      "femaleHealth": {
-        "title": "Female Health & Embodiment",
-        "duration": "Workshop-Serie",
-        "description": "Erkunde Weiblichkeit, lerne Grenzen zu setzen und erfahre somatische Praktiken. Integrativer Ansatz, der Körperbewusstsein mit persönlichem Empowerment und Heilung verbindet.",
-        "level": "Wellness"
-      },
-      "rapYoga": {
-        "title": "Rap-Yoga",
-        "duration": "2-3 Stunden",
-        "description": "Nutze Identität als Ressource und Rap als Werkzeug. Erkunde Ambivalenzen und finde Lösungen durch die einzigartige Kombination von Bewegung, Atem und kreativem Ausdruck.",
-        "level": "Innovativ"
-      }
+        "pageTitle": "Workshops",
+        "nav": {
+            "partners": "PARTNER",
+            "workshops": "WORKSHOPS",
+            "about": "ÜBER",
+            "contact": "KONTAKT"
+        },
+        "partnersTitle": "Vertrauensvolle Partner & Zusammenarbeit",
+        "focusAreasTitle": "Workshops",
+        "aboutTitle": "Über Taiga",
+        "contactTitle": "Kontakt aufnehmen",
+        "contactDescription": "Interesse an einem Workshop oder Coaching? Taiga arbeitet mit Kulturinstitutionen, Bildungsanbietern, Unternehmen und Einzelpersonen zusammen. Kontaktiere sie, um deine spezifischen Bedürfnisse zu besprechen und ein maßgeschneidertes Programm zu erstellen.",
+        "emailButton": "CONTACT",
+        "websiteButton": "WEBSITE BESUCHEN",
+        "inquireButton": "ANFRAGEN",
+        "workshops": {
+            "rapSongwriting": {
+                "title": "Rap & Songwriting",
+                "duration": "Halb-/Ganztägig",
+                "description": "Finde deine Stimme, schreibe authentische Texte und entwickle deine Performance-Fähigkeiten. Lerne, dich durch Rap als kreatives Werkzeug für Identität und Selbstausdruck auszudrücken.",
+                "level": "Alle Level"
+            },
+            "femaleEmpowerment": {
+                "title": "Female Empowerment & FLINTA*",
+                "duration": "Workshop-Serie",
+                "description": "Entwickle Sichtbarkeit, Präsenz, Selbstvertrauen und Resilienz. Sichere Räume für Frauen und FLINTA*-Personen, um Potentiale zu erkunden und authentischen Selbstausdruck zu stärken.",
+                "level": "Empowerment"
+            },
+            "deutschRap": {
+                "title": "Deutsch lernen mit Rap",
+                "duration": "Flexibel",
+                "description": "Erlebe Sprachenlernen auf lebendige, kreative und spielerische Weise. Nutze Rap und Rhythmus, um deutsche Sprachkenntnisse und kulturelles Verständnis durch Musik zu verbessern.",
+                "level": "Sprachenlernen"
+            },
+            "femaleHealth": {
+                "title": "Female Health & Embodiment",
+                "duration": "Workshop-Serie",
+                "description": "Erkunde Weiblichkeit, lerne Grenzen zu setzen und erfahre somatische Praktiken. Integrativer Ansatz, der Körperbewusstsein mit persönlichem Empowerment und Heilung verbindet.",
+                "level": "Wellness"
+            },
+            "rapYoga": {
+                "title": "Rap-Yoga",
+                "duration": "2 Tage",
+                "description": "Ein intensiv Workshop für Frauen und Flinta zum Thema female Empowerment, Grenzen, Nein sagen und Selbstermächtigung über kreative und körperliche Methoden.",
+                "level": "Empowerment"
+            },
+            "therapySession": {
+                "title": "1:1 Coaching & Therapie Session",
+                "duration": "75 Minuten",
+                "price": "100 €",
+                "location": "Praxis in Schwabing, Ungererstraße 90, 80805 München",
+                "note": "Für Menschen mit geringem Einkommen können sich unter Umständen die Preisangaben ändern.",
+                "description": ""
+            },
+            "mentalHealth": {
+                "title": "Mental Health",
+                "duration": "1–2 Tage",
+                "description": "Ein Seminar mit dem Schwerpunkt mentale Gesundheit, Selfcare & Embodiment. Für alle, die strugglen aus dem Kopf zu kommen und neue Methoden kennenlernen, Selbstliebe erfahren und Lösungspotenzial entfalten möchten.",
+                "level": "Offen"
+            },
+            "selfAwareness": {
+                "title": "Selbstwahrnehmung & Selbstdarstellung",
+                "duration": "3 Tage",
+                "description": "Im Zentrum des interaktiven Workshops, steht die Auseinandersetzung mit dem Selbstbild, mit der eigenen Rolle und Identität, und beinhaltet Vision Board Arbeit. Ziel ist es, selbstbewusster aufzutreten, den eigenen Platz zu finden und sich zu positionieren.",
+                "level": "Intensiv"
+            },
+            "businessSpecial": {
+                "title": "Business Special",
+                "duration": "1 Tag",
+                "description": "Ein Intensiv Seminar, für Führungskräfte oder Mitarbeiter*innen. Es geht darum, raus aus der Comfortzone zu kommen, um neue Perspektiven und Möglichkeiten im Business Sektor zu gewinnen. Das Seminar dient dazu, Impact zu generieren, Teamgeist zu stärken, Identifikation und Purpose zu schaffen.",
+                "level": "Professional",
+                "moreInfoButton": "Warum ausgerechnet Rap als Tool?",
+                "moreInfoText": "Rap hat seinen Ruf, aber die Attitude bleibt hängen. Rap ist Unternehmertum. Diese Essenz kann als Tool genutzt werden, und gerade im Wettbewerbs- und Business Kontext gezielt eingesetzt werden. Denn jedes Unternehmen und jeder einzelne Mensch darin verfügt über ein Persönlichkeitsprofil.\nUnd das will gesehen werden. Mit den Werten von Rap können wir Ziele formulieren, Lösungswege finden, komplexe Strukturen vereinfachen und zum besseren Verständnis aktiv umsetzen."
+            }
+        },
+        "about": {
+            "professionalBackground": {
+                "title": "Beruflicher Hintergrund",
+                "description": "Freiberufliche Rapperin und Künstlerin, Bildungsberaterin, systemischer Coach und Körpertherapeutin. Gründungsmitglied des 5Elements Collective, entwickelt Projekte zur Stärkung junger Menschen in künstlerischen Kontexten."
+            },
+            "experiencePartnerships": {
+                "title": "Erfahrung & Partnerschaften",
+                "description": "Jahre der nationalen und internationalen Arbeit mit Kulturinstitutionen, NGOs, Unternehmen und Bildungsanbietern, darunter Goethe-Institut, Amnesty International, PWC, Feierwerk München und viele mehr."
+            },
+            "approachMethod": {
+                "title": "Ansatz & Methode",
+                "description": "Verbindet künstlerische Methoden mit Coaching und Somatic Experience. Schafft innovative Lernräume mit Fokus auf kreativen Ausdruck, Empowerment und Persönlichkeitsentwicklung durch Authentizität und Tiefe."
+            },
+            "visionImpact": {
+                "title": "Vision & Wirkung",
+                "description": "Steht für Empowerment, Kreativität und Transformation. Motiviert Menschen, mutig zu sein und aus ihrer Komfortzone herauszutreten, während sie sichere Räume für Wachstum und authentischen Selbstausdruck schafft."
+            }
+        },
+        "contact": "Kontakt",
+        "price": "Kontakt"
     },
-    "about": {
-      "professionalBackground": {
-        "title": "Beruflicher Hintergrund",
-        "description": "Freiberufliche Rapperin und Künstlerin, Bildungsberaterin, systemischer Coach und Körpertherapeutin. Gründungsmitglied des 5Elements Collective, entwickelt Projekte zur Stärkung junger Menschen in künstlerischen Kontexten."
-      },
-      "experiencePartnerships": {
-        "title": "Erfahrung & Partnerschaften",
-        "description": "Jahre der nationalen und internationalen Arbeit mit Kulturinstitutionen, NGOs, Unternehmen und Bildungsanbietern, darunter Goethe-Institut, Amnesty International, PWC, Feierwerk München und viele mehr."
-      },
-      "approachMethod": {
-        "title": "Ansatz & Methode",
-        "description": "Verbindet künstlerische Methoden mit Coaching und Somatic Experience. Schafft innovative Lernräume mit Fokus auf kreativen Ausdruck, Empowerment und Persönlichkeitsentwicklung durch Authentizität und Tiefe."
-      },
-      "visionImpact": {
-        "title": "Vision & Wirkung",
-        "description": "Steht für Empowerment, Kreativität und Transformation. Motiviert Menschen, mutig zu sein und aus ihrer Komfortzone herauszutreten, während sie sichere Räume für Wachstum und authentischen Selbstausdruck schafft."
-      }
+    "projects": {
+        "pageTitle": "Projekte",
+        "readMore": "Mehr lesen",
+        "project1": {
+            "title": "Bitch und Muse",
+            "body": "Bitch und Muse ist ein Lyrikband über Machtverhältnisse, Begehren und Zerfall.\n\nIn lyrischen Texten zwischen Intimität, Tagesklinik und künstlerischer Selbstbehauptung zerlegt der Band den Muse-Mythos und macht sichtbar, was sonst unausgesprochen bleibt.\n\nEin feministisches Buch über Abhängigkeit – und über das Durchschauen von Systemen – und den Mut, sie zu verlassen.\n\nEine performative Lesung zwischen Lyrik, improvisierter Musik und zeitgenössischer Kunst.\n\nBitch und Muse entsteht live – neu, roh und unwiederholbar."
+        },
+        "project2": {
+            "title": "Von Tapes zu Algorithmen",
+            "body": "Das ist KI - in echt wird es viel geiler!!! \n\nIm Frühjahr 2026 wird ein 318i BMW von 2001 zur Zeitmaschine. „Von Tapes zu Algorithmen - analoge Musik Kultur trifft auf digitale Transformation“ ist ein Kunst-Projekt, welches das Thema, Heimat, Identität und kulturelle Bewegung verbindet. Die Frage: Woher kommen wir? Wo stehen wir? Wohin fahren wir? in Zeiten von KI-Musik und den damit einhergehenden Folgen, dient das Auto als Projektionsfläche für Wandel und Zeit und erzählt eine Geschichte von Hip-Hop, Herkunft und Identität. Die Ausstellung findet im öffentlichen Raum in München statt, und lädt Menschen ein aktiv zu partizipieren. Datum und Ort wird noch bekannt gegeben."
+        },
+        "project3": {
+            "title": "Raportagen",
+            "bodyHTML": ""
+        },
+        "project4": {
+            "title": "Hostings",
+            "bodyHTML": ""
+        }
     },
-    "contact": "Kontakt",
-    "price": "Kontakt"
-  },
-  "common": {
-    "loading": "Lädt...",
-    "error": "Ein Fehler ist aufgetreten"
-  },
-  "footer": {
-    "impressum": "Impressum"
-  },
-  "impressum": {
-    "title": "Impressum",
-    "responsibleTitle": "Verantwortlich für den Inhalt",
-    "contactTitle": "Kontakt",
-    "disclaimerTitle": "Haftungsausschluss",
-    "disclaimerText": "Diese Website ist ein persönliches Portfolio. Alle Inhalte dienen zu Informationszwecken. Bei Anfragen wenden Sie sich bitte an die oben angegebene E-Mail-Adresse."
-  }
+    "common": {
+        "loading": "Lädt...",
+        "error": "Ein Fehler ist aufgetreten"
+    },
+    "footer": {
+        "impressum": "Impressum"
+    },
+    "impressum": {
+        "title": "Impressum",
+        "responsibleTitle": "Verantwortlich für den Inhalt",
+        "contactTitle": "Kontakt",
+        "disclaimerTitle": "Haftungsausschluss",
+        "disclaimerText": "Diese Website ist ein persönliches Portfolio. Alle Inhalte dienen zu Informationszwecken. Bei Anfragen wenden Sie sich bitte an die oben angegebene E-Mail-Adresse."
+    }
 }
