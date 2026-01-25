@@ -36,7 +36,9 @@
 }
 
 /* Hide header controls (language switcher) when the floating nav toggle appears */
-.music-page.floating-visible .logo-container .header-controls {
+.music-page.floating-visible .logo-container .header-controls,
+.workshops-page.floating-visible .logo-container .header-controls,
+.projects-page.floating-visible .logo-container .header-controls {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
