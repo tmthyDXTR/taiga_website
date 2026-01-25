@@ -1,986 +1,944 @@
 /* Workshops Page Styles */
 .workshops-page {
-  min-height: 100vh;
-  background-color: var(--pink-magenta);
-  color: white;
-  position: relative;
-  /* For quick test: use pink background */
-}
-
-
-/* Site title - cleaner homepage style */
-.workshops-page .site-title {
-  position: relative;
-  top: 0;
-  left: 0;
-  transform: none;
-  z-index: 1;
-  font-size: clamp(2rem, 6vw, 5rem);
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: black;
-  margin: 0;
-  padding: 1.25rem 2rem 0.5rem;
-  text-align: center;
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
+    min-height: 100vh;
+    background-color: var(--pink-magenta);
+    color: white;
+    position: relative;
+    /* For quick test: use pink background */
 }
 
 /* Language switcher positioned top-right */
 .workshops-page .language-menu {
-  position: absolute;
-  top: 1.5rem;
-  right: 2rem;
-  z-index: 40;
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    z-index: 40;
 }
 
 /* Header */
 .workshops-header {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding: 0.6rem 2rem; /* tighten vertical padding so nav can center visually */
-  border-bottom: 2px solid rgba(255,255,255,0.06);
-  background-color: black;
-  position: relative;
-  z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: black;
+    position: relative;
+    z-index: 10;
 }
 
 /* Desktop: place nav and title/back button in a horizontal row and vertically center */
 @media (min-width: 769px) {
-  .workshops-header {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.8rem 3rem;
-  }
+    .workshops-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
 
-  .workshops-header .section-nav {
-    order: 1;
-    flex: 1 1 auto;
-    display: flex;
-    justify-content: center; /* center horizontally inside header */
-    align-items: center; /* vertical centering */
-  }
+    .workshops-header .section-nav {
+        order: 1;
+        flex: 1 1 auto;
+        display: flex;
+        justify-content: center; /* center horizontally inside header */
+        align-items: center; /* vertical centering */
+    }
 
-  .workshops-header .header-row {
-    order: 2;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 0;
-  }
+    .workshops-header .header-row {
+        order: 2;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 0;
+    }
 }
 
-.workshops-header .header-row {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 0.6rem;
-}
-
-.workshops-header .page-title {
-  font-size: 1.5rem;
-  font-weight: 900;
-  letter-spacing: 1px;
-  color: white;
-  margin: 0;
-}
 /* Section nav inside the header (simplified) */
 .workshops-header .section-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center; /* ensure vertical centering */
-  gap: 0.6rem 1.2rem;
-  margin: 0;
-  padding: 0; /* avoid extra vertical space */
-  height: 100%;
-  white-space: nowrap; /* keep links on single line */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* ensure vertical centering */
+    margin: 0;
+    padding: 0; /* avoid extra vertical space */
+    height: 100%;
+    white-space: nowrap; /* keep links on single line */
 }
 
 .workshops-header .section-nav .nav-link {
-  background: transparent;
-  border: none;
-  color: var(--pink-magenta);
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-  transition: color 0.18s ease, transform 0.18s ease;
-  padding: 0; /* remove vertical padding so line-height controls centering */
-  line-height: 1;
-  display: inline-flex;
-  align-items: center;
+    background: transparent;
+    border: none;
+    color: var(--lime-green);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
 }
 
-.workshops-header .section-nav .nav-link:hover {
-  color: var(--lime-green);
-}
-
-
-.workshops-header .section-nav .nav-link.back-link {
-  color: var(--pink-magenta);
-  opacity: 1;
-}
-
-/* Ensure back-link also responds to hover like other nav links */
-.workshops-header .section-nav .nav-link.back-link:hover {
-  color: var(--lime-green);
-}
-
-/* Mobile: match Music page size for nav links (touch-friendly) */
-@media (max-width: 768px) {
-  .workshops-header .section-nav .nav-link {
-    font-size: 1rem; /* smaller, mobile-friendly size for workshops header */
-    padding: 0.3rem 0.6rem;
-    font-weight: 700;
-  }
+.workshops-header .section-nav .nav-link:hover,
+.workshops-header .section-nav .nav-link:focus,
+.workshops-header .section-nav .nav-link:focus-visible {
+    color: var(--pink-magenta);
+    outline: none;
 }
 
 .back-button {
-  background-color: black;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  font-weight: 900;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
-  border: 1px solid rgba(0,0,0,0.08);
+    background-color: black;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .back-button:hover {
-  background-color: #eaeaea;
-  transform: translateY(-2px);
-} 
+    background-color: #eaeaea;
+    transform: translateY(-2px);
+}
 
 .back-link {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 /* h tiles colors — background only around words via .word-bg */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--pink-magenta);
-  background-color: transparent;
-  text-transform: uppercase;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--pink-magenta);
+    background-color: transparent;
+    text-transform: uppercase;
 }
 
 .word-bg {
-  display: inline-block;
-  background-color: black;
-  color: var(--pink-magenta);
-  padding: 0.08em 0.35em;
-  /* border-radius: 4px; */
-  line-height: 1;
+    display: inline-block;
+    background-color: black;
+    color: var(--pink-magenta);
+    padding: 0.08em 0.35em;
+    /* border-radius: 4px; */
+    line-height: 1;
 }
 
 .word-bg--subtle {
-  background-color: rgba(0,0,0,0.7);
-  padding: 0.06em 0.3em;
-  border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0.06em 0.3em;
+    border-radius: 3px;
 }
 
 .page-title h1 {
-  font-size: 2.5rem;
-  font-weight: 900;
-  letter-spacing: 2px;
-  margin: 0;
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin: 0;
 }
 
 /* Main content */
 .workshops-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 /* Hero section */
 .workshops-hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  padding: 4rem 0;
-  align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 4rem 0;
+    align-items: center;
 }
 
 .hero-content h2 {
-  font-size: 3rem;
-  font-weight: 900;
-  letter-spacing: 2px;
-  margin-bottom: 1.5rem;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
 }
 
 .hero-description {
-  font-size: 1.125rem;
-  line-height: 1.7;
-  color: #333;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #333;
 }
 
 .hero-image-container {
-  width: 100%;
-  overflow: hidden;
-  border: 2px solid black;
+    width: 100%;
+    overflow: hidden;
+    border: 2px solid black;
 }
 
 /* Simple responsive gallery in hero area */
 .hero-carousel {
-  position: relative;
-  overflow: hidden;
-  border-radius: 6px;
-  max-width: 960px; /* center and limit width */
-  margin: 0 auto;
-  justify-self: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    max-width: 960px; /* center and limit width */
+    margin: 0 auto;
+    justify-self: center;
 }
 
 .slides {
-  display: flex;
-  transition: transform 0.6s cubic-bezier(.22,.9,.3,1);
-  will-change: transform;
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.22, 0.9, 0.3, 1);
+    will-change: transform;
 }
 
 .slide {
-  min-width: 100%;
-  height: 420px;
-  overflow: hidden;
+    min-width: 100%;
+    height: 420px;
+    overflow: hidden;
 }
 
 .slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .carousel-prev,
 .carousel-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.6);
-  color: white;
-  border: 2px solid rgba(255,255,255,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  cursor: pointer;
-  z-index: 10;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 10;
 }
 
-.carousel-prev { left: 12px }
-.carousel-next { right: 12px }
+.carousel-prev {
+    left: 12px;
+}
+.carousel-next {
+    right: 12px;
+}
 
 .carousel-dots {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 14px;
-  display: flex;
-  gap: 0.5rem;
-  z-index: 10;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 14px;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: black;
-  border: 1px solid rgba(0,0,0,0.08);
-  cursor: pointer;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: black;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    cursor: pointer;
 }
 
 /* make active indicator black */
-.dot.active { background: var(--pink-magenta); }
-
-@media (max-width: 768px) {
-  .slide { height: 240px }
-  .carousel-prev, .carousel-next { width: 44px; height: 44px }
+.dot.active {
+    background: var(--pink-magenta);
 }
 
+@media (max-width: 768px) {
+    .slide {
+        height: 240px;
+    }
+    .carousel-prev,
+    .carousel-next {
+        width: 44px;
+        height: 44px;
+    }
+}
 
 /* Partners Section */
 .partners-section {
-  padding: 4rem 2rem;
-  background-color: black;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-} 
+    padding: 4rem 2rem;
+    background-color: black;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
 
 .partners-section h3 {
-  text-align: center;
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 3rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .partners-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  align-items: center;
-  justify-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+    justify-items: center;
 }
 
 .partner-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  background: black;
-  border: 2px solid rgba(255,255,255,0.06);
-  min-height: 120px;
-  max-height: 120px;
-  height: 120px;
-  width: 100%;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-align: center;
-  transition: all 0.3s ease;
-  color: white;
-  position: relative;
-  overflow: visible;
-} 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: black;
+    border: 2px solid rgba(255, 255, 255, 0.06);
+    min-height: 120px;
+    max-height: 120px;
+    height: 120px;
+    width: 100%;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    color: white;
+    position: relative;
+    overflow: visible;
+}
 
 .partner-logo img {
-  max-width: 100%;
-  min-height: 40px;
-  max-height: 80px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  position: relative;
-  z-index: 2;
-  transition: transform 0.3s ease;
-  /* ensure logos designed for bright backgrounds are readable on dark sections */
-  background: #fff;
-  padding: 0.5rem;
-  border-radius: 6px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
-} 
+    max-width: 100%;
+    min-height: 40px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+    /* ensure logos designed for bright backgrounds are readable on dark sections */
+    background: #fff;
+    padding: 0.5rem;
+    border-radius: 6px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
 
 .partner-logo:hover {
-  transform: translate(6px, -6px);
-  border-color: #e0e0e0;
-  box-shadow: none;
+    transform: translate(6px, -6px);
+    border-color: #e0e0e0;
+    box-shadow: none;
 }
 
 /* Alternating lime-green borders for odd items */
 .partner-logo:nth-child(odd):hover::before {
-  content: '';
-  position: absolute;
-  left: -8px;
-  top: 0;
-  bottom: 0;
-  width: 8px;
-  background: var(--lime-green, #d0ff00);
-  z-index: 1;
+    content: "";
+    position: absolute;
+    left: -8px;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: var(--lime-green, #d0ff00);
+    z-index: 1;
 }
 
 .partner-logo:nth-child(odd):hover::after {
-  content: '';
-  position: absolute;
-  left: -8px;
-  bottom: -8px;
-  right: 0;
-  height: 8px;
-  background: var(--lime-green, #d0ff00);
-  z-index: 1;
+    content: "";
+    position: absolute;
+    left: -8px;
+    bottom: -8px;
+    right: 0;
+    height: 8px;
+    background: var(--lime-green, #d0ff00);
+    z-index: 1;
 }
 
 /* Alternating pink-magenta borders for even items */
 .partner-logo:nth-child(even):hover::before {
-  content: '';
-  position: absolute;
-  left: -8px;
-  top: 0;
-  bottom: 0;
-  width: 8px;
-  background: var(--pink-magenta, #ff00dd);
-  z-index: 1;
+    content: "";
+    position: absolute;
+    left: -8px;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: var(--pink-magenta, #ff00dd);
+    z-index: 1;
 }
 
 .partner-logo:nth-child(even):hover::after {
-  content: '';
-  position: absolute;
-  left: -8px;
-  bottom: -8px;
-  right: 0;
-  height: 8px;
-  background: var(--pink-magenta, #ff00dd);
-  z-index: 1;
+    content: "";
+    position: absolute;
+    left: -8px;
+    bottom: -8px;
+    right: 0;
+    height: 8px;
+    background: var(--pink-magenta, #ff00dd);
+    z-index: 1;
 }
 
 /* Workshops listing */
 .workshops-listing {
-  padding: 4rem 0;
-  border-top: 2px solid black;
+    padding: 4rem 0;
+    border-top: 2px solid black;
 }
 
 .workshops-listing h3 {
-  font-size: 2rem;
-  font-weight: 900;
-  letter-spacing: 2px;
-  margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
 }
 
 .workshops-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
 }
 
 .workshop-item {
-  border: 2px solid rgba(255,255,255,0.06);
-  padding: 2rem;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: visible;
-  background: black;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  /* give cards a minimum height so actions can sit at the bottom */
-  min-height: 360px;
-}  
+    border: 2px solid rgba(255, 255, 255, 0.06);
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: visible;
+    background: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    /* give cards a minimum height so actions can sit at the bottom */
+    min-height: 360px;
+}
 
 .workshop-item:hover {
-  transform: translate(6px, -6px);
+    transform: translate(6px, -6px);
 }
 
 /* Alternating lime-green borders for odd items */
 .workshop-item:nth-child(odd):hover::before {
-  content: '';
-  position: absolute;
-  left: -8px;
-  top: 0;
-  bottom: 0;
-  width: 8px;
-  background: var(--lime-green, #d0ff00);
-  z-index: 1;
+    content: "";
+    position: absolute;
+    left: -8px;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: var(--lime-green, #d0ff00);
+    z-index: 1;
 }
 
 .workshop-item:nth-child(odd):hover::after {
-  content: '';
-  position: absolute;
-  left: -8px;
-  bottom: -8px;
-  right: 0;
-  height: 8px;
-  background: var(--lime-green, #d0ff00);
-  z-index: 1;
+    content: "";
+    position: absolute;
+    left: -8px;
+    bottom: -8px;
+    right: 0;
+    height: 8px;
+    background: var(--lime-green, #d0ff00);
+    z-index: 1;
 }
 
 /* Alternating pink-magenta borders for even items */
 .workshop-item:nth-child(even):hover::before {
-  content: '';
-  position: absolute;
-  left: -8px;
-  top: 0;
-  bottom: 0;
-  width: 8px;
-  background: var(--pink-magenta, #ff00dd);
-  z-index: 1;
+    content: "";
+    position: absolute;
+    left: -8px;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: var(--pink-magenta, #ff00dd);
+    z-index: 1;
 }
 
 .workshop-item:nth-child(even):hover::after {
-  content: '';
-  position: absolute;
-  left: -8px;
-  bottom: -8px;
-  right: 0;
-  height: 8px;
-  background: var(--pink-magenta, #ff00dd);
-  z-index: 1;
+    content: "";
+    position: absolute;
+    left: -8px;
+    bottom: -8px;
+    right: 0;
+    height: 8px;
+    background: var(--pink-magenta, #ff00dd);
+    z-index: 1;
 }
 
 .workshop-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
 }
 
 .workshop-header h4 {
-  font-size: 1.5rem;
-  font-weight: 900;
-  letter-spacing: 1px;
-  margin: 0;
-  flex: 1;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin: 0;
+    flex: 1;
 }
 
 .workshop-duration {
-  background-color: black;
-  color: white;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+    background-color: black;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .workshop-description {
-  margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .workshop-description p {
-  color: #fff;
-  line-height: 1.6;
-} 
+    color: #fff;
+    line-height: 1.6;
+}
 
 .workshop-details {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
 }
 
 .workshop-action {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  margin-top: auto; /* push actions to the bottom */
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: auto; /* push actions to the bottom */
 }
 
 @media (max-width: 600px) {
-  .workshop-action {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .register-button, .more-info-button {
-    width: 100%;
-  }
-} 
+    .workshop-action {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .register-button,
+    .more-info-button {
+        width: 100%;
+    }
+}
 
 .workshop-level {
-  background-color: rgba(255,255,255,0.06);
-  padding: 0.25rem 0.75rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  color: #fff;
-  border: 1px solid white;;
+    background-color: rgba(255, 255, 255, 0.06);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #fff;
+    border: 1px solid white;
 }
 
 .workshop-duration {
-  background-color: var(--pink-magenta);
-  color: #000;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+    background-color: var(--pink-magenta);
+    color: #000;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .workshop-price {
-  font-size: 1.25rem;
-  font-weight: 900;
-  letter-spacing: 1px;
+    font-size: 1.25rem;
+    font-weight: 900;
+    letter-spacing: 1px;
 }
 
 .workshop-location {
-  font-size: 0.95rem;
-  color: #666;
-  margin-top: 0.4rem;
+    font-size: 0.95rem;
+    color: #666;
+    margin-top: 0.4rem;
 }
 
 .workshop-note {
-  font-size: 0.9rem;
-  color: #555;
-  font-style: italic;
-  margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
+    margin-top: 0.75rem;
 }
 
 .register-button {
-  background-color: black;
-  color: white;
-  padding: 0.75rem 2rem;
-  border: 4px solid var(--pink-magenta);
-  font-weight: 900;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    background-color: black;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: 4px solid var(--pink-magenta);
+    font-weight: 900;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
 }
 
 .register-button:hover {
-  color: var(--pink-magenta);
-  background-color: white;
+    color: var(--pink-magenta);
+    background-color: white;
 }
 
 .more-info-button {
-  background: transparent;
-  border: 2px solid #333;
-  color: var(--pink-magenta);
-  padding: 0.75rem 2rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.5rem;
-  margin-right: 0.75rem;
-  cursor: pointer;
-  width: 100%;
+    background: transparent;
+    border: 2px solid #333;
+    color: var(--pink-magenta);
+    padding: 0.75rem 2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    margin-right: 0.75rem;
+    cursor: pointer;
+    width: 100%;
 }
 
 .more-info-button:hover {
-  background: #f0f0f0;
+    background: #f0f0f0;
 }
 
 /* Modal styles */
 .modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  padding: 2rem;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 2rem;
 }
 
 .modal {
-  background: white;
-  max-width: 720px;
-  width: 100%;
-  border-radius: 8px;
-  padding: 2rem;
-  position: relative;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    background: white;
+    max-width: 720px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
 }
 
 .modal h3 {
-  margin-top: 0;
-  margin-bottom: 1rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
 
 .modal p {
-  white-space: pre-line;
-  line-height: 1.6;
-  color: #222;
+    white-space: pre-line;
+    line-height: 1.6;
+    color: #222;
 }
 
 .modal-close {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  background: transparent;
-  border: none;
-  font-size: 1.25rem;
-  cursor: pointer;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: transparent;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
 }
 
 /* Workshop info */
 .workshop-info {
-  padding: 4rem 0;
-  border-top: 2px solid black;
+    padding: 4rem 0;
+    border-top: 2px solid black;
 }
 
 .workshop-info h3 {
-  font-size: 2rem;
-  font-weight: 900;
-  letter-spacing: 2px;
-  margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
 }
 
 .info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
 }
 
 .info-item {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .info-item h4 {
-  font-size: 1.25rem;
-  font-weight: 900;
-  letter-spacing: 1px;
-  margin-bottom: 1rem;
-  min-height: 3.75rem;
-  display: flex;
-  align-items: flex-start;
+    font-size: 1.25rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    min-height: 3.75rem;
+    display: flex;
+    align-items: flex-start;
 }
 
 .info-item p {
-  color: #333;
-  line-height: 1.6;
+    color: #333;
+    line-height: 1.6;
 }
 
 /* Contact */
 .workshop-contact {
-  padding: 4rem 0;
-  border-top: 2px solid black;
-  text-align: center;
+    padding: 4rem 0;
+    border-top: 2px solid black;
+    text-align: center;
 }
 
 .workshop-contact h3 {
-  font-size: 2rem;
-  font-weight: 900;
-  letter-spacing: 2px;
-  margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
 }
 
 .workshop-contact p {
-  font-size: 1.125rem;
-  color: #333;
-  margin-bottom: 2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+    font-size: 1.125rem;
+    color: #333;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contact-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .contact-button {
-  background-color: black;
-  color: white;
-  padding: 1rem 2rem;
-  text-decoration: none;
-  font-weight: 900;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  display: inline-block;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    background-color: black;
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
 }
 
 .contact-button:hover {
-  background-color: #333;
-  transform: translateY(-2px);
+    background-color: #333;
+    transform: translateY(-2px);
 }
 
 /* === FLOATING NAVIGATION === */
 .workshops-page .floating-nav {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
 }
 
 .workshops-page .floating-nav.visible {
-  opacity: 1;
-  visibility: visible;
+    opacity: 1;
+    visibility: visible;
 }
 
 .workshops-page .floating-nav-toggle {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: white;
-  border: 2px solid black;
-  color: black;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid black;
+    color: black;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .workshops-page .floating-nav-toggle:hover {
-  background: black;
-  color: white;
+    background: black;
+    color: white;
 }
 
 .workshops-page .floating-nav-menu {
-  position: absolute;
-  top: 60px;
-  right: 0;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(10px);
-  border: 2px solid black;
-  border-radius: 0;
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  min-width: 180px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border: 2px solid black;
+    border-radius: 0;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .workshops-page .floating-nav-menu.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .workshops-page .floating-nav-link {
-  background: transparent;
-  border: none;
-  color: black;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  text-align: left;
-  cursor: pointer;
-  padding: 0.6rem 1rem;
-  transition: all 0.2s ease;
-  font-family: inherit;
-  border-radius: 0;
+    background: transparent;
+    border: none;
+    color: black;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: left;
+    cursor: pointer;
+    padding: 0.6rem 1rem;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    border-radius: 0;
 }
 
 .workshops-page .floating-nav-link:hover {
-  background: black;
-  color: white;
+    background: black;
+    color: white;
 }
 
 .workshops-page .floating-nav-link.back-link {
-  color: #666;
+    color: #666;
 }
 
 .workshops-page .floating-nav-link.back-link:hover {
-  background: black;
-  color: white;
+    background: black;
+    color: white;
 }
 
 .workshops-page .floating-nav-divider {
-  height: 1px;
-  background: black;
-  opacity: 0.2;
-  margin: 0.5rem 0;
+    height: 1px;
+    background: black;
+    opacity: 0.2;
+    margin: 0.5rem 0;
 }
 
 .workshops-page .floating-nav-language {
-  padding: 0.5rem 0.5rem;
+    padding: 0.5rem 0.5rem;
 }
 
 /* === BACK TO TOP BUTTON === */
 .workshops-page .back-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 20px;
-  z-index: 999;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: white;
-  border: 2px solid black;
-  color: black;
-  font-size: 1.5rem;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    z-index: 999;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid black;
+    color: black;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .workshops-page .back-to-top.visible {
-  opacity: 1;
-  visibility: visible;
+    opacity: 1;
+    visibility: visible;
 }
 
 .workshops-page .back-to-top:hover {
-  background: black;
-  color: white;
-  transform: translateY(-3px);
+    background: black;
+    color: white;
+    transform: translateY(-3px);
 }
 
 /* Mobile styles */
 @media (max-width: 768px) {
-  .workshops-header {
-    padding: 1rem;
-  }
-  
-  .workshops-content {
-    padding: 0 1rem;
-  }
-  
-  .workshops-hero {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 2rem 0;
-  }
-  
-  .hero-content h2 {
-    font-size: 2rem;
-  }
-  
-  .workshops-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .workshop-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-  
-  .info-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .partners-grid {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1rem;
-  }
-  
-  .partner-logo {
-    padding: 1rem;
-    min-height: 80px;
-    font-size: 0.8rem;
-  }
-  
-  .contact-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .contact-button {
-    width: 100%;
-    max-width: 300px;
-    text-align: center;
-  }
+    .workshops-header {
+        padding: 1rem;
+    }
+
+    .workshops-content {
+        padding: 0 1rem;
+    }
+
+    .workshops-hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 0;
+    }
+
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .workshops-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .workshop-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .partners-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+    }
+
+    .partner-logo {
+        padding: 1rem;
+        min-height: 80px;
+        font-size: 0.8rem;
+    }
+
+    .contact-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-button {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
-  .workshops-header {
-    padding: 0.75rem;
-  }
-  
-  .hero-content h2 {
-    font-size: 1.75rem;
-  }
-  
-  .workshops-listing h3,
-  .workshop-info h3,
-  .workshop-contact h3 {
-    font-size: 1.5rem;
-  }
-  
-  .workshop-item {
-    padding: 1.5rem;
-  }
+    .workshops-header {
+        padding: 0.75rem;
+    }
+
+    .hero-content h2 {
+        font-size: 1.75rem;
+    }
+
+    .workshops-listing h3,
+    .workshop-info h3,
+    .workshop-contact h3 {
+        font-size: 1.5rem;
+    }
+
+    .workshop-item {
+        padding: 1.5rem;
+    }
 }

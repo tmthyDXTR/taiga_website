@@ -1,7 +1,7 @@
 {
     "navigation": {
         "theArtist": "RAP ARTIST",
-        "workshops": "WORKSHOPS",
+        "workshops": "SESSIONS",
         "tbd": "PROJECTS",
         "backToTriangle": "← ZURÜCK"
     },
@@ -41,15 +41,15 @@
         "websiteButton": "WEBSITE BESUCHEN"
     },
     "workshops": {
-        "pageTitle": "Workshops",
+        "pageTitle": "Sessions",
         "nav": {
-            "partners": "PARTNER",
-            "workshops": "WORKSHOPS",
-            "about": "ÜBER",
+            "partners": "WORK",
+            "workshops": "BOOKING",
+            "about": "ABOUT",
             "contact": "KONTAKT"
         },
-        "partnersTitle": "Vertrauensvolle Partner & Zusammenarbeit",
-        "focusAreasTitle": "Workshops",
+        "partnersTitle": "References",
+        "focusAreasTitle": "Sessions",
         "aboutTitle": "Über Taiga",
         "contactTitle": "Kontakt aufnehmen",
         "contactDescription": "Interesse an einem Workshop oder Coaching? Taiga arbeitet mit Kulturinstitutionen, Bildungsanbietern, Unternehmen und Einzelpersonen zusammen. Kontaktiere sie, um deine spezifischen Bedürfnisse zu besprechen und ein maßgeschneidertes Programm zu erstellen.",

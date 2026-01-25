@@ -50,6 +50,37 @@
   object-fit: contain;
 }
 
+/* Title/text mode for logo header (used by Workshops page) */
+.logo-text {
+  color: white;
+  font-family: var(--stack-font, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif);
+  font-size: clamp(1.5rem, 4.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none; /* disabled unless clickable */
+}
+
+.logo-text.logo-clickable {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* Workshops page header — match the page background and use black title text */
+.workshops-page .logo-container,
+.workshops-page .logo-box {
+  background-color: var(--pink-magenta);
+}
+.workshops-page .logo-text {
+  color: black;
+}
+.workshops-page .header-controls {
+  color: black;
+}
+
 /* Tablet styles */
 @media (max-width: 1024px) {
   .logo {

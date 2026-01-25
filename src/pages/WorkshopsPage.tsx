@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import LogoHeader from '../components/LogoHeader'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 import Footer from '../components/Footer'
 import './WorkshopsPage.css'
@@ -115,13 +116,7 @@ function WorkshopsPage() {
 
   return (
     <div className="workshops-page">
-      {/* TAIGA TRECE text header - cleaner homepage style */}
-      <h1 className="site-title">TAIGA</h1>
-      
-      {/* language switcher */}
-      <div className="language-menu" aria-label="Select language">
-        <LanguageSwitcher />
-      </div>
+      <LogoHeader text="TAIGA SESSIONS" />
 
       {/* Floating collapsed nav - shows after scrolling */}
       <div ref={floatingNavRef} className={`floating-nav ${showFloatingNav ? 'visible' : ''}`}>

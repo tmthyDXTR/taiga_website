@@ -1,194 +1,170 @@
 /* Projects Page - simple blog style */
 .projects-page {
-  min-height: 100vh;
-  background: #000; /* black background */
-  color: #fff;
-  display: flex;
-  flex-direction: column;
+    min-height: 100vh;
+    background: #000; /* black background */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
 }
 
-.projects-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  /* Pink header background to match Projects design */
-  background: var(--pink-magenta);
-  /* sublte dark border for separation */
-  border-bottom: 2px solid rgba(0,0,0,0.06);
-}
-
-/* Make the header nav readable on pink: black text for contrast */
+/* Project header: keep nav links black on hover and ensure back-link opacity matches */
 .projects-header .section-nav .nav-link {
-  color: #000 !important; /* override workshop defaults */
+    background: transparent;
+    border: none;
+    color: #000;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
 }
-
-/* Hover/focus on nav links should turn to the Projects green */
 .projects-header .section-nav .nav-link:hover,
 .projects-header .section-nav .nav-link:focus,
 .projects-header .section-nav .nav-link:focus-visible {
-  color: var(--lime-green) !important;
-  outline: none;
+    color: var(--lime-green);
+    outline: none;
 }
-
-.projects-header .page-title {
-  color: #000 !important;
-}
-
-/* site title styling (match other pages) */
-.projects-page .site-title {
-  position: relative;
-  top: 0;
-  left: 0;
-  transform: none;
-  z-index: 1;
-  font-size: clamp(2rem, 6vw, 5rem);
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--pink-magenta);
-  margin: 0;
-  padding: 1.25rem 2rem 0.5rem;
-  text-align: center;
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
+.projects-header .section-nav .nav-link.back-link {
+    opacity: 1;
 } 
 
-.header-row {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  margin-top: 0.6rem;
+.projects-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Pink header background to match Projects design */
+    background: var(--pink-magenta);
 }
 
-.page-title {
-  font-size: 1.5rem;
-  font-weight: 900;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--pink-magenta);
-  margin: 0;
-}
+/* Navigation link color/hover behavior is shared globally in MusicPage.css.
+   Removed local overrides to keep visual consistency across pages. */
 
-.header-controls {
-  display: flex;
-  align-items: center;
+.projects-header .page-title {
+    color: #000 !important;
 }
 
 /* position language switcher like other pages */
 .projects-page .language-menu {
-  position: absolute;
-  top: 1.5rem;
-  right: 2rem;
-  z-index: 40;
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    z-index: 40;
 }
 
 .projects-content {
-  max-width: 1100px;
-  margin: 2.5rem auto;
-  padding: 0 1.5rem 4rem;
+    max-width: 1100px;
+    margin: 2.5rem auto;
+    padding: 0 1.5rem 4rem;
 }
 
 .projects-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
 }
 
 .project-card {
-  background: var(--pink-magenta);
-  color: #000; /* black text on pink box */
-  padding: 1.5rem;
-  border-radius: 0; /* no round borders */
-  border: 2px solid rgba(0,0,0,0.18);
-  box-shadow: 0 6px 22px rgba(0,0,0,0.35);
+    background: var(--pink-magenta);
+    color: #000; /* black text on pink box */
+    padding: 1.5rem;
+    border-radius: 0; /* no round borders */
+    border: 2px solid rgba(0, 0, 0, 0.18);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
 }
 
 /* project title highlight */
 .project-title .word-bg {
-  background: #000;
-  color: var(--pink-magenta);
-  padding: 0.06em 0.4em;
-  display: inline-block;
-  line-height: 1;
-  text-transform: uppercase;
-  font-weight: 900;
-  font-size: 1.6rem;
+    background: #000;
+    color: var(--pink-magenta);
+    padding: 0.06em 0.4em;
+    display: inline-block;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 1.6rem;
 }
 
 /* Videos grid */
 .videos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
 .videos-grid.small {
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 }
 
 .video-item {
-  background: rgba(0,0,0,0.06);
-  padding: 0.5rem;
-  border: 1px solid rgba(0,0,0,0.06);
+    background: rgba(0, 0, 0, 0.06);
+    padding: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .video-wrapper {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
 }
 
 .video-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 .video-title {
-  margin-top: 0.4rem;
-  font-weight: 700;
-  font-size: 0.95rem;
+    margin-top: 0.4rem;
+    font-weight: 700;
+    font-size: 0.95rem;
 }
 
 .project-title {
-  font-size: 1.25rem;
-  font-weight: 900;
-  margin: 0 0 0.75rem 0;
-  text-transform: uppercase;
+    font-size: 1.25rem;
+    font-weight: 900;
+    margin: 0 0 0.75rem 0;
+    text-transform: uppercase;
 }
 
 .project-text {
-  line-height: 1.6;
+    line-height: 1.6;
 }
 
 .project-action {
-  margin-top: 1rem;
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-start;
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
 }
 
 .project-link {
-  background: #000;
-  color: var(--pink-magenta);
-  padding: 0.6rem 1rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 700;
+    background: #000;
+    color: var(--pink-magenta);
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
 }
 
 @media (min-width: 768px) {
-  .projects-list { grid-template-columns: repeat(2, 1fr); }
+    .projects-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 480px) {
-  .page-title { font-size: 1.25rem }
-  .projects-content { margin: 1.5rem auto }
+    .page-title {
+        font-size: 1.25rem;
+    }
+    .projects-content {
+        margin: 1.5rem auto;
+    }
 }
