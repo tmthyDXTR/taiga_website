@@ -98,6 +98,7 @@ function ProjectsPage() {
     const navLinks = [
         { id: "home", labelKey: "navigation.backToTriangle", isBack: true },
         { id: "projects", labelKey: "projects.pageTitle" },
+        { id: "collab", labelKey: "music.nav.collab" },
     ];
 
     return (
@@ -245,6 +246,22 @@ function ProjectsPage() {
                     </article>
                 </div>
             </main>
+
+            {/* Creator Collab Section */}
+            <section id="collab" className="collab-section">
+              <div className="section-container">
+                <h2 className="section-title">{t('music.nav.collab')}</h2>
+                <div className="collab-content">
+                  <p className="collab-text">{t('music.collabDescription')}</p>
+                  <a
+                    href="mailto:andre.lang@bavarian-caps.de?subject=Creator%20Collaboration%20-%20Taiga%20Trece"
+                    className="collab-button"
+                  >
+                    {t('music.collabButton')}
+                  </a>
+                </div>
+              </div>
+            </section>
 
             <Footer />
         </div>

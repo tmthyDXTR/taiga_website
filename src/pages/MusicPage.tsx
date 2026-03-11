@@ -145,7 +145,6 @@ function MusicPage() {
     { id: 'videos', labelKey: 'music.nav.videos' },
     { id: 'gallery', labelKey: 'music.nav.gallery' },
     { id: 'book', labelKey: 'music.nav.book' },
-    { id: 'collab', labelKey: 'music.nav.collab' },
     { id: 'tickets', labelKey: 'music.nav.tickets' },
     // { id: 'shop', labelKey: 'music.nav.shop' },
   ]
@@ -306,10 +305,9 @@ function MusicPage() {
               <div className="gallery-img-wrapper"><img src="/images/gallery/_MG_9330_1.jpg" alt="Taiga Trece" className="gallery-img" /></div>
               <div className="gallery-img-wrapper"><img src="/images/gallery/_MG_9353.jpg" alt="Taiga Trece" className="gallery-img" /></div>
               <div className="gallery-img-wrapper"><img src="/images/gallery/_MG_9429_1.jpg" alt="Taiga Trece" className="gallery-img" /></div>
-              <div className="gallery-img-wrapper"><img src="/images/gallery/image00018.jpeg" alt="Taiga Trece" className="gallery-img" /></div>
+              <div className="gallery-img-wrapper"><img src="/images/gallery/image00018.jpg" alt="Taiga Trece" className="gallery-img" /></div>
               <div className="gallery-img-wrapper"><img src="/images/gallery/25626765_1819050951501950_8608751094007917596_o.jpg" alt="Taiga Trece" className="gallery-img" /></div>
               <div className="gallery-img-wrapper"><img src="/images/gallery/36440799_2072379706168542_3790810668857294848_o.jpg" alt="Taiga Trece" className="gallery-img" /></div>
-              <div className="gallery-img-wrapper"><img src="/images/gallery/37943277_2154280364645672_79177215295619072_n.jpg" alt="Taiga Trece" className="gallery-img" /></div>
             </div>
           </div>
         </section>
@@ -325,22 +323,6 @@ function MusicPage() {
                 className="book-button"
               >
                 {t('music.bookButton')}
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Creator Collab Section */}
-        <section id="collab" className="music-section collab-section">
-          <div className="section-container">
-            <h2 className="section-title">{t('music.nav.collab')}</h2>
-            <div className="collab-content">
-              <p className="collab-text">{t('music.collabDescription')}</p>
-              <a 
-                href="mailto:andre.lang@bavarian-caps.de?subject=Creator%20Collaboration%20-%20Taiga%20Trece"
-                className="collab-button"
-              >
-                {t('music.collabButton')}
               </a>
             </div>
           </div>

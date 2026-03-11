@@ -79,6 +79,9 @@
 .workshops-page .logo-text {
   color: black;
 }
+.projects-page .logo-text {
+  color: var(--lime-green);
+}
 .workshops-page .header-controls {
   color: black;
 }
