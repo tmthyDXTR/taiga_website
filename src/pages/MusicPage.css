@@ -25,7 +25,7 @@
 
 .music-page .logo-container,
 .music-page .logo-box {
-  background-color: transparent;
+  background-color: black;
 }
 
 .music-page .logo {
@@ -596,36 +596,12 @@
   margin: 0 auto;
 }
 
-/* === DESKTOP-ONLY SCROLL-SNAP & HEADER OFFSET === */
+/* === DESKTOP HEADER OFFSET (scroll-snap removed) === */
 @media (min-width: 769px) {
-  .music-page {
-    scroll-snap-type: y mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* Offset applied per-section via --section-offset. Hero defaults to header offset. */
   .music-hero {
-    /* ensure it snaps into view and leaves space for the sticky logo */
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    /* Default hero offset (can be overridden by setting --section-offset on the element) */
-    --section-offset: calc(var(--music-header-offset) + 8px);
-    scroll-margin-top: var(--section-offset);
     /* restore original top padding so the hero content is reachable */
     padding-top: 20px;
   }
-
-  /* Other content sections snap normally; they use --section-offset (default 0). */
-  .music-section {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    scroll-margin-top: var(--section-offset);
-  }
-
-  /* Helpful utility classes to set offsets per-section */
-  .offset-small { --section-offset: 80px; }
-  .offset-medium { --section-offset: 120px; }
-  .offset-large { --section-offset: 160px; }
 }
 
 @media (min-width: 769px) and (prefers-reduced-motion: no-preference) {
