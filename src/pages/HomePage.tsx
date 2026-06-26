@@ -153,21 +153,21 @@ function HomePage() {
 
       <nav className="top-nav" aria-label="Primary">
         <a
-          className="menu-link music-link"
-          href="/m"
-          onMouseEnter={() => setLinkHover('c1')}
-          onMouseLeave={() => setLinkHover(null)}
-        >
-          {t('navigation.theArtist')}
-        </a>
-        <p>·</p>
-        <a
           className="menu-link workshops-link"
           href="/w"
           onMouseEnter={() => setLinkHover('c2')}
           onMouseLeave={() => setLinkHover(null)}
         >
           {t('navigation.workshops')}
+        </a>
+        <p>·</p>
+        <a
+          className="menu-link music-link"
+          href="/m"
+          onMouseEnter={() => setLinkHover('c1')}
+          onMouseLeave={() => setLinkHover(null)}
+        >
+          {t('navigation.theArtist')}
         </a>
         <p>·</p>
         <a
