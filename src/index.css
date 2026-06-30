@@ -1,8 +1,52 @@
+/* ── View Transitions: cross-fade page content, keep nav stable ─────── */
+@keyframes vt-fade-out { to   { opacity: 0; } }
+@keyframes vt-fade-in  { from { opacity: 0; } }
+
+::view-transition-old(root) {
+  animation: 250ms ease both vt-fade-out;
+}
+::view-transition-new(root) {
+  animation: 300ms ease both vt-fade-in;
+}
+
+/* Nav snapshot: cross-fade + group morph moves it from landing → sub-page */
+::view-transition-old(main-nav) {
+  animation: 600ms cubic-bezier(0.4, 0, 0.2, 1) both vt-fade-out;
+  mix-blend-mode: normal;
+}
+::view-transition-new(main-nav) {
+  animation: 600ms cubic-bezier(0.4, 0, 0.2, 1) both vt-fade-in;
+  mix-blend-mode: normal;
+}
+
+/* Site title: same treatment */
+::view-transition-old(site-title) {
+  animation: 600ms cubic-bezier(0.4, 0, 0.2, 1) both vt-fade-out;
+  mix-blend-mode: normal;
+}
+::view-transition-new(site-title) {
+  animation: 600ms cubic-bezier(0.4, 0, 0.2, 1) both vt-fade-in;
+  mix-blend-mode: normal;
+}
+
+/* CSS fallback for group timing; JS overrides this via updateTiming() on vt.ready */
+::view-transition-group(main-nav) {
+  animation-duration: 600ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+::view-transition-group(site-title) {
+  animation-duration: 600ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 :root {
   /* Global color scheme */
   --lime-green: #d0ff00;
   --pink-magenta: #ff00dd;
+  --green: #00c000;
   --dark-bg: #2a2a2a;
+  /* Height of the persistent header (title + MainNav) — updated dynamically by SubPageLayout */
+  --main-nav-h: calc(7vw + 4.5rem);
   
   /* Typography */
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -18,7 +62,7 @@
 
 body {
   margin: 0;
-  background-color: white;
+  background-color: #000;
   color: black;
   width: 100vw;
   height: 100vh;

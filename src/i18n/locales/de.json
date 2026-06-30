@@ -3,7 +3,8 @@
         "theArtist": "RAP",
         "workshops": "WORKSHOPS",
         "tbd": "PROJECTS",
-        "backToTriangle": "← ZURÜCK"
+        "backToTriangle": "← ZURÜCK",
+        "bookNow": "JETZT BUCHEN"
     },
     "homepage": {
         "mobileInstruction": "Nach links oder rechts wischen zum Auswählen"
@@ -88,7 +89,7 @@
                 "level": "Empowerment"
             },
             "therapySession": {
-                "title": "1:1 Coaching & Therapie Session",
+                "title": "1:1 Coaching Session",
                 "duration": "75 Minuten",
                 "price": "100 €",
                 "location": "Praxis in Schwabing, Ungererstraße 90, 80805 München",

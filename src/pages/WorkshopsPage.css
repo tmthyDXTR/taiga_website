@@ -1,9 +1,16 @@
 /* Workshops Page Styles */
+@keyframes page-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 .workshops-page {
     min-height: 100vh;
+    padding-top: var(--main-nav-h);
     background-color: var(--pink-magenta);
     color: white;
     position: relative;
+    animation: page-fade-in 0.4s ease both;
     /* For quick test: use pink background */
 }
 
@@ -950,5 +957,279 @@ h6 {
 
     .workshop-item {
         padding: 1.5rem;
+    }
+}
+
+/* ── Full-screen hero carousel ──────────────────────────────────────────── */
+.workshops-hero-full {
+    width: 100%;
+    height: calc(100svh - var(--main-nav-h));
+    position: relative;
+    overflow: hidden;
+    background: #000;
+    outline: none;
+    touch-action: pan-y;
+    user-select: none;
+}
+
+.slides-hero {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.6s cubic-bezier(0.22, 0.9, 0.3, 1);
+    will-change: transform;
+}
+
+.slide-hero {
+    flex: 0 0 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Text overlay — each element carries its own solid black bg */
+.slide-text-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* spacing below accounts for the carousel dots (bottom: 14px + some room) */
+    padding: 1.25rem 1.25rem 3rem;
+}
+
+.slide-text-overlay h4 {
+    /* inherits the .word-bg black bg from the span inside */
+    font-size: clamp(1.1rem, 2.5vw, 2rem);
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    color: var(--pink-magenta);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* keep the default word-bg black bg — no transparent override */
+.slide-text-overlay .word-bg {
+    color: var(--pink-magenta);
+    padding: 0.15em 0.45em;
+    line-height: 1.3;
+}
+
+.slide-text-overlay p {
+    display: inline-block;
+    background: #000;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: clamp(0.82rem, 1.3vw, 1rem);
+    line-height: 1.6;
+    max-width: 60ch;
+    margin: 0;
+    padding: 0.55em 0.75em;
+}
+
+@media (min-width: 769px) {
+    .slide-text-overlay {
+        padding: 2rem 3rem 3.5rem;
+    }
+}
+
+/* References auto-scroll ticker */
+.references-ticker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    height: 52px;
+    background: #000;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+}
+
+.ticker-track {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    height: 100%;
+    width: max-content;
+    padding: 0 1.5rem;
+    animation: ticker-scroll 40s linear infinite;
+}
+
+.ticker-item {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.ticker-item span {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.ticker-item img {
+    height: 28px;
+    width: auto;
+    max-width: 90px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.75;
+}
+
+@keyframes ticker-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* ── Full-screen workshops carousel ─────────────────────────────────────── */
+.workshops-carousel-section {
+    position: relative;
+    height: 100svh;
+    overflow: hidden;
+    background: #0a0a0a;
+    touch-action: pan-y;
+    user-select: none;
+    outline: none;
+}
+
+.workshops-slides-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.22, 0.9, 0.3, 1);
+    will-change: transform;
+}
+
+.workshop-slide {
+    flex: 0 0 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 3rem 4rem;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.workshop-slide-content {
+    max-width: 720px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* large faded background number — decorative watermark */
+.ws-bg-number {
+    position: absolute;
+    right: -0.1em;
+    bottom: -0.15em;
+    font-size: clamp(14rem, 32vw, 26rem);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+    letter-spacing: -0.05em;
+}
+
+.ws-slide-number {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: var(--lime-green);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.workshop-slide h4 {
+    font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    margin: 0 0 1rem;
+}
+
+.ws-duration {
+    display: inline-block;
+    background: var(--pink-magenta);
+    color: #000;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.ws-description {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: clamp(0.88rem, 1.3vw, 1rem);
+    line-height: 1.75;
+    margin: 0 0 1.5rem;
+    max-width: 58ch;
+}
+
+.ws-level {
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.65);
+    padding: 0.2rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.ws-price {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--lime-green);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.02em;
+}
+
+.ws-location {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.4rem;
+}
+
+.ws-note {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.35);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.ws-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+    .workshop-slide {
+        padding: 5rem 1.5rem 4rem;
+        align-items: flex-start;
+    }
+    .ws-actions {
+        flex-direction: column;
+    }
+    .ws-actions .register-button,
+    .ws-actions .more-info-button {
+        width: 100%;
+        text-align: center;
     }
 }

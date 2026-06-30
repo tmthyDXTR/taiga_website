@@ -1,20 +1,13 @@
 import { useTranslation } from 'react-i18next'
 import { useRef, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import LogoHeader from '../components/LogoHeader'
-import LanguageSwitcher from '../components/LanguageSwitcher'
 import Footer from '../components/Footer'
 import './MusicPage.css'
 
 function MusicPage() {
   const { t } = useTranslation()
-  const navigate = useNavigate()
   // const menuLinkRef = useRef<HTMLAnchorElement>(null)
   const pageRef = useRef<HTMLDivElement>(null)
-  const floatingNavRef = useRef<HTMLDivElement>(null)
   const [showBackToTop, setShowBackToTop] = useState(false)
-  const [showFloatingNav, setShowFloatingNav] = useState(false)
-  const [floatingNavOpen, setFloatingNavOpen] = useState(false)
   const [showAllVideos, setShowAllVideos] = useState(false)
 
   // inject Stack Sans Text font and expose it globally
@@ -33,14 +26,12 @@ function MusicPage() {
     document.documentElement.style.fontFamily = font
   }, [])
 
-  // Show/hide back to top button and floating nav based on the scroll container (desktop uses .music-page)
+  // Show/hide back to top button based on the scroll container (desktop uses .music-page)
   useEffect(() => {
     const el = pageRef.current
     const handleScroll = () => {
       const scrolled = el ? el.scrollTop : window.scrollY
       setShowBackToTop(scrolled > 400)
-      // Show floating nav at the same time as back to top
-      setShowFloatingNav(scrolled > 400)
     }
 
     const target: (Window | HTMLElement) = el ?? window
@@ -50,81 +41,9 @@ function MusicPage() {
     return () => target.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close floating nav when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (floatingNavOpen && floatingNavRef.current && !floatingNavRef.current.contains(event.target as Node)) {
-        setFloatingNavOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [floatingNavOpen])
-
-  // Position floating nav so it sits exactly where the header language switcher is
-  useEffect(() => {
-    const updatePosition = () => {
-      const headerControls = document.querySelector('.logo-container .header-controls') as HTMLElement | null
-      const btn = floatingNavRef.current
-      if (!btn) return
-
-      if (headerControls) {
-        const rect = headerControls.getBoundingClientRect()
-        // center the toggle vertically on the header control
-        const top = Math.max(8, rect.top + rect.height / 2 - btn.offsetHeight / 2)
-        // compute right offset so the right edges align
-        const right = Math.max(8, Math.round(window.innerWidth - rect.right))
-        // clamp to viewport
-        const maxTop = Math.max(8, window.innerHeight - btn.offsetHeight - 8)
-        const clampedTop = Math.min(top, maxTop)
-        btn.style.top = `${clampedTop}px`
-        btn.style.right = `${right}px`
-        btn.style.left = 'auto'
-      } else {
-        // fallback to default small offset
-        btn.style.top = ''
-        btn.style.right = ''
-        btn.style.left = ''
-      }
-    }
-
-    // update on resize or scroll of the page container
-    const onResize = () => updatePosition()
-    const onScroll = () => updatePosition()
-
-    updatePosition()
-    window.addEventListener('resize', onResize)
-
-    const scroller = pageRef.current
-    if (scroller) scroller.addEventListener('scroll', onScroll)
-    else window.addEventListener('scroll', onScroll)
-
-    // also reposition shortly after state changes that might affect layout
-    const timeout = setTimeout(updatePosition, 300)
-
-    return () => {
-      window.removeEventListener('resize', onResize)
-      if (scroller) scroller.removeEventListener('scroll', onScroll)
-      else window.removeEventListener('scroll', onScroll)
-      clearTimeout(timeout)
-    }
-  }, [floatingNavRef, pageRef])
-
   // const handleVinylClick = () => {
   //   menuLinkRef.current?.click()
   // }
-
-  const scrollToSection = (sectionId: string) => {
-    if (sectionId === 'home') {
-      navigate('/')
-      return
-    }
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-      setFloatingNavOpen(false) // close floating nav after clicking
-    }
-  }
 
   const scrollToTop = () => {
     if (pageRef.current) {
@@ -134,66 +53,10 @@ function MusicPage() {
     }
   }
 
-  const goHome = () => {
-    navigate('/')
-  }
-
-  // Navigation links data
-  const navLinks = [
-    { id: 'home', labelKey: 'navigation.backToTriangle', isBack: true },
-    { id: 'about', labelKey: 'music.nav.about' },
-    { id: 'videos', labelKey: 'music.nav.videos' },
-    { id: 'gallery', labelKey: 'music.nav.gallery' },
-    { id: 'book', labelKey: 'music.nav.book' },
-    { id: 'tickets', labelKey: 'music.nav.tickets' },
-    // { id: 'shop', labelKey: 'music.nav.shop' },
-  ]
-
   return (
-    <div className={`music-page ${showFloatingNav ? 'floating-visible' : ''}`} ref={pageRef}>
-      {/* TAIGA Logo - Unified component */}
-      <LogoHeader clickable onClick={goHome} />
-      
-      {/* Floating collapsed nav - shows after scrolling past hero */}
-      <div ref={floatingNavRef} className={`floating-nav ${showFloatingNav ? 'visible' : ''}`}>
-        <button 
-          className="floating-nav-toggle"
-          onClick={() => setFloatingNavOpen(!floatingNavOpen)}
-          aria-label="Toggle navigation"
-        >
-          {floatingNavOpen ? '✕' : '☰'}
-        </button>
-        <nav className={`floating-nav-menu ${floatingNavOpen ? 'open' : ''}`}>
-          {navLinks.map(link => (
-            <button
-              key={link.id}
-              className={`floating-nav-link ${link.id === 'book' ? 'book-link' : ''} ${link.isBack ? 'back-link' : ''}`}
-              onClick={() => scrollToSection(link.id)}
-            >
-              {t(link.labelKey)}
-            </button>
-          ))}
-          <div className="floating-nav-divider"></div>
-          <div className="floating-nav-language">
-            <LanguageSwitcher />
-          </div>
-        </nav>
-      </div>
-      
+    <div className="music-page" ref={pageRef}>
       {/* Hero section with vinyl */}
       <section className="music-hero">
-        {/* Section navigation - above vinyl */}
-        <nav className="section-nav">
-          {navLinks.map(link => (
-            <button
-              key={link.id}
-              className={`nav-link ${link.id === 'book' ? 'book-link' : ''} ${link.isBack ? 'back-link' : ''}`}
-              onClick={() => scrollToSection(link.id)}
-            >
-              {t(link.labelKey)}
-            </button>
-          ))}
-        </nav>
         
         {/* Social icons beneath nav */}
         <div className="social-icons">

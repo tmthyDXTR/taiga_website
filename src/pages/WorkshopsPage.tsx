@@ -1,20 +1,42 @@
 import { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import LogoHeader from "../components/LogoHeader";
-import LanguageSwitcher from "../components/LanguageSwitcher";
 import Footer from "../components/Footer";
 import "./WorkshopsPage.css";
 
+type TickerItem = { img: string; alt: string } | { label: string }
+const tickerItems: TickerItem[] = [
+    { img: "/images/company-logos/amnesty.png", alt: "Amnesty International" },
+    { img: "/images/company-logos/goethe-institut.png", alt: "Goethe Institut" },
+    { img: "/images/company-logos/vivaconagua.png", alt: "Viva con agua" },
+    { img: "/images/company-logos/Microsoft-Logo.png", alt: "Microsoft" },
+    { label: "IMMA" },
+    { label: "Refugio" },
+    { label: "Bellevue di Monaco" },
+    { label: "Ya Basta" },
+    { img: "/images/company-logos/ausArten-logo.svg", alt: "AusArten" },
+    { img: "/images/company-logos/pwc.png", alt: "PWC" },
+    { label: "PASCH Schulen" },
+    { img: "/images/company-logos/eu.png", alt: "EU Delegation" },
+    { img: "/images/company-logos/356femalemcs.png", alt: "356 Female Mcs" },
+    { img: "/images/company-logos/voice-of-germany.jpg", alt: "The Voice of Germany" },
+]
+
+const workshopKeys = [
+    "therapySession",
+    "mentalHealth",
+    "rapYoga",
+    "selfAwareness",
+    "businessSpecial",
+] as const
+
 function WorkshopsPage() {
     const { t } = useTranslation();
-    const navigate = useNavigate();
-    const floatingNavRef = useRef<HTMLDivElement>(null);
     const [showBackToTop, setShowBackToTop] = useState(false);
-    const [showFloatingNav, setShowFloatingNav] = useState(false);
-    const [floatingNavOpen, setFloatingNavOpen] = useState(false);
     const [moreInfoOpen, setMoreInfoOpen] = useState(false);
     const moreInfoRef = useRef<HTMLDivElement>(null);
+    const touchStartX = useRef<number>(0);
+    const wsStartX = useRef<number>(0);
+    const [workshopIndex, setWorkshopIndex] = useState(0);
 
     // inject Stack Sans Text font and expose it globally
     useEffect(() => {
@@ -33,12 +55,11 @@ function WorkshopsPage() {
         document.documentElement.style.fontFamily = font;
     }, []);
 
-    // Show/hide back to top button and floating nav based on scroll position
+    // Show/hide back to top button based on scroll position
     useEffect(() => {
         const handleScroll = () => {
             const scrolled = window.scrollY;
             setShowBackToTop(scrolled > 400);
-            setShowFloatingNav(scrolled > 400);
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
@@ -59,60 +80,9 @@ function WorkshopsPage() {
         if (carouselPaused) return undefined;
         const id = setInterval(() => {
             setCarouselIndex((i) => (i + 1) % carouselImages.length);
-        }, 4000);
+        }, 5000);
         return () => clearInterval(id);
     }, [carouselPaused, carouselImages.length]);
-
-    // Close floating nav when clicking outside
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (
-                floatingNavOpen &&
-                floatingNavRef.current &&
-                !floatingNavRef.current.contains(event.target as Node)
-            ) {
-                setFloatingNavOpen(false);
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () =>
-            document.removeEventListener("mousedown", handleClickOutside);
-    }, [floatingNavOpen]);
-
-    // Position floating nav so it sits exactly where the header language switcher is
-    useEffect(() => {
-        const updatePosition = () => {
-            const headerControls = document.querySelector('.logo-container .header-controls') as HTMLElement | null;
-            const btn = floatingNavRef.current;
-            if (!btn) return;
-
-            if (headerControls) {
-                const rect = headerControls.getBoundingClientRect();
-                const top = Math.max(8, rect.top + rect.height / 2 - btn.offsetHeight / 2);
-                const right = Math.max(8, Math.round(window.innerWidth - rect.right));
-                const maxTop = Math.max(8, window.innerHeight - btn.offsetHeight - 8);
-                const clampedTop = Math.min(top, maxTop);
-                btn.style.top = `${clampedTop}px`;
-                btn.style.right = `${right}px`;
-                btn.style.left = 'auto';
-            } else {
-                btn.style.top = '';
-                btn.style.right = '';
-                btn.style.left = '';
-            }
-        };
-
-        updatePosition();
-        window.addEventListener('resize', updatePosition);
-        window.addEventListener('scroll', updatePosition, { passive: true });
-        const timeout = setTimeout(updatePosition, 300);
-
-        return () => {
-            window.removeEventListener('resize', updatePosition);
-            window.removeEventListener('scroll', updatePosition);
-            clearTimeout(timeout);
-        };
-    }, [floatingNavRef]);
 
     // Close more-info modal on Escape or clicking outside
     useEffect(() => {
@@ -136,65 +106,20 @@ function WorkshopsPage() {
         };
     }, [moreInfoOpen]);
 
-    const scrollToSection = (sectionId: string) => {
-        if (sectionId === "home") {
-            navigate("/");
-            return;
-        }
-        const element = document.getElementById(sectionId);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-            setFloatingNavOpen(false);
-        }
-    };
-
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     // Navigation links for workshops page
-    const navLinks = [
-        { id: "home", labelKey: "navigation.backToTriangle", isBack: true },
-        { id: "about", labelKey: "workshops.nav.about" },
-        { id: "partners", labelKey: "workshops.nav.partners" },
-        { id: "workshops", labelKey: "workshops.nav.workshops" },
+    const heroParagraphs = [
+        { titleKey: "workshops.about.visionImpact.title", descKey: "workshops.about.visionImpact.description" },
+        { titleKey: "workshops.about.approachMethod.title", descKey: "workshops.about.approachMethod.description" },
+        { titleKey: "workshops.about.professionalBackground.title", descKey: "workshops.about.professionalBackground.description" },
+        { titleKey: "workshops.about.experiencePartnerships.title", descKey: "workshops.about.experiencePartnerships.description" },
     ];
 
     return (
-        <div className={`workshops-page ${showFloatingNav ? 'floating-visible' : ''}`}>
-            <LogoHeader text="TAIGA SESSIONS" />
-
-            {/* Floating collapsed nav - shows after scrolling */}
-            <div
-                ref={floatingNavRef}
-                className={`floating-nav ${showFloatingNav ? "visible" : ""}`}
-            >
-                <button
-                    className="floating-nav-toggle"
-                    onClick={() => setFloatingNavOpen(!floatingNavOpen)}
-                    aria-label="Toggle navigation"
-                >
-                    {floatingNavOpen ? "✕" : "☰"}
-                </button>
-                <nav
-                    className={`floating-nav-menu ${floatingNavOpen ? "open" : ""}`}
-                >
-                    {navLinks.map((link) => (
-                        <button
-                            key={link.id}
-                            className={`floating-nav-link ${link.isBack ? "back-link" : ""}`}
-                            onClick={() => scrollToSection(link.id)}
-                        >
-                            {t(link.labelKey)}
-                        </button>
-                    ))}
-                    <div className="floating-nav-divider"></div>
-                    <div className="floating-nav-language">
-                        <LanguageSwitcher />
-                    </div>
-                </nav>
-            </div>
-
+        <div className="workshops-page">
             {/* Back to top button */}
             <button
                 className={`back-to-top ${showBackToTop ? "visible" : ""}`}
@@ -204,470 +129,314 @@ function WorkshopsPage() {
                 ↑
             </button>
 
-            {/* Header with stacked navigation (like Music page) */}
-            <header className="workshops-header">
-                <nav className="section-nav">
-                    {navLinks.map((link) => (
-                        <button
-                            key={link.id}
-                            className={`nav-link ${link.isBack ? "back-link" : ""}`}
-                            onClick={() => scrollToSection(link.id)}
+            {/* Full-screen hero carousel with text overlays */}
+            <section
+                id="about"
+                className="workshops-hero-full"
+                onMouseEnter={() => setCarouselPaused(true)}
+                onMouseLeave={() => setCarouselPaused(false)}
+                onFocus={() => setCarouselPaused(true)}
+                onBlur={() => setCarouselPaused(false)}
+                tabIndex={0}
+                onKeyDown={(e) => {
+                    if (e.key === "ArrowLeft")
+                        setCarouselIndex(
+                            (i) =>
+                                (i - 1 + carouselImages.length) %
+                                carouselImages.length,
+                        );
+                    if (e.key === "ArrowRight")
+                        setCarouselIndex(
+                            (i) => (i + 1) % carouselImages.length,
+                        );
+                }}
+                onTouchStart={(e) => {
+                    touchStartX.current = e.changedTouches[0].clientX;
+                }}
+                onTouchEnd={(e) => {
+                    const diff =
+                        touchStartX.current - e.changedTouches[0].clientX;
+                    if (Math.abs(diff) > 40) {
+                        if (diff > 0)
+                            setCarouselIndex(
+                                (i) => (i + 1) % carouselImages.length,
+                            );
+                        else
+                            setCarouselIndex(
+                                (i) =>
+                                    (i - 1 + carouselImages.length) %
+                                    carouselImages.length,
+                            );
+                    }
+                }}
+            >
+                {/* Auto-scrolling references ticker */}
+                <div className="references-ticker" aria-hidden="true">
+                    <div className="ticker-track">
+                        {[...tickerItems, ...tickerItems].map((item, idx) => (
+                            <div key={idx} className="ticker-item">
+                                {"img" in item ? (
+                                    <img src={item.img} alt={item.alt} />
+                                ) : (
+                                    <span>{item.label}</span>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div
+                    className="slides-hero"
+                    style={{
+                        transform: `translateX(-${carouselIndex * 100}%)`,
+                    }}
+                >
+                    {carouselImages.map((file, i) => (
+                        <div
+                            className="slide-hero"
+                            key={file}
+                            aria-hidden={
+                                carouselImages[carouselIndex] !== file
+                            }
                         >
-                            {t(link.labelKey)}
-                        </button>
+                            <img
+                                src={`/images/workshops-gallery/${encodeURIComponent(file)}`}
+                                alt={file.replace(
+                                    /\.(png|jpg|jpeg)$/i,
+                                    "",
+                                )}
+                                loading={i === 0 ? "eager" : "lazy"}
+                            />
+                            {i < heroParagraphs.length && (
+                                <div className="slide-text-overlay">
+                                    <h4>
+                                        <span className="word-bg">
+                                            {t(heroParagraphs[i].titleKey)}
+                                        </span>
+                                    </h4>
+                                    <p>{t(heroParagraphs[i].descKey)}</p>
+                                </div>
+                            )}
+                        </div>
                     ))}
-                </nav>
-            </header>
+                </div>
 
-            {/* Main content */}
-            <main className="workshops-content">
-                {/* Hero section */}
-                <section className="workshops-hero">
-                    {/* Rotating carousel using gallery images */}
-                    <div
-                        className="hero-image-container hero-carousel"
-                        onMouseEnter={() => setCarouselPaused(true)}
-                        onMouseLeave={() => setCarouselPaused(false)}
-                        onFocus={() => setCarouselPaused(true)}
-                        onBlur={() => setCarouselPaused(false)}
-                        tabIndex={0}
-                        onKeyDown={(e) => {
-                            if (e.key === "ArrowLeft")
-                                setCarouselIndex(
-                                    (i) =>
-                                        (i - 1 + carouselImages.length) %
-                                        carouselImages.length,
-                                );
-                            if (e.key === "ArrowRight")
-                                setCarouselIndex(
-                                    (i) => (i + 1) % carouselImages.length,
-                                );
-                        }}
-                    >
-                        <div
-                            className="slides"
-                            style={{
-                                transform: `translateX(-${carouselIndex * 100}%)`,
-                            }}
-                        >
-                            {carouselImages.map((file) => (
-                                <div
-                                    className="slide"
-                                    key={file}
-                                    aria-hidden={
-                                        carouselImages[carouselIndex] !== file
-                                    }
-                                >
-                                    <img
-                                        src={`/images/workshops-gallery/${encodeURIComponent(file)}`}
-                                        alt={file.replace(
-                                            /\.(png|jpg|jpeg)$/i,
-                                            "",
-                                        )}
-                                        loading="lazy"
-                                    />
-                                </div>
-                            ))}
-                        </div>
+                <button
+                    className="carousel-prev"
+                    onClick={() =>
+                        setCarouselIndex(
+                            (i) =>
+                                (i - 1 + carouselImages.length) %
+                                carouselImages.length,
+                        )
+                    }
+                    aria-label="Vorheriges Bild"
+                >
+                    ‹
+                </button>
+                <button
+                    className="carousel-next"
+                    onClick={() =>
+                        setCarouselIndex(
+                            (i) => (i + 1) % carouselImages.length,
+                        )
+                    }
+                    aria-label="Nächstes Bild"
+                >
+                    ›
+                </button>
 
+                <div
+                    className="carousel-dots"
+                    role="tablist"
+                    aria-label="Bildnavigation"
+                >
+                    {carouselImages.map((_, i) => (
                         <button
-                            className="carousel-prev"
-                            onClick={() =>
-                                setCarouselIndex(
-                                    (i) =>
-                                        (i - 1 + carouselImages.length) %
-                                        carouselImages.length,
-                                )
-                            }
-                            aria-label="Vorheriges Bild"
-                        >
-                            ‹
-                        </button>
+                            key={i}
+                            className={`dot ${i === carouselIndex ? "active" : ""}`}
+                            onClick={() => setCarouselIndex(i)}
+                            aria-label={`Gehe zu Bild ${i + 1}`}
+                            aria-selected={i === carouselIndex}
+                            role="tab"
+                        />
+                    ))}
+                </div>
+            </section>
+
+            {/* Full-screen workshops carousel */}
+            <section
+                id="workshops"
+                className="workshops-carousel-section"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                    if (e.key === "ArrowLeft")
+                        setWorkshopIndex(
+                            (i) =>
+                                (i - 1 + workshopKeys.length) %
+                                workshopKeys.length,
+                        );
+                    if (e.key === "ArrowRight")
+                        setWorkshopIndex(
+                            (i) => (i + 1) % workshopKeys.length,
+                        );
+                }}
+                onTouchStart={(e) => {
+                    wsStartX.current = e.changedTouches[0].clientX;
+                }}
+                onTouchEnd={(e) => {
+                    const diff =
+                        wsStartX.current - e.changedTouches[0].clientX;
+                    if (Math.abs(diff) > 40) {
+                        if (diff > 0)
+                            setWorkshopIndex(
+                                (i) => (i + 1) % workshopKeys.length,
+                            );
+                        else
+                            setWorkshopIndex(
+                                (i) =>
+                                    (i - 1 + workshopKeys.length) %
+                                    workshopKeys.length,
+                            );
+                    }
+                }}
+            >
+                <div
+                    className="workshops-slides-track"
+                    style={{
+                        transform: `translateX(-${workshopIndex * 100}%)`,
+                    }}
+                >
+                    {workshopKeys.map((key, i) => (
+                        <div className="workshop-slide" key={key}>
+                            <div className="workshop-slide-content">
+                                <div className="ws-slide-number">
+                                    {String(i + 1).padStart(2, "0")} /{" "}
+                                    {String(workshopKeys.length).padStart(
+                                        2,
+                                        "0",
+                                    )}
+                                </div>
+                                <h4>
+                                    <span className="word-bg">
+                                        {t(
+                                            `workshops.workshops.${key}.title`,
+                                        )}
+                                    </span>
+                                </h4>
+                                <div className="ws-duration">
+                                    {t(
+                                        `workshops.workshops.${key}.duration`,
+                                    )}
+                                </div>
+                                {t(
+                                    `workshops.workshops.${key}.description`,
+                                ) && (
+                                    <p className="ws-description">
+                                        {t(
+                                            `workshops.workshops.${key}.description`,
+                                        )}
+                                    </p>
+                                )}
+                                {key === "therapySession" && (
+                                    <>
+                                        <div className="ws-price">
+                                            {t(
+                                                "workshops.workshops.therapySession.price",
+                                            )}
+                                        </div>
+                                        <div className="ws-location">
+                                            {t(
+                                                "workshops.workshops.therapySession.location",
+                                            )}
+                                        </div>
+                                        <div className="ws-note">
+                                            {t(
+                                                "workshops.workshops.therapySession.note",
+                                            )}
+                                        </div>
+                                    </>
+                                )}
+                                {key !== "therapySession" && (
+                                    <div className="ws-level">
+                                        {t(
+                                            `workshops.workshops.${key}.level`,
+                                        )}
+                                    </div>
+                                )}
+                                <div className="ws-actions">
+                                    {key === "businessSpecial" && (
+                                        <button
+                                            type="button"
+                                            className="more-info-button"
+                                            onClick={() =>
+                                                setMoreInfoOpen(true)
+                                            }
+                                        >
+                                            {t(
+                                                "workshops.workshops.businessSpecial.moreInfoButton",
+                                            )}
+                                        </button>
+                                    )}
+                                    <a
+                                        href="mailto:workshops@taigatrece.com"
+                                        className="register-button"
+                                    >
+                                        {t("workshops.inquireButton")}
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="ws-bg-number" aria-hidden="true">
+                                {String(i + 1).padStart(2, "0")}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <button
+                    className="carousel-prev"
+                    onClick={() =>
+                        setWorkshopIndex(
+                            (i) =>
+                                (i - 1 + workshopKeys.length) %
+                                workshopKeys.length,
+                        )
+                    }
+                    aria-label="Vorheriger Workshop"
+                >
+                    ‹
+                </button>
+                <button
+                    className="carousel-next"
+                    onClick={() =>
+                        setWorkshopIndex(
+                            (i) => (i + 1) % workshopKeys.length,
+                        )
+                    }
+                    aria-label="Nächster Workshop"
+                >
+                    ›
+                </button>
+
+                <div
+                    className="carousel-dots"
+                    role="tablist"
+                    aria-label="Workshop-Navigation"
+                >
+                    {workshopKeys.map((_, i) => (
                         <button
-                            className="carousel-next"
-                            onClick={() =>
-                                setCarouselIndex(
-                                    (i) => (i + 1) % carouselImages.length,
-                                )
-                            }
-                            aria-label="Nächstes Bild"
-                        >
-                            ›
-                        </button>
-
-                        <div
-                            className="carousel-dots"
-                            role="tablist"
-                            aria-label="Bildnavigation"
-                        >
-                            {carouselImages.map((_, i) => (
-                                <button
-                                    key={i}
-                                    className={`dot ${i === carouselIndex ? "active" : ""}`}
-                                    onClick={() => setCarouselIndex(i)}
-                                    aria-label={`Gehe zu Bild ${i + 1}`}
-                                    aria-selected={i === carouselIndex}
-                                    role="tab"
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* Workshop info */}
-                <section id="about" className="workshop-info">
-                    <h3>
-                        <span className="word-bg">
-                            {t("workshops.aboutTitle")}
-                        </span>
-                    </h3>
-                    <div className="info-grid">
-                        <div className="info-item">
-                            <h4>
-                                <span className="word-bg">
-                                    {t(
-                                        "workshops.about.professionalBackground.title",
-                                    )}
-                                </span>
-                            </h4>
-                            <p>
-                                {t(
-                                    "workshops.about.professionalBackground.description",
-                                )}
-                            </p>
-                        </div>
-                        <div className="info-item">
-                            <h4>
-                                <span className="word-bg">
-                                    {t(
-                                        "workshops.about.experiencePartnerships.title",
-                                    )}
-                                </span>
-                            </h4>
-                            <p>
-                                {t(
-                                    "workshops.about.experiencePartnerships.description",
-                                )}
-                            </p>
-                        </div>
-                        <div className="info-item">
-                            <h4>
-                                <span className="word-bg">
-                                    {t("workshops.about.approachMethod.title")}
-                                </span>
-                            </h4>
-                            <p>
-                                {t(
-                                    "workshops.about.approachMethod.description",
-                                )}
-                            </p>
-                        </div>
-                        <div className="info-item">
-                            <h4>
-                                <span className="word-bg">
-                                    {t("workshops.about.visionImpact.title")}
-                                </span>
-                            </h4>
-                            <p>
-                                {t("workshops.about.visionImpact.description")}
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Partners/Collaborators Section */}
-                <section id="partners" className="partners-section">
-                    <h3>
-                        <span className="word-bg">
-                            {t("workshops.partnersTitle")}
-                        </span>
-                    </h3>
-                    <div className="partners-grid">
-                        <div className="partner-logo">
-                            <img
-                                src="/images/company-logos/amnesty.png"
-                                alt="Amnesty International"
-                            />
-                        </div>
-                        <div className="partner-logo">
-                            <img
-                                src="/images/company-logos/goethe-institut.png"
-                                alt="Goethe Institut"
-                            />
-                        </div>
-                        <div className="partner-logo">
-                            <img
-                                src="/images/company-logos/vivaconagua.png"
-                                alt="Viva con agua"
-                            />
-                        </div>
-                        <div className="partner-logo">
-                            <img
-                                src="/images/company-logos/Microsoft-Logo.png"
-                                alt="Microsoft"
-                            />
-                        </div>
-                        <div className="partner-logo">IMMA</div>
-                        <div className="partner-logo">Refugio</div>
-                        <div className="partner-logo">Bellevue di Monaco</div>
-                        <div className="partner-logo">Ya Basta</div>
-                        <div className="partner-logo">
-                            <img
-                                src="/images/company-logos/ausArten-logo.svg"
-                                alt="AusArten"
-                            />
-                        </div>
-                        <div className="partner-logo">
-                            <img
-                                src="/images/company-logos/bavariancaps-logo.png"
-                                alt="Bavarian Caps"
-                            />
-                        </div>
-
-                        <div className="partner-logo">
-                            <img
-                                src="/images/company-logos/pwc.png"
-                                alt="PWC"
-                            />
-                        </div>
-                        <div className="partner-logo">PASCH Schulen</div>
-                        <div className="partner-logo">
-                            <img
-                                src="/images/company-logos/eu.png"
-                                alt="EU Delegation"
-                            />
-                        </div>
-                        <div className="partner-logo">
-                            <img
-                                src="/images/company-logos/356femalemcs.png"
-                                alt="356 Female Mcs"
-                            />
-                        </div>
-                        <div className="partner-logo">
-                            <img
-                                src="/images/company-logos/voice-of-germany.jpg"
-                                alt="The Voice of Germany"
-                            />
-                        </div>
-                    </div>
-                </section>
-
-                {/* Available workshops */}
-                <section id="workshops" className="workshops-listing">
-                    <h3>
-                        <span className="word-bg">
-                            {t("workshops.focusAreasTitle")}
-                        </span>
-                    </h3>
-                    <div className="workshops-grid">
-                        <div className="workshop-item">
-                            <div className="workshop-header">
-                                <h4>
-                                    <span className="word-bg">
-                                        {t(
-                                            "workshops.workshops.therapySession.title",
-                                        )}
-                                    </span>
-                                </h4>
-                                <div className="workshop-duration">
-                                    {t(
-                                        "workshops.workshops.therapySession.duration",
-                                    )}
-                                </div>
-                            </div>
-                            <div className="workshop-description">
-                                <p>
-                                    {t(
-                                        "workshops.workshops.therapySession.description",
-                                    )}
-                                </p>
-                            </div>
-                            <div className="workshop-details">
-                                <div className="workshop-price">
-                                    {t(
-                                        "workshops.workshops.therapySession.price",
-                                    )}
-                                </div>
-                                <div className="workshop-location">
-                                    {t(
-                                        "workshops.workshops.therapySession.location",
-                                    )}
-                                </div>
-                            </div>
-                            <div className="workshop-note">
-                                {t("workshops.workshops.therapySession.note")}
-                            </div>
-                            <div className="workshop-action">
-                                <a
-                                    href="mailto:workshops@taigatrece.com"
-                                    className="register-button"
-                                >
-                                    {t("workshops.inquireButton")}
-                                </a>
-                            </div>
-                        </div>
-
-                        <div className="workshop-item">
-                            <div className="workshop-header">
-                                <h4>
-                                    <span className="word-bg">
-                                        {t(
-                                            "workshops.workshops.mentalHealth.title",
-                                        )}
-                                    </span>
-                                </h4>
-                                <div className="workshop-duration">
-                                    {t(
-                                        "workshops.workshops.mentalHealth.duration",
-                                    )}
-                                </div>
-                            </div>
-                            <div className="workshop-description">
-                                <p>
-                                    {t(
-                                        "workshops.workshops.mentalHealth.description",
-                                    )}
-                                </p>
-                            </div>
-                            <div className="workshop-details">
-                                <div className="workshop-level">
-                                    {t(
-                                        "workshops.workshops.mentalHealth.level",
-                                    )}
-                                </div>
-                            </div>
-                            <div className="workshop-action">
-                                <a
-                                    href="mailto:workshops@taigatrece.com"
-                                    className="register-button"
-                                >
-                                    {t("workshops.inquireButton")}
-                                </a>
-                            </div>
-                        </div>
-
-                        <div className="workshop-item">
-                            <div className="workshop-header">
-                                <h4>
-                                    <span className="word-bg">
-                                        {t("workshops.workshops.rapYoga.title")}
-                                    </span>
-                                </h4>
-                                <div className="workshop-duration">
-                                    {t("workshops.workshops.rapYoga.duration")}
-                                </div>
-                            </div>
-                            <div className="workshop-description">
-                                <p>
-                                    {t(
-                                        "workshops.workshops.rapYoga.description",
-                                    )}
-                                </p>
-                            </div>
-                            <div className="workshop-details">
-                                <div className="workshop-level">
-                                    {t("workshops.workshops.rapYoga.level")}
-                                </div>
-                            </div>
-                            <div className="workshop-action">
-                                <a
-                                    href="mailto:workshops@taigatrece.com"
-                                    className="register-button"
-                                >
-                                    {t("workshops.inquireButton")}
-                                </a>
-                            </div>
-                        </div>
-
-                        <div className="workshop-item">
-                            <div className="workshop-header">
-                                <h4>
-                                    <span className="word-bg">
-                                        {t(
-                                            "workshops.workshops.selfAwareness.title",
-                                        )}
-                                    </span>
-                                </h4>
-                                <div className="workshop-duration">
-                                    {t(
-                                        "workshops.workshops.selfAwareness.duration",
-                                    )}
-                                </div>
-                            </div>
-                            <div className="workshop-description">
-                                <p>
-                                    {t(
-                                        "workshops.workshops.selfAwareness.description",
-                                    )}
-                                </p>
-                            </div>
-                            <div className="workshop-details">
-                                <div className="workshop-level">
-                                    {t(
-                                        "workshops.workshops.selfAwareness.level",
-                                    )}
-                                </div>
-                            </div>
-                            <div className="workshop-action">
-                                <a
-                                    href="mailto:workshops@taigatrece.com"
-                                    className="register-button"
-                                >
-                                    {t("workshops.inquireButton")}
-                                </a>
-                            </div>
-                        </div>
-
-                        <div className="workshop-item">
-                            <div className="workshop-header">
-                                <h4>
-                                    <span className="word-bg">
-                                        {t(
-                                            "workshops.workshops.businessSpecial.title",
-                                        )}
-                                    </span>
-                                </h4>
-                                <div className="workshop-duration">
-                                    {t(
-                                        "workshops.workshops.businessSpecial.duration",
-                                    )}
-                                </div>
-                            </div>
-                            <div className="workshop-description">
-                                <p>
-                                    {t(
-                                        "workshops.workshops.businessSpecial.description",
-                                    )}
-                                </p>
-                            </div>
-                            <div className="workshop-details">
-                                <div className="workshop-level">
-                                    {t(
-                                        "workshops.workshops.businessSpecial.level",
-                                    )}
-                                </div>
-                            </div>
-                            <div className="workshop-action">
-                                <button
-                                    type="button"
-                                    className="more-info-button"
-                                    onClick={() => setMoreInfoOpen(true)}
-                                >
-                                    {t(
-                                        "workshops.workshops.businessSpecial.moreInfoButton",
-                                    )}
-                                </button>
-                                <a
-                                    href="mailto:workshops@taigatrece.com"
-                                    className="register-button"
-                                >
-                                    {t("workshops.inquireButton")}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
+                            key={i}
+                            className={`dot ${
+                                i === workshopIndex ? "active" : ""
+                            }`}
+                            onClick={() => setWorkshopIndex(i)}
+                            aria-label={`Gehe zu Workshop ${i + 1}`}
+                            aria-selected={i === workshopIndex}
+                            role="tab"
+                        />
+                    ))}
+                </div>
+            </section>
 
             {moreInfoOpen && (
                 <div

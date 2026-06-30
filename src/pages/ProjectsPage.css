@@ -1,10 +1,17 @@
 /* Projects Page - simple blog style */
+@keyframes page-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 .projects-page {
     min-height: 100vh;
+    padding-top: var(--main-nav-h);
     background: #000; /* black background */
     color: #fff;
     display: flex;
     flex-direction: column;
+    animation: page-fade-in 0.4s ease both;
 }
 
 /* Project header: keep nav links black on hover and ensure back-link opacity matches */

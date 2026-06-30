@@ -10,8 +10,14 @@
 }
 
 /* === BASE LAYOUT === */
+@keyframes page-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 .music-page {
-  height: 100vh;
+  height: calc(100vh - var(--main-nav-h, 3.75rem));
+  margin-top: var(--main-nav-h, 3.75rem);
   background: #000;
   color: var(--lime-green);
   position: relative;
@@ -21,6 +27,7 @@
   flex-direction: column;
   /* scroll-snap is enabled only on desktop via a media query below */
   scroll-padding-top: 0;
+  animation: page-fade-in 0.4s ease both;
 }
 
 .music-page .logo-container,

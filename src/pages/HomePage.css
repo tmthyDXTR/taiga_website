@@ -53,6 +53,8 @@ html, body {
   pointer-events: none;
   user-select: none;
   transition: color var(--fade-speed) ease-in-out;
+  /* matched to sub-page title so the View Transition morphs them */
+  view-transition-name: site-title;
 }
 
 /* title hover variants */
@@ -74,8 +76,11 @@ html, body {
   gap: 1rem;
   align-items: center;
   justify-content: center;
-  margin-top: 12rem; /* nudge nav a bit lower relative to the title */
+  padding: 0.65rem 1rem;
+  margin-top: 12rem;
   margin-bottom: 1rem;
+  /* matched to MainNav so the View Transition morphs them */
+  view-transition-name: main-nav;
 }
 
 /* make links clean: no underline, inherit color, no background by default */
@@ -83,6 +88,12 @@ html, body {
 .language-menu .menu-link {
   text-decoration: none;
   background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
   color: inherit;
   transition: color var(--fade-speed) ease-in-out, transform 160ms ease;
 }
@@ -92,17 +103,8 @@ html, body {
 .top-nav .menu-link:focus,
 .language-menu .menu-link:hover,
 .language-menu .menu-link:focus {
-  /* subtle lift and color change; color remains readable against backgrounds */
-  /* transform: translateY(-2px); */
   color: rgba(255,255,255,0.95);
   outline: none;
-}
-
-
-/* make links transition color smoothly and match chameleon/title variants */
-.top-nav .menu-link,
-.language-menu .menu-link {
-  transition: color var(--fade-speed) ease-in-out, transform 160ms ease;
 }
 
 /* Per-link color on hover (immediate) */

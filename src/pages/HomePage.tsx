@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
+import { flushSync } from 'react-dom'
 import './HomePage.css'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 import Footer from '../components/Footer'
@@ -7,6 +9,7 @@ import chUrl from '../assets/images/chamaeleon.svg'
 
 function HomePage() {
   const { t } = useTranslation()
+  const navigate = useNavigate()
   const [linkHover, setLinkHover] = useState<'c1' | 'c2' | 'c3' | null>(null)
   const [svgContent, setSvgContent] = useState<string | null>(null)
   const [rainbowIndex, setRainbowIndex] = useState<number | null>(null)
@@ -25,6 +28,27 @@ function HomePage() {
 
   const handleChameleonClick = () => {
     setRainbowIndex(prev => prev === null ? 0 : (prev + 1) % rainbowColors.length)
+  }
+
+  const handleNavClick = (_e: React.MouseEvent, path: string) => {
+    if (!('startViewTransition' in document)) {
+      navigate(path)
+      return
+    }
+    const vt = (document as unknown as {
+      startViewTransition(cb: () => void): { ready: Promise<void> }
+    }).startViewTransition(() => { flushSync(() => navigate(path)) })
+    vt.ready.then(() => {
+      for (const anim of document.getAnimations()) {
+        if (
+          anim.effect instanceof KeyframeEffect &&
+          (anim.effect.pseudoElement === '::view-transition-group(main-nav)' ||
+           anim.effect.pseudoElement === '::view-transition-group(site-title)')
+        ) {
+          anim.effect.updateTiming({ duration: 600, easing: 'cubic-bezier(0.4,0,0.2,1)' })
+        }
+      }
+    })
   }
 
   const handleChameleonMouseLeave = () => {
@@ -152,32 +176,32 @@ function HomePage() {
       </div>
 
       <nav className="top-nav" aria-label="Primary">
-        <a
+        <button
           className="menu-link workshops-link"
-          href="/w"
+          onClick={(e) => handleNavClick(e, '/w')}
           onMouseEnter={() => setLinkHover('c2')}
           onMouseLeave={() => setLinkHover(null)}
         >
           {t('navigation.workshops')}
-        </a>
+        </button>
         <p>·</p>
-        <a
+        <button
           className="menu-link music-link"
-          href="/m"
+          onClick={(e) => handleNavClick(e, '/m')}
           onMouseEnter={() => setLinkHover('c1')}
           onMouseLeave={() => setLinkHover(null)}
         >
           {t('navigation.theArtist')}
-        </a>
+        </button>
         <p>·</p>
-        <a
+        <button
           className="menu-link tbd-link"
-          href="/p"
+          onClick={(e) => handleNavClick(e, '/p')}
           onMouseEnter={() => setLinkHover('c3')}
           onMouseLeave={() => setLinkHover(null)}
         >
           {t('navigation.tbd')}
-        </a>
+        </button>
       </nav>
 
       <div className="home-vinyl-container">

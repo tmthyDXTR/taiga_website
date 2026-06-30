@@ -1,0 +1,54 @@
+.sub-page-header {
+  background: #000;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.sub-page-site-title {
+  display: block;
+  width: 100%;
+  text-align: center;
+  /* 7vw is smaller than the landing page's 8rem title on desktop, fills viewport width */
+  font-size: clamp(1.5rem, 7vw, 7rem);
+  font-weight: 700;
+  /* letter-spacing spreads the text to fill the full width;
+     matching left-padding compensates the trailing gap so centering is visually accurate */
+  letter-spacing: 0.65em;
+  padding: 0.3rem 0 0 0.65em;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 1;
+  text-transform: uppercase;
+  /* smooth color transition — mirrors landing page site-title */
+  transition: color 250ms ease-in-out;
+  /* treated as its own stable element during view transitions */
+  view-transition-name: site-title;
+}
+
+/* title reflects active page identity color, and changes on hover — mirrors landing page */
+.sub-page-header:has(.main-nav-link.workshops.active) .sub-page-site-title,
+.sub-page-header:has(.main-nav-link.workshops:hover) .sub-page-site-title,
+.sub-page-header:has(.main-nav-link.workshops:focus) .sub-page-site-title {
+  color: var(--pink-magenta);
+}
+
+.sub-page-header:has(.main-nav-link.music.active) .sub-page-site-title,
+.sub-page-header:has(.main-nav-link.music:hover) .sub-page-site-title,
+.sub-page-header:has(.main-nav-link.music:focus) .sub-page-site-title {
+  color: var(--lime-green);
+}
+
+.sub-page-header:has(.main-nav-link.projects.active) .sub-page-site-title,
+.sub-page-header:has(.main-nav-link.projects:hover) .sub-page-site-title,
+.sub-page-header:has(.main-nav-link.projects:focus) .sub-page-site-title {
+  color: var(--green);
+}
