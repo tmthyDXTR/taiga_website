@@ -32,6 +32,12 @@ function ProjectsPage() {
                                 {t("projects.project1.title")}
                             </span>
                         </h2>
+                        <img
+                            className="project-image"
+                            src="/images/projects/bitch.jpg"
+                            alt="Bitch und Muse"
+                            loading="lazy"
+                        />
                         <p className="project-text">
                             {t("projects.project1.body")}
                         </p>
