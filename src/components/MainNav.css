@@ -46,6 +46,8 @@
   outline: none;
 }
 
+.main-nav-link.blog:hover,
+.main-nav-link.blog:focus,
 .main-nav-link.projects:hover,
 .main-nav-link.projects:focus {
   color: var(--green);
@@ -65,6 +67,7 @@
   text-underline-offset: 4px;
 }
 
+.main-nav-link.blog.active,
 .main-nav-link.projects.active {
   color: var(--green);
   text-decoration: underline;

@@ -5,7 +5,7 @@ set -euo pipefail
 
 LOCAL_FOLDER="$HOME/repos/taiga_website/dist"
 REMOTE_HOST="fastcomet"
-REMOTE_PATH="taiga.supacoda.de/"
+REMOTE_PATH="taigatrece.com/"
 
 DRY_RUN=false
 
@@ -43,7 +43,8 @@ if ! command -v rsync >/dev/null 2>&1; then
   exit 1
 fi
 
-RSYNC_FLAGS=(-avz --checksum)
+# Never overwrite the server's DB config or uploaded images with local ones.
+RSYNC_FLAGS=(-avz --checksum --exclude 'api/config.php' --exclude 'uploads/')
 if [[ "$DRY_RUN" == true ]]; then
   RSYNC_FLAGS+=(--dry-run --itemize-changes)
   echo "=== Starting deployment (dry-run) ==="
@@ -51,7 +52,7 @@ else
   echo "=== Starting deployment ==="
 fi
 
-rsync -e "ssh -i /home/fern/.ssh/fernFastComet" "${RSYNC_FLAGS[@]}" "$LOCAL_FOLDER/" "$REMOTE_HOST:$REMOTE_PATH"
+rsync -e "ssh -i /home/fern/.ssh/id_ed25519" "${RSYNC_FLAGS[@]}" "$LOCAL_FOLDER/" "$REMOTE_HOST:$REMOTE_PATH"
 
 if [[ "$DRY_RUN" == true ]]; then
   echo "=== Dry-run complete (no files changed) ==="

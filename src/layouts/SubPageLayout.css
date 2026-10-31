@@ -49,6 +49,9 @@
 
 .sub-page-header:has(.main-nav-link.projects.active) .sub-page-site-title,
 .sub-page-header:has(.main-nav-link.projects:hover) .sub-page-site-title,
-.sub-page-header:has(.main-nav-link.projects:focus) .sub-page-site-title {
+.sub-page-header:has(.main-nav-link.projects:focus) .sub-page-site-title,
+.sub-page-header:has(.main-nav-link.blog.active) .sub-page-site-title,
+.sub-page-header:has(.main-nav-link.blog:hover) .sub-page-site-title,
+.sub-page-header:has(.main-nav-link.blog:focus) .sub-page-site-title {
   color: var(--green);
 }

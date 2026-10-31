@@ -12,6 +12,7 @@ dist
 dist-ssr
 todo
 *.local
+blog_entries
 
 # Editor directories and files
 .vscode/*
@@ -23,3 +24,6 @@ todo
 *.njsproj
 *.sln
 *.sw?
+
+public/api/config.php
+public/uploads/

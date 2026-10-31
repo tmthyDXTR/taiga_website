@@ -5,7 +5,7 @@ import LanguageSwitcher from './LanguageSwitcher'
 import './MainNav.css'
 
 interface MainNavProps {
-  active?: 'workshops' | 'music' | 'projects'
+  active?: 'workshops' | 'music' | 'projects' | 'blog'
 }
 
 // Cross-fade the content area when navigating between sub-pages.
@@ -45,6 +45,13 @@ function MainNav({ active }: MainNavProps) {
           onClick={() => transitionTo(navigate, '/p')}
         >
           {t('navigation.tbd')}
+        </button>
+        <span className="main-nav-sep">·</span>
+        <button
+          className={`main-nav-link blog${active === 'blog' ? ' active' : ''}`}
+          onClick={() => transitionTo(navigate, '/blog')}
+        >
+          {t('navigation.blog')}
         </button>
       </div>
       <div className="main-nav-lang">

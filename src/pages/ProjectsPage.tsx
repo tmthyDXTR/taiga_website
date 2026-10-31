@@ -54,6 +54,12 @@ function ProjectsPage() {
                                 {t("projects.project2.title")}
                             </span>
                         </h2>
+                        <img
+                            className="project-image"
+                            src="/images/projects/auto_1.jpg"
+                            alt="Von Tapes zu Algorithmen"
+                            loading="lazy"
+                        />
                         <p className="project-text">
                             {t("projects.project2.body")}
                         </p>

@@ -10,10 +10,11 @@ function SubPageLayout() {
   const { pathname } = location
   const headerRef = useRef<HTMLDivElement>(null)
 
-  const active: 'workshops' | 'music' | 'projects' | undefined =
+  const active: 'workshops' | 'music' | 'projects' | 'blog' | undefined =
     pathname === '/w' ? 'workshops' :
     pathname === '/m' ? 'music' :
     pathname === '/p' ? 'projects' :
+    pathname === '/blog' ? 'blog' :
     undefined
 
   // Keep --main-nav-h accurate so music-page height stays correct

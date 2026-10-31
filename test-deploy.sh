@@ -1,7 +1,7 @@
 #!/bin/bash
 # Dry run: Simulate rsync without making changes
 
-LOCAL_FOLDER="$HOME/repos/supacoda/taiga-website/dist/"
+LOCAL_FOLDER="$HOME/repos/taiga_website/dist/"
 REMOTE_HOST="fastcomet"
 REMOTE_PATH="taiga.supacoda.de/"
 

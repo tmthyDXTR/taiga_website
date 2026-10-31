@@ -202,6 +202,16 @@ function HomePage() {
         >
           {t('navigation.tbd')}
         </button>
+        <p>·</p>
+        {/* tbd-link reuses the green hover styling of the Projects link */}
+        <button
+          className="menu-link tbd-link blog-link"
+          onClick={(e) => handleNavClick(e, '/blog')}
+          onMouseEnter={() => setLinkHover('c3')}
+          onMouseLeave={() => setLinkHover(null)}
+        >
+          {t('navigation.blog')}
+        </button>
       </nav>
 
       <div className="home-vinyl-container">
